@@ -1,0 +1,260 @@
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+
+    #asociacion{
+
+        display: block;
+        margin-top: 20px;
+        min-width: 100%;
+        position: relative;
+        width: 100%;
+
+    }
+
+
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width : 321px) {
+    #asociacion{
+
+        display: block;
+        margin-top: 20px;
+        min-width: 100%;
+        position: relative;
+        width: 100%;
+
+    }
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    .box-sections, .one-fourth {
+
+        float: left !important;
+        /*margin-right: 3% !important;*/
+        width: 22.75% !important;
+
+    }
+}
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+
+    .box-sections, .one-fourth {
+
+        float: left !important;
+        /*margin-right: 3% !important;*/
+        width: 22.75% !important;
+
+    }
+
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+    .box-sections, .one-fourth {
+
+        float: left !important;
+        /*margin-right: 3% !important;*/
+        width: 22.75% !important;
+
+    }
+}
+
+/* Desktops and laptops ----------- */
+@media only screen and (min-width : 1224px) {
+    .box-sections, .one-fourth {
+
+        float: left !important;
+        /*margin-right: 3% !important;*/
+        width: 22.75% !important;
+
+    }
+}
+
+/* Large screens ----------- */
+@media only screen and (min-width : 1824px) {
+
+    .box-sections, .one-fourth {
+
+        float: left !important;
+        /*margin-right: 3% !important;*/
+        width: 22.75% !important;
+
+    }
+
+}
+
+/* iPhone 4 ----------- */
+@media only screen and (-webkit-min-device-pixel-ratio : 1.5),  only screen and (min-device-pixel-ratio : 1.5) {
+    /*
+    .box-sections, .one-fourth {
+        position: relative !important;
+        width: 100% !important;
+        margin: 10px !important;
+    }
+    */
+}
+
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px) {
+
+    .box-sections, .one-fourth {
+        position:relative !important;
+        width:100% !important;
+        margin:10px !important;
+        /*
+        float: left;
+        margin-right: 3%;
+        width: 22.75%;
+        */
+    }
+
+}
+
+.gracias{
+
+    margin-top:0px;
+    margin-bottom:500px;
+
+}
+
+
+.thumbnail{
+
+    border-width: 0px !Important;
+}
+
+/*
+.meta{
+
+	width:260px !important;
+
+}
+*/
+
+#name-error{
+
+    position:relative;
+    left:0px;
+    display:block !important;
+
+}
+
+#email-error{
+
+    position:relative;
+    left:0px;
+    display:block;
+
+}
+
+#telephone-error{
+
+    position:relative !important;
+    left:0px !important;
+    display:block !important;
+
+}
+
+#message-error{
+
+    position:relative;
+    left:0px;
+    display:block;
+
+}
+
+
+#captchaoculto-error{
+
+    position:relative !important;
+    left:0px !important;
+
+}
+
+
+#captchaoculto2-error{
+
+    position:relative !important;
+    left:0px !important;
+    margin-bottom:30px !Important;
+
+}
+
+
+.captcha{
+
+    position:relative;
+    background-color: #cccccc;
+    width:50px;
+    height:50px;
+    clear:both;
+
+}
+
+.invisible{
+
+    display:none;
+}
+
+/*
+.container {
+
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+
+}
+
+.span1 {
+    width: 70px !Important;
+}
+
+.span3 {
+    width: 270px !Important;
+	float:left !Important;
+	margin-left:30px !Important;
+	min-height:1px !Important;
+}
+
+.span6 {
+    width: 570px !Important;
+}
+
+.span2 {
+    width: 170px !Important;
+}
+
+[class*="span"] {
+    float: left !important;
+    margin-left: 30px !important;
+    min-height: 1px !important;
+}
+*/
+
+
+.general-pagination ul{
+
+    list-style-type: none;
+    width:170px;
+    margin:0px auto;
+}
+
+.general-pagination ul li{
+
+    float:left;
+
+}
+
+
+.span4{
+    width:300px!important;
+}
+
+.thumbnail{
+    box-shadow: 0px 0px 0px !important;
+}

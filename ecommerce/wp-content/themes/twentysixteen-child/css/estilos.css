@@ -1,0 +1,29 @@
+.search-submit{
+    display:none;
+}
+#header-sidebar .widget-first{
+    float:right !important;
+    margin-right:0px !important;
+    margin-left:20px!important;
+}
+#header-sidebar{
+    float:right!important;
+}
+.thumbnail{
+    border:none!important;
+}
+
+/*
+.span9{
+    width: 750px!important;
+}
+
+.span6{
+    width: 480px !important;
+}
+*/
+
+.footerMio {
+    margin-top: 300px!important;
+}
+
