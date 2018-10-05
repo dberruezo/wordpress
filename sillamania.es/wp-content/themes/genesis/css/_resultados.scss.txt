@@ -1,0 +1,46 @@
+.container-hero-resultados{
+    height: 220px;
+    overflow: hidden;
+    margin-bottom: 40px;
+	.bloque-left{
+	    background-image: url("http://placehold.it/1000x440/bcbcbc");
+	    background-size: cover;
+	    background-position: center center;
+	    background-repeat: no-repeat;
+	    height: 220px;
+	    width: 65%;
+	    float: left;
+	    position: relative;
+	}
+	.bloque-right{
+		height: 220px;
+		padding: 40px;
+		background: $gris5;
+		width: 35%;
+		float: left;
+		h2{
+			margin-top: 0px;
+			font-weight: 700;
+		}
+		p{
+			color: $rojo;
+			font-size: 48px;
+			span{
+				font-size: 18px;
+				font-weight: 400;
+			}
+		}
+	}
+}
+
+@media (max-width: 767px){
+	.container-hero-resultados{
+		height: auto;
+		.bloque-left{
+		    width: 100%;
+		}
+		.bloque-right{
+			width: 100%;
+		}
+	}	
+}

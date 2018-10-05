@@ -1,0 +1,342 @@
+.ficha{
+	.container-ficha{
+		.carrusel-min-prod{
+			margin-top: 20px;
+			.item-img{
+				cursor: pointer;
+				margin-right: 10px;
+				width: 25% !important;
+				outline: 0;
+			}
+		}
+		.product-info-main{
+			padding-right: 115px;
+			position: relative;
+			.page-title-wrapper product{
+				.page-title{
+					.base{
+						
+					}
+				}
+			}
+			.rating-summary{
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 120px;
+				.rating-result{
+					text-align: right;
+					&:before{
+					    position: absolute;
+					    top: 25px;
+					    right: 0;
+					    left: 0;
+					    line-height: 16px;
+					    height: 16px;
+					    z-index: 1;
+					    -webkit-font-smoothing: antialiased;
+					    color: #c7c7c7;
+					    font-family: 'Ofiprix' !important;
+					    font-size: 26px;
+					    letter-spacing: -4px;
+					    content: '\e90d' '\e90d' '\e90d' '\e90d' '\e90d';						
+					}
+					>span{
+						&:before{
+						position: absolute;
+						top: 25px;
+						right: 0;
+						    z-index: 2;
+						    -webkit-font-smoothing: antialiased;
+						    color: $rojo;
+						    font-family: 'Ofiprix' !important;
+						    font-size: 26px;
+						    letter-spacing: -4px;
+						    line-height: 16px;
+						    height: 16px;
+						    content: '\e90d' '\e90d' '\e90d' '\e90d' '\e90d';
+						    display: block;
+						    font-style: normal;
+						    font-weight: normal;
+						    speak: none;							
+						}
+					}
+				}
+			}
+			.price-box{
+				margin-bottom: 20px;
+				.special-price{
+					font-size: 32px;
+					font-weight: 300;
+				}
+			}
+			.short-description{
+				font-size: 12px;
+				color: $gris2;
+			}
+			.product-add-form{
+				#product_addtocart_form{
+					.qty{
+						margin-bottom: 30px;
+						.control{
+							overflow: hidden;
+							span{
+								cursor: pointer;
+							    padding: 11px;
+							    width: 40px;
+							    vertical-align: middle;
+								background: $gris5;
+								color: $gris3;
+								display: inline-block;
+								text-align: center;
+								float: left;							
+							}
+							input{
+								margin-left: 20px;
+								margin-bottom: 0px;
+								border: none;
+							    height: 42px;
+							    outline: 0;
+							    font-size: 15px;
+							}
+						}
+					}
+					.product-options-wrapper{
+						.fieldset{
+							.swatch-opt{
+								.atributo{
+									margin-bottom: 30px;
+									color: $gris3;
+									.contenedorPluguinSelect{
+										&:after {
+										    top: 23px;
+										}
+										.bootstrap-select.btn-group{
+											.dropdown-toggle{
+												background: $gris5;
+												margin-right: 100px;
+											}
+											.dropdown-menu {
+												border: 1px solid $gris5;
+											}
+										}
+									}				
+								}
+								.swatch-attribute{
+									margin-bottom: 15px;
+									.swatch-attribute-label{
+										margin-bottom: 7px;
+										display: inline-block;
+									}
+								}
+							}
+						}
+					}
+					.product-options-bottom{
+						.box-tocart{
+							.fieldset{
+								.actions{
+									.action{
+										span{
+
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		form{
+			.qty{
+				.control{
+					overflow: hidden;
+					span{
+					    padding: 11px;
+					    width: 40px;
+					    vertical-align: middle;
+						background: $gris5;
+						color: $gris3;
+						display: inline-block;
+						text-align: center;
+						float: left;							
+					}
+					input{
+						border: none;
+					    height: 42px;
+					    margin-left: 20px;
+					    outline: 0;
+					}
+				}
+			}
+			.atributo{
+				margin-bottom: 30px;
+				span{
+					color: $gris3;
+				}
+				.contenedorPluguinSelect{
+					&:after {
+					    top: 23px;
+					}
+					.bootstrap-select.btn-group{
+						.dropdown-toggle{
+							background: $gris5;
+						}
+						.dropdown-menu {
+							border: 1px solid $gris5;
+						}
+					}
+				}				
+			}	
+			.container-total{
+				padding-top: 30px;
+				border-top: 2px solid $gris5;
+				.price-container{
+					width: 50%;
+					float: left;
+					p{
+						font-size: 15px;
+					}
+					.price-wrapper{
+						.price{
+							font-size: 28px;
+						}
+					}
+				}	
+				.enviar{
+					width: 50%;
+					float: right;
+					height: 65px;
+				}				
+			}			
+		}
+	}
+	.container-tabs{
+		margin: 50px 0px;
+		.nav-tabs{
+			border: none;
+			li{
+				margin-bottom: -2px;
+				a{
+					padding: 17px 35px;
+					color: $gris3;
+					background: transparent;
+					border: none;
+					font-size: 18px;
+					&:hover{
+						color: $black;
+					}
+				}
+				&.active{
+					background: $gris5;
+					a{
+						background: transparent;
+						border: none;
+						color: $black;
+					}
+				}
+			}
+		}
+		.tab-content{
+			padding: 40px 30px;
+			background-color: $gris5;
+			color: $light-black;
+		}
+	}
+	.container-ventajas{
+		margin: 50px 0px;
+		.item-ventajas{
+			.container-text{
+				padding: 40px;
+				background-color: $semi-black;
+				color: $white;
+				h3{
+					font-weight: 700;
+					margin-top: 0px;
+					margin-bottom: 30px;
+				}
+			}
+		}
+	}
+	.container-te-puede-interesar{
+		border-top: 1px solid $gris5;
+	}
+}
+@media (max-width: 991px){
+	.ficha{
+		.disponibilidad{
+			margin-top: 15px;
+		}
+	    .container-ficha{
+			.product-info-main{
+				padding-right: 100px;
+				position: relative;
+				.rating-summary{
+					position: relative;
+					right: auto;
+					margin-bottom: 30px;
+					margin-top: -10px;
+					.rating-result{
+						&:before{
+						    right: auto;					
+						}
+						>span{
+							&:before{
+								right: auto;							
+							}
+							span{
+								display: none;
+							}
+						}
+					}
+				}
+			}
+		    form{
+			    .container-total{
+				    .price-container{
+					    width: 100%;
+					    margin-bottom: 15px;
+				    }
+				    .enviar{
+					    width: 100%;
+				    }
+			    }
+		    }
+		    .carrusel-min-prod{
+			    margin-bottom: 40px;
+		    }
+		    .product-info-main{
+			    padding-right: 0px;
+		    }
+	    }	
+	    .container-tabs{
+		    .nav-tabs{
+			    li{
+				    width: 50%;
+				    a{
+					    font-size: 18px;
+				    }
+			    }
+		    }
+	    }	
+	}
+}
+
+@media (max-width: 767px){
+	.ficha{
+		.container-tabs{
+			margin-bottom: 30px;
+		}
+		.container-ventajas{
+			margin-top: 0px;
+			margin-bottom: 0px;
+			.item-ventajas{
+				margin-bottom: 20px;
+			}
+		}
+		.bloque-destacados{
+			padding-top: 0px;
+		}
+	}
+}

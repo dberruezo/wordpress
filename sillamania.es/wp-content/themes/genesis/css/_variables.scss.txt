@@ -1,0 +1,34 @@
+//--NEGROS
+$black: #000; 
+$semi-black:#292929;
+$light-black:#44484A;
+
+//--GRISES
+$gris1: #44484A;
+$gris2:#777777;
+$gris3:#979797;
+$gris4: #CDCDCD;
+$gris5:#ECECEC;
+$gris6:#F9F9F9;
+
+//--BLANCO
+$white: #fff; 
+
+//--DEFAULT Fuente
+$font-default: #433F33; 
+
+//--ROJOS
+$rojo: #E42062;
+$hover-rojo: #C01B52;
+
+//PLUGUIN SELECT
+$color-red-error: rgb(185, 74, 72) !default;
+$color-grey-arrow: rgba(204, 204, 204, 0.2) !default;
+
+$width-default: 220px !default; // 3 960px-grid columns
+
+$zindex-select-dropdown: 1060 !default; // must be higher than a modal background (1050)
+
+//** Placeholder text color
+$input-color-placeholder: #999 !default;
+

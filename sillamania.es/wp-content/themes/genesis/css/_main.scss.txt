@@ -1,0 +1,1457 @@
+html{
+	height: 100%;
+}
+body {
+	font-family: 'Work Sans', sans-serif;
+	color: $font-default;
+	font-size: 14px;
+}
+h1 {
+	font-family: 'Work Sans', sans-serif;
+	font-weight: 700;
+}
+h2 {
+	font-family: 'Work Sans', sans-serif;
+}
+h3{
+	font-family: 'Work Sans', sans-serif;
+	font-weight: 300;
+}
+p{
+	font-family: 'Work Sans', sans-serif;
+	font-weight: 300;
+}
+a{
+	color: $gris3;
+	&:hover{
+		color: $rojo;
+		text-decoration: none;
+	}
+}
+.enlace-line{
+	position: relative;
+	font-size: 14px;
+	color:$light-black;
+	&:before{
+		content: "";
+	    background-color: $rojo;
+	    width: 30px;
+	    height: 4px;
+	    position: absolute;
+	    bottom: -10px;
+	    @include transition(.3s);
+	}
+	&:hover{
+		color: $rojo;
+		text-decoration: none;
+		&:before{
+			width: 60px;
+		}
+	}
+}
+//----- Titular + Enlace -----
+.titular{
+	h2{
+		font-size: 32px;
+		margin-bottom: 50px;
+		font-weight: 700;
+	}
+	a{
+		font-size: 14px;
+		color:$light-black;
+		position: relative;
+		&:before {
+		    content: "";
+		    background-color: $rojo;
+		    width: 30px;
+		    height: 4px;
+		    position: absolute;
+		    bottom: -10px;
+		    @include transition(.3s);
+		}
+		&:hover{
+			color: $rojo;
+			text-decoration: none;
+			&:before{
+				width: 60px;
+			}
+		}
+	}
+}
+//----- Toptil De MAGENTO -----
+.swatch-option-tooltip {
+	border: transparent;
+    padding: 0px;
+	-webkit-box-shadow: 0px 3px 5px 0px rgba(236,236,236,1);
+	-moz-box-shadow: 0px 3px 5px 0px rgba(236,236,236,1);
+	box-shadow: 0px 3px 5px 0px rgba(236,236,236,1);
+	.image{
+	    height: 90px;
+	    border-radius: 5px 5px 0px 0px;		
+	}
+	.title{
+	    padding: 15px 10px;
+	    color: $font-default;
+	    text-align: left;
+	    font-size: 12px;		
+	}
+	.coner{
+		&:before{
+			border-color: $gris5 transparent transparent transparent;			
+		}
+	}
+}
+.swatch-option-tooltip-layered{
+	.coner{
+		&:before{
+			border-color: $gris5 transparent transparent transparent;			
+		}
+	}
+}
+//----- Migas de pan -----
+.breadcrumb {
+    position: relative;
+    z-index: 99;
+    padding: 0px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    background-color: transparent;
+    li{
+	    font-size: 10px;
+		color:$light-black;
+		a{
+			color:$light-black;
+		}
+		&.active{
+			color:$light-black;
+		}
+    }
+}
+.slick-slide{
+	outline: 0;
+}
+//----- Carrito -----
+.block-minicart{
+	width: 450px;
+	height: 100%;
+	padding: 20px;
+	overflow: hidden;
+    position: absolute;
+    z-index: 9999;
+    background: $white;
+	top: 0px;
+    right: 0;
+    display: none;
+	#minicart-content-wrapper{
+		.block-content{
+			.close{
+				opacity: 1;
+				position: absolute;
+				top: 0;
+				right: 0;
+				outline: 0;
+				.fa{
+					color: $rojo;
+					font-size: 49px;
+				}
+			}
+			.items-total{
+				margin-bottom: 20px;
+				.count{
+					span{
+						font-size: 12px;
+					}
+					.fa{
+						font-size: 35px;
+						color: $rojo;
+						vertical-align: middle;
+						margin-right: 10px;
+						position: relative;
+						span{
+							position: absolute;
+						    top: 2px;
+						    left: 24px;
+						    font-size: 11px;
+						    color: $white;
+						    font-family: 'Work Sans', sans-serif;
+							font-weight: 700;
+						}
+					}
+				}
+			}
+			.subtitle{
+				&.empty{
+					padding: 30px 100px 30px 30px;
+					h2{
+						margin-bottom: 40px;
+						font-weight: 700;
+					}
+				}
+			}
+			.minicart-items-wrapper{
+				overflow-y:scroll;
+				#mini-cart{
+					list-style: none;
+					padding-left: 0px;
+					margin-bottom: 0px;
+					.product-item{
+						overflow: hidden;
+						margin-bottom: 30px;
+						padding-right: 20px;
+						width: 100%;
+						.product-item-photo{
+							width: 35%;
+							margin-right: 5%;
+							float: left;
+							.product-image-container{
+								.product-image-wrapper{
+									img{
+										
+									}
+								}
+							}
+						}
+						.product-item-details{
+							width: 60%;
+							float: left;
+							.product-item-name{
+								a{
+									font-size: 16px;
+									color: $light-black;
+									font-weight: 400;
+								}
+							}
+							.product-item-pricing{
+								.price-container{
+									margin-bottom: 30px;
+									.price-wrapper{
+										.price-excluding-tax{
+											.minicart-price{
+												.price{
+													font-size: 18px;
+													color: $black;
+													span{
+														font-size: 12px;
+													}
+												}
+											}
+										}
+									}
+								}
+								.details-qty{
+									.control{
+										float: left;
+										span{
+											cursor: pointer;
+											padding: 11px;
+										    width: 40px;
+										    vertical-align: middle;
+										    background: $gris5;
+										    color: $gris3;
+										    display: inline-block;
+										    text-align: center;
+										    float: left;
+										}
+										input{
+											margin-left: 20px;
+										    margin-bottom: 0px;
+										    border: none;
+										    height: 42px;
+										    outline: 0;
+										    width: 50px;
+										}
+									}
+									.update-cart-item{
+										
+									}
+								}
+							}
+							.actions{
+								margin-bottom: 0px;
+								float: right;
+								width: auto;
+								.secondary{
+									padding: 10px 0px;
+									.delete{
+										color: $rojo;
+										span{
+											font-size: 12px;
+											text-decoration: underline;
+										}
+										.fa{
+											font-size: 20px;
+										    vertical-align: middle;
+										    top: -2px;
+										    position: relative;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			.bottom{
+				position: absolute;
+			    bottom: 0;
+			    left: 0;
+			    right: 0;
+				border-top: 2px solid $gris5;
+			    margin-top: 25px;
+			    overflow: hidden;
+			    background: white;
+			    padding-top: 25px;
+				.subtotal{
+					padding-left: 25px;
+					width: 50%;
+					float: left;
+					.label{
+						span{
+							font-size: 15px;
+							color: $light-black;
+							font-weight: 400;
+						}
+					}
+					.price-container{
+						.price-wrapper{
+							.price{
+								font-size: 28px;
+								font-weight: 400;
+							}
+						}
+					}
+				}
+				.actions{
+					padding-right: 25px;
+					width: 50%;
+					float: left;
+					.primary{
+						button{
+							height: 60px;
+							width: 100%;
+						}
+					}
+				}
+				.pago-seguro-carrito{
+					margin-top: 25px;
+					float: left;
+					width: 100%;
+					background: $semi-black;
+					color: $gris3;
+					height: 28px;
+					padding: 5px 10px;
+					.iconos{
+						float: right;
+						.icon-visa{
+							font-size: 28px;
+						    top: -18px;
+						    position: relative;
+						}
+						.icon-paypal{
+							font-size: 43px;
+						    position: relative;
+						    top: -11px;
+						    margin-right: 5px;
+						}
+					}
+					span{
+						margin-right: 10px;
+						font-size: 12px;
+						float: right;
+					}
+				}
+			}
+		}
+	}
+}
+.cancelar-producto-carrito{
+	padding: 30px;
+	width: 450px;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    right: 0;
+    top: -100%;
+    z-index: 9999;
+    @include transition(.35s);
+    .contenido{
+	    position: absolute;
+	    top: 50%;
+	    transform: translateY(-50%);
+	    .container-text{
+		    color: $white;
+		    margin-bottom: 50px;
+		    h2{
+			    margin-bottom: 30px;
+			    font-weight: 700;
+		    }
+	    }
+	    .botones{
+		    .btn-borde-blanco{
+			    border: 1px solid $white;
+			    margin-right: 30px;
+		    }
+	    }	    
+    }
+}
+.cancelar-producto-carrito-visible{
+    top: 0;	
+}
+.container-fondo-carrito{
+    background: black;
+    height: 100%;
+    width: 100%;
+    opacity: 0.8;
+    position: absolute;
+    top: 0;
+    z-index: 999;	
+    display: none;
+}
+
+//----- Modal Cookies -----
+.modal-cookies{
+	.modal-dialog{
+		width: 100%;
+		position: absolute;
+	    bottom: 0;
+	    margin: 0;
+	    background: $semi-black;
+		.modal-content{
+			background: $semi-black;
+			@include border-radius(0px);
+			.modal-body {
+			    overflow: hidden;
+			    padding: 0px;
+			    color: $white;
+			    padding: 25px;
+		    	form{
+			    	.texto-legal{
+				    	width: 70%;
+				    	float: left;
+				    	margin-right: 5%;
+				    	font-size: 14px;
+				    	font-weight: 100;
+				    	p{
+					    	margin-bottom: 0px;
+				    	}
+				    	a{
+					    	color: $rojo;
+				    	}				    	
+			    	}
+		    		button{
+			    		width: 25%;
+			    		float: left;
+		    			@include border-radius(0px);
+		    			color: $white;
+		    			outline: 0;
+		    		}
+		    	}
+			}
+		}
+	}
+}
+//----- Modal bienvenida -----
+.modal-bienvenida{
+	.modal-dialog{
+		width: 770px;
+		.modal-content{
+			@include border-radius(0px);
+			.close {
+			    color: $white;
+			    opacity: 1;
+			    position: absolute;
+			    top: 0;
+			    right: 0;
+			    z-index: 9;
+			    background: $rojo;
+			    font-size: 30px;
+			}
+			.modal-body {
+			    overflow: hidden;
+			    padding: 0px;
+			    .text-container{
+			    	width: 50%;
+			    	float: left;
+			    	padding: 50px;
+			    	.titular{
+			    		h2{
+			    			margin-bottom: 25px;
+			    		}
+			    	}
+			    	.description{
+			    		margin-bottom: 30px;
+			    	}
+			    	form{
+			    		.form-group{
+			    			.form-control{
+			    				background-color: $gris5;
+			    			}
+			    		}
+			    		.obligatorio{
+			    			text-align: right;
+			    			font-size: 12px;
+			    			color: $gris2;
+			    		}
+			    		.checkbox{
+			    			font-size: 12px;
+			    			color: $semi-black;
+			    			margin-top: 15px;
+			    			input{
+			    				margin-left: 0px;
+			    			}
+			    		}
+			    		button{
+			    			@include border-radius(0px);
+			    			width: 50%;
+			    			height: 50px;
+			    		}
+			    	}
+			    }
+			    .container-img{
+			    	width: 50%;
+			    	height: 505px;
+			    	float: left;
+			    	background-image: url("http://via.placeholder.com/770x1000");
+			    	background-size: cover;
+			   		background-position: center center;
+			   		background-repeat: no-repeat;
+			    }
+			}
+		}
+	}
+}
+//----- Select -----
+.contenedorPluguinSelect{
+	display: inline-block;
+	position: relative;
+	.bs-caret {
+	    position: absolute;
+	    top: 23px;
+	    content: "";
+	    border-style: solid;
+	    border-width: 6px 5px 0 5px;
+	    border-color: #E42062 transparent transparent transparent;
+	}
+	.bootstrap-select.btn-group{
+		.dropdown-toggle{
+			height: 50px;
+			border: none;
+			background: $white;
+			&:hover{
+				height: 50px;
+			}
+			.filter-option{
+				color: $semi-black;
+				font-size: 14px;
+			}
+		}
+		.dropdown-menu {
+			ul{
+				li{
+					a{
+						&:hover{
+							color: $white;
+							background: $rojo;
+								span{
+									color: $white;
+								}
+						}
+						&:focus{
+							background: $white;
+						}
+						span{
+							color: $gris3;
+						}
+					}
+					&.selected{
+						a{
+							span{
+								color: $semi-black;
+							}
+							&:hover{
+								background: $rojo;
+								span{
+									color: $white;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+//----- Radios y Checkbox -----
+.radio label{
+	padding-left: 40px;
+}
+.checkbox label{
+    padding-left: 30px;
+}
+.radio label::before, .checkbox label::before{
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    margin-left: 0px;
+    -webkit-transition: border 0.15s ease-in-out;
+    -o-transition: border 0.15s ease-in-out;
+    transition: border 0.15s ease-in-out;
+}
+.radio label::before{
+    @include border-radius(50%);
+    background-color: $white;
+    width: 17px;
+    height: 17px;
+}
+.checkbox label::before{
+    width: 20px;
+    height: 20px;
+    background-color: $gris5;
+    @include border-radius(3px);
+}
+.radio label::after{
+    display: inline-block;
+    position: absolute;
+    content: " ";
+	width: 9px;
+    height: 9px;
+    left: 4px;
+    top: 4px;
+    @include border-radius(50%);
+    margin-left: 0px;
+    background-color: $gris1;
+    -webkit-transform: scale(0, 0);
+    -ms-transform: scale(0, 0);
+    -o-transform: scale(0, 0);
+    transform: scale(0, 0);
+    -webkit-transition: -webkit-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+    -moz-transition: -moz-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+    -o-transition: -o-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+    transition: transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+}
+.checkbox input[type="checkbox"], .radio input[type="radio"]{
+    opacity: 0;
+    z-index: 1;
+    cursor: pointer;
+}
+.checkbox label::after {
+    display: inline-block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 0;
+    top: 0;
+    margin-left: 0px;
+	padding-left: 5px;
+    padding-top: 3px;
+    font-size: 11px;
+    color: $rojo;
+}
+input[type="checkbox"].styled:checked + label:after{
+    font-family: 'FontAwesome';
+    content: "\f00c";
+}
+.radio-danger input[type="radio"] + label::after {
+    background-color:$gris3;
+}
+.radio input[type="radio"]:checked + label::after {
+    -webkit-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+    transform: scale(1, 1);
+}
+//----- Botones -----
+.btn {
+	font-weight: 300;
+    height: 48px;
+    @include border-radius(0px);
+    line-height: 30px;
+    padding: 6px 40px;
+    outline: 0;
+    &:focus{
+	    outline: 0 !important;
+    }
+    &:active{
+	    outline: 0 !important;
+    }
+}
+.btn-half{
+	width: 50%;
+}
+.btn-rojo{
+    background-color: $rojo;
+    border: 2px solid $rojo;	
+    color: $white;	
+    &:hover{
+	    color: $white;	
+	    background-color: $hover-rojo;
+	    border: 2px solid $hover-rojo;
+	}	
+}
+.btn-gris{
+    background-color: $gris5;
+    border: 2px solid $gris5;	
+    color: $white;	
+    &:hover{
+	    background-color: $gris5;
+	    border: 2px solid $gris5;	
+	    color: $white;	
+	}
+}
+.btn-borde-rojo{
+    background-color: transparent;
+    color: $rojo;
+    border: 2px solid $rojo;
+    &:hover{
+	    color: $hover-rojo;
+	    border: 2px solid $hover-rojo;
+	}	
+}
+.btn-borde-rojo-tw{
+    background-color: transparent;
+    color: $white;
+    border: 2px solid $rojo;
+    &:hover{
+	    border: 2px solid $hover-rojo;
+	    color: $white;
+	}	
+}
+
+.form-group{
+	.form-control{
+		border: none;
+		border-right: 0px;
+		box-shadow: none;
+		background-color: $gris5;
+		@include border-radius(0px);
+		height: 50px;
+	}
+}
+//----- ¿Podemos Ayudarte? -----
+.podemos-ayudarte{
+    position: fixed;
+    right: 20px;
+    top: 40%;
+    z-index: 9999;
+    .cerrar{
+	    background-color: $rojo;
+	    color: $white;
+	    height: 30px;
+	    width: 30px;
+	    position: absolute;
+	    top: -30px;
+	    right: 0;
+	    line-height: 30px;
+	    text-align: center;
+	    font-size: 30px;
+	    cursor: pointer;
+    }
+    .text-container{
+		background-color: $semi-black;
+	    padding: 15px;
+	    width: 190px;
+		.description{
+			p{
+				color: $gris3;
+				margin-bottom: 5px;
+			}
+		}
+		.telefono{
+			margin-bottom: 30px;
+			p{
+				color: $white;
+				font-weight: 700;
+				font-size: 24px;
+				margin-bottom: 0px;
+			}
+		}	    
+    }
+}
+//----- Filtro Color (Ficha y Distribuidora) -----
+.swatch-attribute-options{
+	.color{
+		cursor: pointer;
+		margin-right: 15px;
+		margin-bottom: 20px;
+		float: left;
+		height: 25px;
+		width: 25px;
+		@include border-radius(5px);
+		&.selected{
+			border: 1px solid $gris3;
+		}
+	}
+}
+//----- Texto + Imagen (Home + Distribuidora) -----
+.container-otros-2{
+	margin-bottom: 30px;
+	.container-info{
+		background-color: $gris5;
+		padding: 30px;
+		height: 260px;
+		.titular{
+			h3{
+				font-size: 18px;
+				margin-bottom: 20px;
+				color:$gris1;
+				font-weight: 400;
+			}
+		}
+		.description{
+			color: $gris3;
+		}
+	}
+	.container-img {
+	    background-size: cover;
+	    background-position: center center;
+	    background-repeat: no-repeat;
+	    height: 260px;		
+	}
+	.img-3{
+		background-image: url(http://placehold.it/770x770/bcbcbc);
+	}
+	.img-4{
+		background-image: url(http://placehold.it/770x550/bcbcbc);
+	}
+}
+//----- Precio Productos y Ficha -----
+.price-box{
+	.normal-price{
+		color: $black;
+		font-size: 18px;
+	}
+	.old-price {
+		color: $gris3;
+		position: relative;
+		margin-right: 15px;
+		font-size: 14px;
+		&::before {
+			content: "";
+			background-color: $black;
+			width: 110%;
+			height: 1px;
+			position: absolute;
+			top: 50%;
+			padding: 10p;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+	}
+	.special-price {
+		color: $black;
+		font-size: 18px;
+		.unidad{
+			font-size: 13px;
+		}
+	}
+}
+//----- Estado Producto -----
+.extra-info {
+	height: 30px;
+	p{
+		margin-bottom: 0px;
+		font-weight: 400;
+	}
+}
+.porcentaje-descuento {
+	background-color: $semi-black;
+	color: $white;
+	display: inline-block;
+	padding: 5px 20px;
+}
+.stock {
+	border: 1px solid #E42062;
+	color: $rojo;
+	display: inline-block;
+	padding: 5px 10px;
+}
+//----- Productos -----
+.productos{
+	.item-prod{
+		margin-bottom: 45px;
+		display: block;
+		border: 2px solid $white;
+		outline: 0;
+		.img-container{
+			position: relative;
+			.secundaria {
+				position: absolute;
+				top: 0;
+				opacity: 0;
+			}
+		}
+		.container-text{
+			position: relative;
+			.wrapper-position{
+				.extra-info {
+					p{
+						margin-bottom: 0px;
+						font-weight: 400;
+					}
+				}
+				.info{
+					padding: 5px 15px 15px 15px;
+					.descripcion {
+						color: $light-black;
+						margin-top: 15px;
+						height: 45px;
+						font-size: 16px;
+						p{
+							font-weight: 400;
+						}
+					}
+					.prod-description{
+						display: none;
+					}
+				}				
+			}			
+		}		
+		&:hover{
+			text-decoration: none;
+			border: 2px solid $gris5;
+			.img-container{
+				.principal{
+					opacity: 0;
+				}
+				.secundaria{
+					opacity: 1;					
+				}
+			}
+			.container-text{
+				background-color: $rojo;
+				.wrapper-position{
+					.info{
+						background-color: $rojo;
+						.descripcion {
+							color: $white;
+						}
+						.price-box{
+							.normal-price{
+								color: $white;
+							}
+							.old-price {
+								display: none;
+							}
+							.special-price {
+								color: $white;
+							}
+						}
+					}					
+				}				
+			}
+		}	
+	}
+	.item-destacado{
+		display: inline-block;
+		width: 100%;
+		margin-bottom: 45px;
+		border: 2px solid transparent;
+	    .imagen-destacada{
+			background-image: url(http://placehold.it/770x551/bcbcbc);
+		    background-size: cover;
+		    background-position: center center;
+		    background-repeat: no-repeat;
+		    height: 100%;
+		    display: inline-block;
+		    width: 100%;		    
+	    }
+		.extra-info{
+			display: none;
+		}
+		.container-text{
+			padding: 0px;
+			position: initial;
+			margin-top: 0px;
+			.wrapper-position{
+				.info{
+					padding: 0px;
+					.descripcion{
+					    position: absolute;
+					    right: 45px;
+					    left: 45px;
+					    top: 35px;
+					    font-size: 20px;
+					    height: auto;
+					    color: $white;
+					    p{
+						    font-weight: 400;
+					    }
+					}
+					.precio{
+						position: absolute;
+					    left: 45px;
+					    right: 45px;
+					    bottom: 60px;
+					    font-weight: 300;
+						.desde{
+							background-color: $black;
+							color: $white;
+							margin-bottom: 0px;
+							height: 30px;
+							line-height: 30px;
+							padding: 0px 10px;
+							display: inline-block;
+						}
+						.cantidad{
+							background-color: $rojo;
+							color: $white;
+						    font-size: 25px;
+						    height: 40px;
+						    line-height: 40px;
+						    padding: 0px 15px 0px 15px;
+						    margin-bottom: 15px;
+						    span{
+						    	font-size: 15px;
+						    	opacity: 0.97;
+						    }
+						}
+					}				
+				}	
+			}
+		}
+		&:hover{
+			border: 2px solid $gris5;
+		    .imagen-destacada{
+				background-image: url(http://placehold.it/770x551/777777);		    
+		    }
+			.container-text{
+				.wrapper-position{
+					.descripcion{
+						color: $light-black;
+					}					
+				}
+			}
+		}							
+	}	
+}
+//----- Productos dos columnas -----
+.grid-2{
+	.item-prod{
+		position: relative;
+		display: inline-block;
+		img{
+			float: left;
+			width: 50%;
+			padding: 0px;
+		}
+		.container-text{
+			margin-top: 0px;
+			height: 100%;
+		    position: absolute;
+		    width: 50%;
+		    right: 0;
+		    .wrapper-position{
+			    padding: 0px 15px;
+			    position: absolute;
+			    top: 50%;
+			    transform: translateY(-50%);
+				.extra-info {
+					position: relative;
+					margin-left: 0px;
+					top: 0;
+					margin-bottom: 10px;
+				}
+				.porcentaje-descuento {
+					background-color: $semi-black;
+					color: $white;
+					display: inline-block;
+					padding: 5px 20px;
+				}
+				.stock {
+					border: 1px solid #E42062;
+					color:$rojo;
+					display: inline-block;
+					padding: 5px 10px;
+				}
+				.info{
+					padding:  0px;
+					.descripcion {
+						color: $gris1;
+						margin-top: 15px;
+						height: auto;
+						font-size: 15px;
+						margin-top: 0;
+						p{
+							margin-bottom: 5px;
+						}
+					}
+					.price-box{
+						margin-bottom: 8px;
+						.normal-price{
+							color: $black;
+							font-size: 18px;
+						}
+						.old-price {
+							color: $gris3;
+							position: relative;
+							margin-right: 15px;
+							font-size: 14px;
+							&::before {
+								content: "";
+								background-color:$black;
+								width: 110%;
+								height: 1px;
+								position: absolute;
+								top: 50%;
+								padding: 10p;
+								left: 50%;
+								transform: translateX(-50%);
+							}
+						}
+						.special-price {
+							color: $black;
+							font-size: 18px;
+						}
+					}
+					.prod-description{
+						display: block;
+						color: $light-black;
+						p{
+							font-size: 12px;
+							&:last-child{
+								margin-bottom: 0px;
+							}
+						}
+					}
+				}							    
+			}	
+		}		
+		&:hover{
+			text-decoration: none;
+			border: 2px solid $gris5;
+			.container-text{
+				background: $rojo;
+				.wrapper-position{
+					.info{
+						background-color: $rojo;
+						.descripcion {
+							color: $white;
+						}
+						.price-box{
+							.normal-price{
+								color: $white;
+							}
+							.old-price {
+								display: none;
+							}
+							.special-price {
+								color: $white;
+							}
+						}
+						.prod-description{
+							display: block;
+							color: $white;
+						}
+					}		
+				}
+						
+			}
+		}	
+	}	
+	.item-destacado{
+		position: relative;
+		padding: 0px;
+		.container-text{
+			.wrapper-position{
+				.info{
+					.descripcion{
+					    position: absolute;
+					    left: 15px;
+					    top: 10px;
+					}	
+					.precio{
+						position: inherit;
+						.desde{
+							position: absolute;
+						    bottom: 55px;
+						    left: 15px;
+						}
+						.cantidad{;
+						    display: inline-block;
+						    position: absolute;
+						    bottom: 0px;
+							left: 15px;
+						}
+					}		
+				}						
+			}
+		}						
+	}		
+}
+//----- Destacados Carrusel -----
+.bloque-destacados{
+	padding: 60px 0px;
+	.col-sm-9{
+		padding: 0px;
+	}
+}
+
+@media (max-width: 991px){
+	.breadcrumb{
+		display: none;
+	}
+	//----- Modal Cookies -----
+	.modal-cookies{
+		.modal-dialog{
+			.modal-content{
+				.modal-body {
+			    	form{
+				    	.texto-legal{
+					    	width: 100%;
+					    	margin-right: 0%;	
+					    	margin-bottom: 25px;			    	
+				    	}
+			    		button{
+				    		width: 100%;
+			    		}
+			    	}
+				}
+			}
+		}
+	}
+	//----- Modal Bienvenida -----
+	.modal-bienvenida{
+		.modal-dialog{
+			width: 100%;
+			.modal-content{
+				.modal-body {
+				    .text-container{
+					    width: 95%;
+				    }
+				    .container-img{
+				    	display: none;
+				    }
+				}
+			}
+		}
+	}
+	//----- Destacados Carrusel -----
+	.bloque-destacados{
+		.titular{
+			h2{
+				margin-bottom: 20px;
+			}
+			a{
+				display: inline-block;
+				margin-bottom: 30px;
+			}
+		}
+	}
+}
+
+@media (max-width: 767px){
+	.contenedorPluguinSelect{
+		.bootstrap-select.btn-group{
+			.dropdown-toggle{
+				height: 60px;
+				&:hover{
+					height: 60px;
+				}
+			}
+		}
+	}
+	.form-group{
+	    .form-control{
+	   	 height: 60px;	    
+	    }
+	}
+	.bloque-destacados {
+	    padding: 30px 0px;
+	}
+	.modal-bienvenida{
+		.modal-dialog{
+			padding-right: 20px;
+		}
+	}
+	.block-minicart{
+		#minicart-content-wrapper{
+			.block-content{
+				.minicart-items-wrapper{
+					#mini-cart{
+						.product-item{
+							.product-item-details{
+								.product-item-pricing{
+									.price-container{
+										margin-bottom: 16px;
+									}
+								}
+								.actions{
+									.secondary{
+										.delete{
+											top: 0px;
+											span{
+												display: none;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				.subtotal{
+					width: 100%;
+				}
+				.bottom{
+					.pago-seguro-carrito{
+						margin-top: 0px;
+					}
+					.actions{
+						margin-top: 15px;
+					    padding-right: 0px;
+					    width: 100%;						
+					}
+				}
+			}
+		}
+	}
+	.productos{
+		.item-prod{
+			margin-bottom: 30px;
+			img{
+				padding: 0px;
+			}
+			.container-text{
+				margin-top: 0px;
+				.wrapper-position{
+					.extra-info{
+						position: relative;
+						top: 0;
+						margin-left: 0px;
+						margin-top: 15px;
+					}
+					.info{
+						padding: 0px;
+						.descripcion{
+							height: auto;
+						}
+					}
+				}
+			}
+			&:hover{
+				border: none;
+				padding: 0px;
+				img{
+					padding: 0px;
+				}
+				.container-text{
+					.wrapper-position{
+						.info{
+							background-color: transparent;
+							.descripcion {
+								display: none;
+							}
+							.price-box{
+								.normal-price{
+									color: $black;
+								}
+								.old-price {
+									display: inline-block;
+								}
+								.special-price {
+									color: $black;
+								}
+							}
+						}					
+					}				
+				}
+			}	
+		}
+		.item-destacado{
+			padding: 0;
+		    .imagen-destacada{    
+		    }
+			.extra-info{
+
+			}
+			.container-text{
+				.wrapper-position{
+					.info{
+						.descripcion{
+						    left: 35px;
+							top: 25px;
+						}
+						.precio{
+							left: 35px;
+						    right: 35px;
+						    bottom: 50px;
+						}
+					}
+				}
+			}
+			&:hover{
+				border: transparent;
+				.container-text{
+					.wrapper-position{
+						.descripcion{
+							color: $white;
+						}					
+					}
+				}
+			}							
+		}	
+	}
+	//----- Productos 2 Columnas -----
+	.grid-2{
+		.item-prod{
+			img{
+				margin-bottom: 20px;
+				width: 100%;
+				float: none;
+			}
+			.container-text{
+				width: 100%;
+				position: relative;
+				.wrapper-position{
+					position: relative;
+					top: 0;
+				    transform: none;
+				}
+			}
+		}
+	}
+	//----- Destacados Carrusel -----
+	.slick-slide{
+		opacity: 0.5;
+	}
+	.slick-current{
+		opacity: 1;
+	}
+	.bloque-destacados{
+		.titular{
+			position: relative;
+			h2{
+				width: 50%;
+				font-size: 24px;
+			}
+			a{
+				position: absolute;
+			    right: 20px;
+			    top: 50%;
+			    transform: translateY(-50%);
+			}
+		}
+	}
+	//----- Filtros Atributo -----
+	.swatch-attribute-options{
+		.swatch-option{
+			height: 50px;
+			width: 50px;
+			&.selected{
+			}
+		}
+		.color{
+			&.selected{
+				border: 2px solid $rojo;
+			}
+		}
+	}
+}
+
+@media (max-width: 500px){
+	//----- Carrito -----
+	.block-minicart{
+		width: 100%;
+	}	
+}

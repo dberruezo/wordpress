@@ -1,0 +1,33 @@
+header .tiendas ul li ul {
+    top: 0;
+    padding: 10px 0px;
+}
+.home .container-hero .container-description {
+    left: 15%;
+    z-index: 9999;
+}
+.home .container-otros .carrusel-ultima-semana .item a {
+    text-align: left;
+}
+.cancelar-producto-carrito .contenido {
+    top: 10%;
+}
+.price-box .old-price {
+	text-decoration:line-through;
+}
+.price-box .old-price::before {
+    display:none;
+}
+@media (max-width: 1199px){
+	.home .container-hero .container-description {
+	    width: 80%;
+	    left: 10%;
+	}		
+}
+
+@media (max-width: 767px){
+	.home .container-hero .container-description {
+	    width: 90%;
+	    left: 5%;
+	}	
+}

@@ -1,0 +1,328 @@
+.checkout-cabecera{
+	margin: 10px 0px;
+	a{
+		margin-left: 60px;
+	}
+}
+.checkout-body{
+	background-color: $gris5;
+	padding: 50px 0px;
+	.titular{
+		font-size: 24px;
+		margin-bottom: 25px;
+		p{
+			font-weight: 700;
+		}
+	}
+	h3{
+		font-size: 12px;
+	}
+	.form-group{
+		.form-control{
+		    background-color: $white;	
+		    @include placeholder($gris3, 14px, 300);
+		}
+	}
+	.contenedorPluguinSelect{
+		width: 100%;
+		&:after{
+		    top: 24px;
+		}
+		.bootstrap-select{
+			&.btn-group{
+				.dropdown-toggle{
+					.filter-option{
+						color: $gris3;
+						font-weight: 300;
+					}
+				}
+			}
+		}
+	}
+	form{
+		.datos-personales{
+			.nav-tabs{
+				border-bottom: none;
+				margin-bottom: 15px;
+				li{
+					width: 50%;
+					a{
+						color: $font-default;
+						padding-left: 0;
+						font-size: 12px;
+						border: none;
+						&:hover{
+							border: none;
+							background-color: transparent;
+						}
+						&:before{
+							content: "";
+						    width: 40px;
+						    height: 5px;
+						    background-color: $gris4;
+						    position: absolute;
+						    bottom: 0;
+						    @include border-radius(100px);
+						}
+					}
+					&.active{
+						a{
+							background-color: transparent;
+							border: none;
+							&:before{
+							    background-color: $rojo;
+							}
+						}
+					}
+				}
+			}
+			#soy-cliente{
+				.password{
+					width: 60%;
+				    float: left;
+				    margin-right: 20px;
+				}		
+				.pass-olvidada{
+					    height: 50px;
+					a{
+						color:$rojo;
+					    font-size: 12px;
+					    text-decoration: underline;
+					}
+				}	
+				.btn{
+					text-transform: uppercase;
+					margin-top: 20px;
+				}
+			}
+			#soy-nuevo{
+				.title-factura{
+					margin-bottom: 0px; 
+					label{
+						color: $gris3;
+						font-weight: 300;
+						&:before{
+						    background-color: $white;
+						}
+					}
+				}
+				.obligatorio{
+					margin-top: 10px;
+					font-weight: 400;
+				}
+			}		
+		}
+		.pago-y-envio{
+			label{
+				color: $light-black;
+			}
+			.radio {
+			    margin-top: 20px;
+			    margin-bottom: 20px;
+			}	
+			.metodo-envio{
+				border-bottom: 1px solid $gris4;
+			    margin-bottom: 40px;
+			    padding-bottom: 20px;
+			}		
+			.metodo-pago{
+				.radio{
+					.fa{
+					    color: $white;
+					    background: $semi-black;
+					    padding: 0px 5px;
+					    font-size: 25px;
+					    @include border-radius(3px);
+					    vertical-align: middle;
+					    margin-right: 10px;
+					    position: relative;
+				    }
+				    .icon-paypal{
+					    background: transparent;
+					    color: $semi-black;
+					    font-size: 45px;
+				    }
+				}
+				.visa{
+					label{
+						&:before{
+							top: 5px;
+						}
+						&:after{
+							top: 9px;
+						}
+					}
+				}
+				.paypal{
+					label{
+						&:before{
+							top: 12px;
+						}
+						&:after{
+							top: 16px;
+						}
+					}
+				}
+				.transferencia{
+					label{
+						&:before{
+							top: 2px;
+						}
+						&:after{
+							top: 6px;
+						}
+					}
+				}
+			}
+		}	
+		.resumen-pedido{
+			.item-cesta{
+				background-color: $white;
+				overflow: hidden;
+				margin-bottom: 2px;
+				position: relative;
+				img{
+					padding-left: 15px;
+				    width: 40%;
+				    position: absolute;
+				    top: 50%;
+				    transform: translateY(-50%);
+				}
+				.info{
+					margin-left: 45%;
+				    width: 55%;
+				    float: left;
+				    padding: 20px 10px;
+				    .descuento{
+					    background-color: $rojo;
+					    color: $white;
+					    display: inline-block;
+						padding: 0px 5px;
+						font-size: 16px;
+				    }
+				    .nombre{
+						font-weight: 400;
+					    font-size: 16px;
+				    }
+					.precio{
+						font-weight: 400;
+						color: $black;
+						font-size: 18px;
+						margin-bottom: 0px;
+						span{
+							font-weight: 400;
+							font-size: 13px;
+						}
+					}
+				}
+			}
+			.codigo-promocional {
+			    background: $white;
+			    padding: 20px;
+			    .form-group{
+				    margin-bottom: 0px;
+				    p{
+					    cursor: pointer;
+					    color: $rojo;
+					    text-align: right;
+					    text-decoration: underline;
+					    font-size: 12px;
+				    }	
+				    .container-codigo-promocional{
+					    display: none;
+					    .form-control{
+						    background: $gris5;
+					    }
+				    }		    
+			    }
+	
+			}
+			.resumen-precio {
+			    background: $white;
+			    padding: 0px 20px;
+			    .subtotal{
+				    font-weight: 400;
+				    span{
+					    float: right;
+				    }
+			    }
+			    .envio{
+				    font-weight: 400;
+				    border-bottom: 2px solid $gris5;
+				    padding-bottom: 30px;
+					margin-bottom: 10px;
+				    span{
+					    float: right;
+				    }
+			    }
+			    .precio-total{
+				    text-align: right;
+				    font-size: 15px;
+				    padding-bottom: 40px;
+				    margin-bottom: 0px;
+				    font-weight: 400;
+				    span{
+					    font-size: 28px;
+					    margin-left: 20px;
+					    top: 10px;
+					    position: relative;
+				    }
+			    }
+			}
+			.finalizar{
+			    background-color: $white;
+			    padding: 0px 20px;
+			    padding-bottom: 50px;
+			    .checkbox{
+				    margin-top: 0px;
+				    margin-bottom: 20px;
+				    label{
+					    color: $gris3;
+					    font-weight: 300;
+				    }
+			    }
+		    }
+		}
+	}
+}
+@media (max-width: 991px) {
+	.checkout-body{
+		form{
+			.datos-personales{
+				.nav-tabs{
+					margin-bottom: 30px;
+				}
+				#soy-nuevo{
+					.obligatorio{
+						margin-top: 20px;
+					}
+				}
+			}
+			.pago-y-envio{
+				padding-top: 50px;
+				margin-top: 40px;
+				border-top: 2px solid $gris4;
+				.metodo-envio{
+					border-bottom: 0px;
+					margin-bottom: 0px;
+				}
+			}	
+			.resumen-pedido{
+				padding-top: 50px;
+				margin-top: 40px;
+				border-top: 2px solid $gris4;
+				.cesta{
+					.item-cesta{
+						.info{
+
+    padding: 20px 20px 10px 10px;}
+					}
+				}
+				.finalizar{
+					padding-bottom: 20px;
+				}
+			}
+		}
+	}
+}
+

@@ -1,0 +1,139 @@
+.contenefor-login{
+	background-color: $gris5;
+	padding-bottom: 140px;
+	h1{
+		font-size: 24px;
+		margin: 60px 0px 40px 0px;
+		text-align: center;
+		color:$light-black;
+		font-weight: 700;
+	}
+	.table-login{
+		.nuevo-cliente{
+			height: 420px;
+			background-color: $white;
+			border: 2px solid $white;
+			padding: 40px 80px 170px 80px;
+			.text-container{
+				text-align: center;
+				color: $gris3;
+				h2{
+					margin-top: 0px;
+					margin-bottom: 30px;
+					font-size: 18px;
+					color:$light-black;
+				}
+			}
+			a{
+				font-size: 16px;
+				position: absolute;
+				bottom: 40px;
+				left: 50%;
+				transform: translateX(-50%);
+			}
+		}
+		.soy-cliente{
+			height: 420px;
+			border: 2px solid $gris3;
+			padding: 40px 80px 170px 80px;
+			.text-container{
+				text-align: center;
+				margin-bottom: 30px;
+				h2{
+					margin-top: 0px;
+					margin-bottom: 30px;
+					font-size: 18px;
+					color: $light-black;
+				}
+				p{
+					color:$gris3;
+				}
+			}
+			form{
+				.form-group{
+					.form-control{
+						background-color: $white;
+					}
+				}	
+				.olvido-password{
+					color: $rojo;
+					text-align: right;
+					display: inherit;
+					font-size: 12px;
+					text-decoration: underline;
+				}
+				button{
+					color: $semi-black;
+					font-weight: 400;
+					font-size: 16px;
+					position: absolute;
+					bottom: 40px;
+					left: 50%;
+					transform: translateX(-50%);
+				}		
+			}	
+		}
+	}
+}
+
+@media (max-width: 991px) {
+	.contenefor-login{
+		padding-bottom: 40px;
+		.table-login{
+			.nuevo-cliente{
+				height: auto;
+				margin-bottom: 30px;
+				padding: 40px 80px;
+		   		a{
+			   		position: static;
+			   		width: 100%;
+				    margin-top: 50px;
+				    transform: none;
+		   		}
+	   		}
+			.soy-cliente{
+				height: auto;
+				padding: 40px 80px;
+				form{
+					button{
+						position: static;
+						width: 100%;
+					    margin-top: 50px;
+					    transform: none;
+					}
+				}
+			}
+			a{
+				width: 100%;
+				margin-top: 15px;
+			}
+		}
+	}
+}
+@media (max-width: 767px) {
+	.contenefor-login{
+		.table-login{
+			.soy-cliente{
+				border: none;
+				padding: 0px;
+				position: relative;
+				.text-container{
+					text-align: left;
+				}
+				form{
+					padding: 25px 20px;
+					padding-bottom: 80px;
+					border-left: 2px solid $gris3;
+					border-top: 2px solid $gris3;
+					border-right: 2px solid $gris3;
+					button{
+						position: absolute;
+						bottom: 0;
+						width: 100%;
+						left: 0;
+					}
+				}
+			}
+		}
+	}
+}

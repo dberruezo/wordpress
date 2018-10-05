@@ -1,0 +1,594 @@
+header{
+	ul{
+		list-style: none;
+		padding-left: 0px;
+		color:$light-black;
+	}
+	.top-bar{
+		overflow: hidden;
+		background-color: $gris5;
+		font-size: 10px;
+		text-transform: uppercase;
+		height: 30px;
+		line-height: 30px;
+		padding: 0px 30px;
+		position: relative;
+		.inicio-sesion{
+			float: left;
+			a{
+				color: $rojo;
+				text-transform: capitalize;
+			}
+		}
+		.info-extra{
+			float: right;
+			ul{
+				overflow: hidden;
+				margin-bottom: 0px;
+				li{
+					float: left;
+					margin-right: 15px;
+					color:$light-black;
+					.fa{
+						font-size: 15px;
+						top: 2px;
+					    margin-right: 5px;
+					    position: relative;
+					}
+					.icon-garantia{
+						top: 3px;
+					}
+					.icon-stock{
+						font-size: 17px;
+						top: 3px;
+					}
+				}
+			}
+		}
+		.icon-close{
+			position: absolute;
+		    right: 2px;
+		    top: 3px;
+		    font-weight: bold;
+		    font-size: 24px;
+		    color: $gris3;
+		    cursor: pointer;
+		}
+	}
+	.tiendas{
+		z-index: 999;
+		position: relative;
+		padding: 0px 60px;
+		overflow: hidden;
+		height: 50px;
+		line-height: 50px;
+		border-bottom: 1px solid $gris5;
+		transition: all 0.2s;
+		background:  $white;
+		p{
+			float: left;
+			width: 20%;
+			margin-bottom: 0px;
+			color: $gris3;
+		}
+		ul{
+			li{
+				ul{
+				    width: 80%;
+				    position: absolute;
+				    left: 20%;
+				    top: 50%;
+				    transform: translateY(-50%);
+					li{
+						float: left;
+						width: 11.5%;
+						padding: 0px 0.5%;
+						text-align: center;
+					}					
+				}
+			}
+		}
+	}
+	.nav{
+		background: $white;
+		position: relative;
+		z-index: 999;
+	    -webkit-box-shadow: 0px 2px 2px 1px rgba(232,232,232,1);
+	    -moz-box-shadow: 0px 3px 4px 1px rgba(232,232,232,1);
+	    box-shadow: 0px 2px 2px 1px rgba(232,232,232,1);
+	    transition: all 0.2s;
+		.logo{
+			float: left;
+			margin-right: 25px;
+			padding:10px 0px 10px 60px;
+		}
+		.icon-close{
+			display: none;
+		}
+		.icon-menu{
+			display: none;
+		}
+		>ul{
+			margin-bottom: 0px;
+			float: left;
+			>li{
+				float: left;
+				text-transform: uppercase;
+				padding: 20px 25px;
+				>&:first-of-type{
+					a{
+						border-left: 1px solid $gris3;
+						padding-left: 45px;
+					}
+				}
+				a{
+					color: $light-black;
+					font-size: 12px;
+				}
+				.mega-menu{
+					position: absolute;
+				    background: $gris5;
+				    top: 60px;
+				    padding: 30px;
+				    z-index: 9;
+				    width: 100%;
+				    left: 0;
+				    display: none;
+				    .ver-catalogo{
+					    margin-top: 45px;
+				    }
+				    li{
+					    margin: 0% 1%;
+					    float: left;
+					    width: 8%;
+					    color:$rojo;;
+					    padding: 0px;
+					    a{
+						    width: 100%;
+						    text-align: center;
+						    display: inline-block;
+						    font-size: 12px;
+						    color: $gris3;
+						    img{
+							    width: 80px;
+							    display: inline-block;
+							    margin-bottom: 20px;
+						    }
+					    }
+					    &:first-child{
+						    a{
+							    color: $rojo;
+							    text-transform: capitalize;		
+							    text-decoration: underline;					    
+						    }
+					    }
+				    }
+				}
+				&:hover{
+					background-color: $gris5;
+					a{
+						text-decoration: none;
+					}
+					.mega-menu{
+						display: block;
+						z-index: 999;
+					}
+				}
+			}
+		}
+		.right{
+			float: right;
+			line-height: 60px;
+			position: relative;
+			.enlaces{
+				float: left;
+				>ul{
+					>li{
+						float: left;
+						>a{
+							padding: 0px 30px;
+							display: inline-block;
+						}	
+						ul{
+							display: none;
+						}
+						&:hover{
+							background: $gris5;
+							color: $gris3;	
+							ul{
+								display: inline-block;
+								position: absolute;
+								width: 100%;
+							    background: $gris5;
+							    z-index: 999999;
+							    padding: 30px;
+							    color: $rojo;
+							    top: 60px;
+								left: 0;
+							    li{
+								    height: 35px;
+								    line-height: 35px;
+								    display: block;
+								    a{
+									    padding: 0px;
+									    color: $rojo;
+									    &:hover{
+										    color: $gris3;
+									    }
+								    }
+							    }
+							}
+						}
+						&:last-child{
+							position: relative;
+							&:before{
+								content: "";
+								width: 1px;
+								height: 20px;
+								position: absolute;
+								background: $gris3;
+								left: 0;
+							    top: 50%;
+							    margin-top: -10px;
+							}
+						}				
+					}
+				}
+			}
+			.buscador{
+				float: left;
+				background-color: $semi-black;
+				color: $white;
+			    height: 60px;
+			    width: 60px;
+			    line-height: 60px;
+			    text-align: center;
+			    .fa{
+				    font-size: 20px;
+				    padding: 17px;
+				    top: 3px;
+				    position: relative;
+				    cursor: pointer;
+			    }
+				.container-buscador{
+					display: none;
+					z-index: 99;
+				    position: absolute;
+				    right: 0;
+					left: auto;
+				    top: 60px;
+				    width: 100%;
+				    height: 160px;
+				    background: $semi-black;
+					@include transition(.3s);
+				    .form-group{
+					    .form-control{
+						    position: absolute;
+						    top: 50%;
+						    transform: translateY(-50%);
+						    background: $semi-black;
+						    border-bottom: 2px solid $rojo;
+						    width: 80%;
+						    left: 10%;
+						    margin: 0 auto;
+						    padding-left: 0px;
+						    @include placeholder($white, 20px, 300);
+					    }
+				    }
+				    button{
+					    background-color: transparent;
+					    border: none;
+					    color: $rojo;
+					    z-index: 9;
+					    position: absolute;
+					    right: 10%;
+					    top: 60px;
+					    padding: 0px;
+					    font-size: 16px;
+				    }					
+				}
+				.container-buscador-visible{
+					display: block;
+					@include transition(.3s);
+				}
+			}
+			.carrito{
+				float: left;
+				background-color: $rojo;
+				color: $white;
+				padding: 0px 30px;
+				cursor: pointer;
+				.icon-buy_off{
+					font-size: 20px;
+				    top: 3px;
+				    position: relative;
+				}
+			}
+		}
+	}
+	.nav-fija{
+	    position: fixed;
+	    width: 100%;
+	    background: $white;
+	    top: 0;		
+	}
+	.nav-fija-con-tienda{
+	    top: 50px;		
+	}
+	.tienda-fija{
+	    position: fixed;
+	    width: 100%;
+	    top: 0;			
+	}
+}
+@media (max-width: 991px){
+	body{
+		margin-top: 65px;
+	}
+	header{
+		.top-bar{
+			display: none;
+		}
+		.nav{
+			position: fixed;
+			width: 100%;
+			top: 0;
+			background: $white;
+			.fecha-apertura{
+				&:before{
+					content: "";
+				    border-style: solid;
+				    border-width: 6px 5px 0 5px;
+				    border-color: $rojo transparent transparent transparent;
+				    position: absolute;
+				    right: 20px;
+				    top: 13px;
+				    z-index: 9;
+				    cursor: pointer;
+				}
+			}
+			.logo{
+				padding: 10px 0px 10px 24px;
+				display: inline-block;
+				float: none;
+			}
+			.icon-close{
+			    font-size: 43px;
+			    color:  $rojo;
+			    position: absolute;
+			    top: 0;
+			    right: 63px;
+			    padding: 9px;
+			    cursor: pointer;
+			}
+			.icon-menu{
+				display: inline-block;
+				font-size: 26px;
+			    color: $semi-black;
+			    position: absolute;
+			    right: 60px;
+			    top: 10px;
+			    padding: 8px 20px;
+			    z-index: 999;
+			    cursor: pointer;
+			}
+			.carrito{
+				background: $rojo;
+				color: $white;
+				position: absolute;
+			    right: 0;
+			    top: 0;
+			    height: 60px;
+			    width: 60px;
+				.fa{
+					display: inherit;
+				    margin-top: 14px;
+				    font-size: 30px;
+				    text-align: center;
+				}
+			    span{
+				    display: none;
+			    }
+			}
+			.wrapperMenuMovil{
+				display: none;
+				.buscador{
+					position: relative;
+					.fa{
+						position: absolute;
+					    top: 0;
+					    color: $white;
+					    background: $semi-black;
+					    height: 60px;
+					    width: 60px;
+					    text-align: center;
+					    &:before{
+						    top: 22px;
+						    font-size: 20px;
+						    position: relative;
+					    }
+					}
+					.container-buscador{
+						.form-group{
+							margin-bottom: 0px;
+							.form-control{
+								height: 60px;
+								background: $gris5;
+								padding-left: 80px;
+							}
+						}
+						button{
+							display: none;
+						}
+					}
+				}
+				>ul{
+					padding-top: 25px;
+					padding-bottom: 30px;
+					margin-bottom: 0px;
+					position: relative;
+				    bottom: 0px;
+				    z-index: 9;
+				    float: none;
+				    background: $white;
+					>li{
+						padding: 10px 25px;
+						width: 100%;
+						overflow: hidden;
+						position: relative;
+						a{
+							color:$semi-black;
+							text-transform: uppercase;
+						}
+						.mega-menu{
+							padding: 10px 0px 15px 20px;
+							display: block;
+							position: relative;
+							overflow: hidden;
+							top: 0;
+							background: transparent;
+							display: none;
+						    .ver-catalogo{
+								margin-top: 0px;
+						    }
+						    li{
+							    margin: 15px 0px;
+								width: 100%;
+							    a{	
+								    color: $semi-black;
+								    text-align: left;
+								    img{
+										display: none;
+								    }
+							    }
+						    }
+						}
+						&:hover{
+							background: transparent;
+							.mega-menu{
+								display: none;
+							}
+						}
+					}
+				}
+				.tiendas{
+					padding: 0px;
+					float: none;
+					width: 100%;
+					border-bottom: 0px;
+					text-transform: uppercase;
+					font-size: 12px;
+					height: auto;
+					line-height: inherit;
+					position: relative;
+					li{
+						color: $light-black;
+						width: 100%;
+						position: relative;
+						padding: 10px 25px;
+						font-size: 14px;
+						cursor: pointer;
+						.mega-menu{
+							display: none;
+							position: relative;
+							width: 100%;
+							transform: none;
+							left: 0;
+							top: 0;
+						}
+					}
+				}
+				.right{
+					overflow: hidden;
+					float: none;
+					width: 100%;
+					height: auto;
+					line-height: inherit;
+					.enlaces{
+						width: 100%;
+					    padding-top: 20px;
+					    padding-bottom: 40px;
+					    position: relative;
+					    background: $white;
+						>ul{
+							>li{
+								float: none;
+								position: relative;
+								&:hover{
+									background: transparent;
+								}
+								>a{
+									padding: 10px 25px;
+									width: 100%;
+								}	
+								.mega-menu{
+									display: none;
+									position: relative;
+									margin-top: 20px;
+									padding: 20px 30px;
+									top: 0;
+									li{
+										a{
+											color: $semi-black;
+										}
+									}
+								}		
+								&:last-child{
+									&:before{
+										display: none;
+									}
+								}		
+							}
+						}
+						&:before{
+							content: "";
+							position: absolute;
+							top: 0;
+							height: 2px;
+							width: 100px;
+							background: $gris5;
+							left: 25px;
+						}
+					}
+					.info-extra{
+						float: left;
+						width: 100%;
+						background: $gris5;
+						ul{
+							padding: 10px 25px;
+							li{
+								line-height: initial;
+								padding: 10px 0px;
+								.fa{
+									margin-right: 10px;
+									position: relative;
+									top: 1px;
+								}
+							}
+						}
+					}
+					.buscador{
+	
+					}
+				}
+			}
+		}
+		.cerrar{
+			height: 100%;
+			background-color: $gris5;
+			overflow-y: scroll;
+			.container-cabecera{
+				background-color: $white;;
+				.icon-close{
+					display: inline-block;
+				}
+				.icon-menu{
+					display: none;
+				}				
+			}
+		}
+	}
+}
+.body-sin-scroll{
+	overflow-y: hidden;
+}

@@ -1,0 +1,405 @@
+.distribuidora{
+	.container-hero{
+		position: relative;
+		margin-bottom: 50px;
+		margin-top: 40px;
+		overflow: hidden;
+		.bloque-left{
+			width: 83%;
+			float: left;
+			.breadcrumb{
+				width: 370px;
+			}
+			.text-container{
+				margin-top: 40px;
+				padding: 40px 50px;
+				background: $semi-black;
+				color: $white;	
+				width: 370px;
+			    z-index: 9;
+				position: relative;	
+				.titular{	
+					h2{
+						margin-bottom: 15px;
+					}
+				}
+				.description{
+					color:$gris3;
+				}
+			}			
+		}
+		.bloque-right{
+		    width: 17%;
+		    float: left;
+		    position: absolute;
+		    right: 0;
+		    top: 50%;
+		    transform: translateY(-50%);
+		    text-align: center;
+		}
+	}
+	.container-header-filtros{
+		height: 30px;
+		margin-bottom: 15px;
+		h2{
+			margin: 5px 0px;
+			float: left;
+			font-size: 18px;
+			text-transform: capitalize;
+			color: $black;
+		}
+		.bloque-right{
+			float: right;
+			.item{
+				float: left;
+				p{
+					font-size: 16px;
+					color: $gris3;
+					display: inline-block;
+				    position: relative;
+					top: 2px;
+				}
+				.contenedorPluguinSelect {
+				    margin-right: 10px;
+				    .bootstrap-select.btn-group {
+					    .dropdown-toggle{
+						    .filter-option{
+							    font-size: 16px;
+							    font-weight: 400;
+						    }
+					    }
+				    }
+				    .bs-caret{
+					    top: 13px;
+				    }
+				    .bootstrap-select.btn-group{
+					    button{
+						    height: auto;
+						    &:hover{
+							    border-right: 0px;
+						    }
+					    }
+				    }
+				}
+			}
+			.fa{
+				color: $rojo;
+				font-size: 25px;
+			    margin: 2px 10px;
+			    cursor: pointer;
+			}
+			.icon-filters{
+				position: relative;
+			}
+			.before-filtro{
+				&:after{
+					content: "";
+				    width: 0;
+				    height: 0;
+				    border-style: solid;
+				    border-width: 0 8px 9px 8px;
+				    bottom: -18px;
+				    left: 6px;
+				    position: absolute;
+					border-color: transparent transparent $gris5 transparent;
+					@include transition(.3s);
+				}				
+			}
+			.icon-small_view{
+				display: none;
+			}
+		}
+	}
+	.container-filtros{
+		background-color: $gris5;
+		.selectores{
+			margin-bottom: 30px;
+			.atributo{
+				float: left;
+				width: 24%;
+				margin-bottom: 30px;
+				margin-right: 1.3333%;
+				p{
+					font-size: 12px;
+					color: $gris3;
+				}
+				.contenedorPluguinSelect{
+					display: block;
+					.open{
+						button{
+							border: none;
+						}
+						.dropdown-menu {
+							border: none;
+							ul{
+								box-shadow: none;
+							}
+						}
+					}
+					.dropup{
+						button{
+							margin-top: 0px;
+							border-left: 2px solid $gris5;
+							border-right: 2px solid $gris5;
+						}
+						.dropdown-menu {
+							border-bottom: none;
+							margin-bottom: 0px;
+							box-shadow: none;
+							border-left: 1px solid $gris5;
+							border-right: 1px solid $gris5;
+							border-top: 1px solid $gris5;
+							ul{
+								box-shadow: none;
+							}
+						}
+					}
+					&:after{
+						top: 20px;
+					}
+				}
+				&:last-child{
+					margin-right: 0px;
+				}
+			}
+			.atributo-color{
+				width: 35%;
+				margin-bottom: 0px;
+				.swatch-attribute-options{
+					padding: 12px 0px;
+				}
+			}
+			.atributo-precio{
+				width: 35%;
+				float: left;
+				margin-bottom: 0px;
+				.container-rango-precio{
+					.relleno{
+						height: 50px;
+						float: left;
+						background: $white;
+						width: 4%;
+					}
+					.relleno-con-linea{
+						position: relative;
+						&:before{
+							content: "";
+						    background: $gris5;
+						    width: 15px;
+						    height: 2px;
+						    color: red;
+						    position: absolute;
+						    top: 24px;
+						    left: -17px;
+						}
+					}
+					.container-slider{
+						width: 70%;
+					    float: left;
+					    height: 50px;
+					    background: $white;
+					    position: relative;
+					
+						#slider-distribuidora, #slider-resultados{
+						    width: 88%;
+						    position: absolute;
+						    height: 2px;
+						    left: 7%;
+						    top: 25px;
+							span{
+							    background: $rojo;
+							    border-color: $rojo;
+							    width: 15px;
+							    height: 15px;
+							    @include border-radius(50%);
+							    top: -7px;
+							    display: inline-block;
+							    visibility: visible !important;
+							    position: absolute;
+							    outline: 0;
+							    &.ui-state-active{
+								    border-color: $rojo;
+							    }
+							}
+						}
+					}
+					.precio-filtrado{
+						float: left;
+					    width: 29%;
+					    background: $white;
+					    height: 50px;
+					    text-align: center;
+					    padding: 13px 0px;
+					    margin-right: 1%;
+					    border-left: 1px solid $gris5;		
+					}
+				}
+			}
+		}
+		button{
+			float: right;
+		}
+	}
+	.filtros-seleccionados{
+		margin-top: 20px;
+		p{
+			float: left;
+			color: $gris3;
+			font-size: 16px;
+			margin-bottom: 0px;
+		    margin-right: 20px;
+		    padding: 5px 0px;
+		    &.oculto{
+			    display: none;
+		    }
+		    &.visible{
+			    display: inline-block;
+		    }
+		}
+		.item{
+			padding: 5px 10px;
+			margin-bottom: 5px;
+			background: $gris5;
+			display: inline-block;
+			.fa{
+				color: $rojo;
+				font-size: 25px;
+				vertical-align: middle;
+				cursor: pointer;
+			}
+		}
+		.item + .item{
+			margin-left: 5px;
+		}
+	}
+	.productos{
+		margin-top: 30px;
+	}
+	.container-otros-2 {
+	    margin-bottom: 90px;
+	}
+}
+
+@media (max-width: 991px){
+	.distribuidora{
+		.container-hero{
+			overflow: inherit;
+			.bloque-left{
+				width: 100%;
+				margin-bottom: 30px;
+				float: none;
+			}
+			.bloque-right{
+				float: none;
+				width: 100%;
+				position: relative;
+				transform: none;
+				top: 0;
+				text-align: left;
+			}
+		}
+	}
+}
+
+@media (max-width: 767px){
+	.distribuidora{
+		.container-hero{
+			margin-top: 0px;
+			.bloque-left{
+				.text-container{
+				    margin-top: 0px;
+					width: 100%;
+					.description{
+						.enlace-line {
+							color: $white;
+						}
+					}
+				}
+			}
+		}
+		.container-header-filtros {
+			h2{
+				margin-bottom: 15px;
+				float: none;
+			}
+			.bloque-right{
+				float: none;
+				.item{
+					float: none;
+				}
+				.ordenar{
+					margin-bottom: 15px;
+					width: 100%;
+				}
+				.fa{
+					width: 100%;
+					margin: 0px;
+					text-align: center;
+					float: left;
+				}
+				.icon-filters{
+					border: 2px solid $rojo;
+					padding: 5px 0px;
+				}
+				.icon-big_view{
+					display: none !important;
+				}
+				.icon-small_view{
+					display: none !important;
+				}
+				.before-filtro{
+				    padding-left: 30px;
+				    margin-left: -15px;
+					background: $gris5;
+					border: 2px solid $gris5;
+					padding-top: 5px;
+					padding-bottom: 5px;
+				}
+			}
+			.contenedorPluguinSelect{
+				.bootstrap-select.btn-group{
+					.dropdown-toggle{
+						.filter-option{
+							font-size: 16px;
+						}
+					}
+				}
+			}
+		}
+		.container-filtros{
+			margin-bottom: 35px;
+			.selectores{
+				.atributo{
+					width: 100%;
+				}
+				.atributo-precio{
+					.container-rango-precio{
+						margin-bottom: 30px;
+						overflow: hidden;
+						.relleno{
+							height: 60px;
+						}
+						.container-slider{
+							height: 60px;
+							#slider-distribuidora, #slider-resultados{;
+							    top: 29px;
+							}
+						}
+						.precio-filtrado{
+							padding: 20px 0px;
+						    height: 60px;	
+						}
+					}
+				}
+			}
+			button{
+				width: 100%;
+				margin-top: 0;
+				margin-bottom: 15px;
+			}
+		}
+		.productos{
+			margin-top: 20px;
+		}
+	}
+}

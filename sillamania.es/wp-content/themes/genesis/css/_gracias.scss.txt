@@ -1,0 +1,174 @@
+.gracias{
+	height: 100%;
+	.left{
+		width: 50%;
+		height: 100%;
+		float: left;
+		.img-container{
+			height: 100%;
+			background-image: url(http://via.placeholder.com/1920x1920);
+		    background-size: cover;
+		    background-position: center center;
+		    background-repeat: no-repeat;
+		}
+		.logo{
+			position: absolute;
+			top: 0;
+			padding: 30px 50px;
+		}
+		.movil{
+			display: none;
+		}
+	}
+	.right{
+		width: 50%;
+		padding: 80px;
+		float: left;	
+		.text-container{
+			h1{
+				margin-top: 0px;
+				margin-bottom: 30px;
+				.fa{
+					margin-right: 20px;
+					color: $rojo;
+				}
+			}
+			.mensaje{
+				color: $gris3;
+			}
+		}	
+		.resumen{
+			background: $gris5;
+			padding: 20px;
+			margin-top: 50px;
+			margin-bottom: 75px;
+			.titular{
+				color:$gris3;
+			}
+			.pedido{
+				font-size: 18px;
+				color:$semi-black;
+				margin-bottom: 5px;
+				p{
+					font-weight: 400;
+				}
+			}
+			.fecha{
+				font-size: 18px;
+				color:$semi-black;
+				p{
+					font-weight: 400;
+				}
+			}
+		}
+		.telefono{
+			float: left;
+			margin-right: 50px;
+			.fa{
+				float: left;
+				margin-right: 15px;
+				font-size: 20px;
+			    border: 1px solid;
+			    @include border-radius(50%);
+			    padding: 4px;
+			    top: -3px;
+				position: relative;
+			}
+		}
+		.imprimir{
+			float: left;
+			color: $rojo;
+			.fa{
+				margin-right: 15px;
+				font-size: 30px;
+				vertical-align: middle;
+			}
+			a{
+				color: $rojo;
+			}
+		}
+		.bottom{
+			margin-top: 80px;
+		    width: 100%;
+		    float: left;
+		    .redes-sociales{
+			    width: 50%;
+			    float: left;
+			    color: $gris3;
+			    p{
+				    margin-bottom: 15px;
+			    }
+			    .iconos{
+				    a{
+					    .fa{
+						    margin-right: 20px;
+						    font-size: 18px;
+						    color: $gris3;
+					    }				
+					    &:hover{
+						    .fa{
+							    color: $rojo;
+						    }
+					    }	    
+				    }
+			    }
+		    }
+		    .btn{
+			    width: 50%;
+			    padding: 6px 0px;
+		    }
+		}
+	}
+}
+
+@media (max-width: 991px) {
+	.gracias{
+		.right{	
+			padding: 40px;
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.gracias{
+		.left{
+			width: 100%;
+			height: auto;
+			.logo{
+				position: relative;
+			    padding: 5px 15px;
+			}
+			.desktop{
+				display: none;
+			}
+			.movil{
+				display: block;
+			}
+		}
+		.right{	
+			width: 100%;
+			padding: 40px 20px;
+			.resumen{
+				margin-top: 35px;
+				margin-bottom: 45px;
+			}
+			.telefono{
+				float: none;
+				margin-bottom: 30px;
+			}
+			.imprimir{
+				float: none;
+			}
+			.bottom{
+				margin-top: 60px;
+			    .redes-sociales{
+				    width: 100%;
+				    margin-bottom: 60px;
+			    }
+			    .btn{
+				    width: 100%;
+			    }
+			}
+		}
+	}
+}

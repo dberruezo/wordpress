@@ -1,0 +1,262 @@
+footer{
+	background-color:$semi-black;
+	ul{
+		list-style: none;
+		padding-left: 0px;
+	}
+	.footer{
+		padding: 60px 0px;
+		.logo{
+			display: inline-block;
+		}
+		h3{
+			color: $gris5;
+			font-size: 15px;
+			font-weight: normal;
+			margin-bottom: 25px;
+			margin-top: 0px;
+		}
+		ul{
+			li{
+				margin-bottom: 10px;
+				a{
+					color: $gris3;
+					font-size: 14px;
+				}
+			}
+		}
+		.pago-seguro{
+			color: $gris5;
+			position: absolute;
+			bottom: 12px;
+			p{
+				margin-bottom: 25px;
+			}
+			a{
+				img{
+					float: left;
+				}				
+			}
+			a + a {
+				margin-left: 10px;
+				display: inline-block;
+			}
+		}
+	}
+	.bottom-bar{
+		border-top: 1px solid $gris1;
+		padding: 12px 0px;
+		overflow: hidden;
+		p{
+			margin-bottom: 0px;
+		}
+		.copy{
+			float: left;
+			color: $gris2;
+			font-size: 12px;
+			margin-right: 30px;
+		    top: 2px;
+			position: relative;
+		}
+		.legales{
+			float: left;
+			ul{
+				li{
+					float: left;
+					margin-right: 10px;
+					a{
+						color: $gris3;
+						font-size: 12px;
+					}
+				}
+			}
+		}
+		.redes-sociales{
+			float: right;
+			p{
+				float: left;
+				margin-right: 15px;
+				color: $gris5;
+				font-size: 15px;
+			}
+			.iconos{
+				float: left;
+				a{
+					color: $rojo;
+					font-size: 18px;
+				}
+				a + a{
+					margin-left: 15px;
+				}
+			}
+		}
+	}
+}
+@media (max-width: 1199px){
+	footer{
+		.footer{
+			.pago-seguro{
+				a{
+					display: block;
+					width: 100%;
+				}
+				a + a{
+					margin-left: 0px;
+					margin-top: 10px;
+				}
+			}
+		}
+		.bottom-bar{
+			.legales{
+				float: right;
+				margin-bottom: 10px;
+			}
+			.redes-sociales{
+				float: right;
+				clear: both;
+			}
+		}
+	}	
+}
+@media (max-width: 991px){
+	footer{
+		.bottom-bar{
+			.copy{
+				float: none;
+				text-align: center;
+			}
+			.legales{
+				text-align: center;
+				width: 100%;
+				ul{
+					display: inline-block;
+				}
+			}
+			.redes-sociales{
+				text-align: center;
+				float: none;
+				p{
+					float: none;
+					margin-right: 0px;
+				}
+				.iconos{
+					float: none;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 767px){
+	footer{
+	    .footer{
+		    padding: 60px 0px 20px 0px;
+		    margin-bottom: 20px;
+		    text-align: center;	
+		    position: relative;	
+		    .col-logos{
+			    height: auto !important;
+		    }
+		    ul{
+			    display: none;
+		    }
+		    .logo{
+			    margin-bottom: 20px;
+			    padding-bottom: 20px;
+			    position: relative;
+			    &:before{
+				    content: "";
+				    height: 2px;
+				    width: 120px;
+				    background: $light-black;
+				    position: absolute;
+				    bottom: 0px;
+				    left: 50%;
+				    margin-left: -60px;
+			    }
+		    } 
+		    &:before{
+			    content: "";
+			    height: 1px;
+			    width: 120px;
+			    background: $light-black;
+			    position: absolute;
+			    bottom: 0px;
+			    left: 50%;
+			    margin-left: -60px;
+		    }  
+	    }
+	    .bottom-bar{
+		    text-align: center;
+		    border-top: 0px;
+		    .pago-seguro{
+			    margin-bottom: 40px;
+			    p{
+				    color: $white;
+			    }
+			    a{
+				    display: block;
+					margin: 15px 0px;
+					img{
+						margin: 0 auto,
+					}
+			    }
+		    } 
+		    .copy{
+			    float: none;
+				margin-bottom: 20px;
+		    }
+		    .legales{
+			    width: 100%;
+			    overflow: hidden;
+			    ul{
+				    li{
+					    float: none;
+					    a{
+						    display: block;
+						    margin-bottom: 18px;
+					    }
+				    }
+			    }
+		    }
+		    .redes-sociales{
+			    float: none;
+			    text-align: center;
+			    clear: both;
+			    position: relative;
+			    margin-bottom: 20px;
+			    padding-bottom: 40px;
+			    p{
+				    float: none;
+				    margin-bottom: 20px;
+				    margin-right: 0px;
+			    }
+			    .iconos{
+				    float: none;
+				    display: inline-block;
+				    a{
+					    float: left;
+					    display: inline-block;
+					    margin: 0 50px;
+					    .fa{
+						    font-size: 25px;
+					    }
+				    }
+				    a + a {
+					    margin-left: 0px;
+				    }
+			    }
+			    &:before{
+				    content: "";
+				    height: 2px;
+				    width: 120px;
+				    background: $light-black;
+				    position: absolute;
+				    bottom: 0px;
+				    left: 50%;
+				    margin-left: -60px;
+			    }
+		    }
+	    }
+	}
+}

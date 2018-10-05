@@ -1,0 +1,33 @@
+//CSS
+/*Bootstrap*/
+@import 'fonts';
+
+/*Icon Font*/
+//@import 'style';
+
+@import 'variables';
+@import 'mixin';
+
+/*General*/
+@import 'slick';
+
+@import 'menu';
+@import 'footer';
+@import 'home';
+@import 'catalogo';
+@import 'distribuidora';
+@import 'main';
+@import 'login';
+@import 'gracias';
+@import 'checkout';
+@import 'select';
+@import 'resultados';
+@import 'ficha';
+@import 'rangoPrecio';
+
+
+
+
+
+
+
