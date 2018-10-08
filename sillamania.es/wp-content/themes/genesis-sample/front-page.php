@@ -1,4 +1,5 @@
 <?php get_header(); ?>
+
 <body class="home">
 	
     <div class="modal fade modal-bienvenida" role="dialog">
@@ -85,6 +86,7 @@
 			</div>
 			<i class="fa icon-close"></i>
 		</div>
+
 		<div class="nav">
 			<div class="container-cabecera">
 				<a class="logo" href="" ><img src="<?php echo get_template_directory_uri(); ?>/images_maquetas/sofas48.png" alt="" title="Titulo de la imagen" /></a>
@@ -92,6 +94,9 @@
 				<i class="fa icon-close"></i>				
 			</div>
 			
+			<?php echo menupilar_menu('productos');?>
+
+			<!--
 			<ul class="principal">
 				<li><a href="" >Oficina</a>
 					<div class="mega-menu">
@@ -166,9 +171,15 @@
 						</ul>
 					</div>
 				</li>
-			<!--	<li><a href="">Ofertas</a></li>
-				<li><a href="">Más vendidos</a></li>-->
+				
+				
+				<li><a href="">Ofertas</a></li>
+				<li><a href="">Más vendidos</a></li>
+				
+
 			</ul>
+			-->
+
 			<div class="right">
 				<div class="enlaces">
 					<ul>
@@ -205,12 +216,15 @@
 		</div>
 	</header>
 	
+	<?php echo do_shortcode("[image-carousel]"); ?>
+
 	<div class="container-hero"> 
 		<div class="carrusel-hero">
 			<div class="item"></div>
 			<div class="item"></div>
 			<div class="item"></div>				
 		</div>
+
 		<div class="container-description">
 			<p class="desde">Desde</p>
 			<div class="carrusel-hero-titular">	
@@ -252,77 +266,103 @@
 			</div>
 		</div>
 	</div> 
-	<h2 style="font-weight: 700; font-size: 60px; margin-bottom: 50px; text-align: center;">Sillas por colores</h2>
 	
+	<?php $categorias    = categorias_raiz(); ?>
+	<?php $subcategorias = subcategorias_raiz(); ?>
+	<?php $destacadas    = categorias_destacadas_home(); ?>
+
+	<?php print_r($categorias); ?>
+
+	<!-- <h2 style="font-weight: 700; font-size: 60px; margin-bottom: 50px; text-align: center;">Sillas por colores</h2> -->
+	<h2 style="font-weight: 700; font-size: 60px; margin-bottom: 50px; text-align: center;"><?php echo $categorias[233]; ?></h2>
 	
-					<div class="container-info" style="background-color: #ECECEC; padding: 30px; max-width: 1137px; margin: 20px auto;">
-						<div class="titular">
-							<h3>Espacios acogedores </h3>
-						</div>
-						<div class="description">
-							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. </p>
-							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. </p>
-						</div>
-					</div>
-	<div class="catalogo">
-	<div class="container-catalogo">
-		<div class="container">
-			<div class="container-img">
-				<div class="row">
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Verdes</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Blancas</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Amarillas</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Rojas</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Naranjas</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Negras</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Verdes</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Grises</p>
-						</a>
-					</div>
-				</div>
-			</div>	
+	<div class="container-info" style="background-color: #ECECEC; padding: 30px; max-width: 1137px; margin: 20px auto;">
+		<div class="titular">
+			<h3>Espacios acogedores </h3>
+		</div>
+		<div class="description">
+			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. </p>
+			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. </p>
 		</div>
 	</div>
+
+	<div class="catalogo">
+		<div class="container-catalogo">
+			<div class="container">
+				<div class="container-img">
+					<div class="row">
+						<?php //print_r($subcategorias[233]); ?>
+						<?php 
+							foreach($subcategorias[233] as $sub){
+								foreach($sub as $clave =>$cat_name){  
+									$str = '<div class="col-xs-12 col-sm-6 col-md-3">';
+										$str.= '<a href="" class="item">';
+										$str.= '<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />';
+										$str.= '<p>'.$cat_name.'</p>';
+										$str.= '</a>';
+									$str.= '</div>';
+									echo $str;		
+								}	
+							}
+						?>
+
+						<!--
+						<div class="col-xs-12 col-sm-6 col-md-3">
+							<a href="" class="item">
+								<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
+								<p>Verdes</p>
+							</a>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-3">
+							<a href="" class="item">
+								<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
+								<p>Blancas</p>
+							</a>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-3">
+							<a href="" class="item">
+								<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
+								<p>Amarillas</p>
+							</a>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-3">
+							<a href="" class="item">
+								<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
+								<p>Rojas</p>
+							</a>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-3">
+							<a href="" class="item">
+								<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
+								<p>Naranjas</p>
+							</a>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-3">
+							<a href="" class="item">
+								<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
+								<p>Negras</p>
+							</a>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-3">
+							<a href="" class="item">
+								<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
+								<p>Verdes</p>
+							</a>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-3">
+							<a href="" class="item">
+								<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
+								<p>Grises</p>
+							</a>
+						</div>
+						-->
+					</div>
+				</div>	
+			</div>
+		</div>
 	</div>
 	
+
 	<div class="container">
 		<div class="titular-separador">
 			<h2>Encuentra el mejor sofá para tu casa</h2>
@@ -363,7 +403,7 @@
 								</div>
 							</div>		
 						</a>
-												<a class="item-prod">
+							<a class="item-prod">
 							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
 							<div class="container-text">
 								<div class="wrapper-position">
@@ -452,8 +492,10 @@
 		</div>
 	</div>
 	
-	
-	<h2 style="font-weight: 700; font-size: 60px; margin-bottom: 50px; text-align: center;">Sillas por colores</h2>
+							
+	<h2 style="font-weight: 700; font-size: 60px; margin-bottom: 50px; text-align: center;"><?php echo $categorias[233]; ?></h2>
+						
+	<!-- <h2 style="font-weight: 700; font-size: 60px; margin-bottom: 50px; text-align: center;">Sillas por colores</h2>-->
 	
 	
 					<div class="container-info" style="background-color: #ECECEC; padding: 30px; max-width: 1137px; margin: 20px auto;">
@@ -465,11 +507,27 @@
 							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. </p>
 						</div>
 					</div>
+
 	<div class="catalogo">
 	<div class="container-catalogo">
 		<div class="container">
 			<div class="container-img">
 				<div class="row">
+				<?php //print_r($subcategorias[233]); ?>
+				<?php 
+					foreach($subcategorias[233] as $sub){
+						foreach($sub as $clave =>$cat_name){  
+							$str = '<div class="col-xs-12 col-sm-6 col-md-3">';
+								$str.= '<a href="" class="item">';
+								$str.= '<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />';
+								$str.= '<p>'.$cat_name.'</p>';
+								$str.= '</a>';
+							$str.= '</div>';
+							echo $str;		
+						}	
+					}
+				?>
+					<!--
 					<div class="col-xs-12 col-sm-6 col-md-3">
 						<a href="" class="item">
 							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
@@ -518,6 +576,96 @@
 							<p>Grises</p>
 						</a>
 					</div>
+					-->
+				</div>
+			</div>	
+		</div>
+	</div>
+	</div>
+	
+
+	<h2 style="font-weight: 700; font-size: 60px; margin-bottom: 50px; text-align: center;"><?php echo $categorias[217]; ?></h2>
+				
+	<!-- <h2 style="font-weight: 700; font-size: 60px; margin-bottom: 50px; text-align: center;">Sillas por características</h2> -->
+	
+	
+					<div class="container-info" style="background-color: #ECECEC; padding: 30px; max-width: 1137px; margin: 20px auto;">
+						<div class="titular">
+							<h3>Espacios acogedores </h3>
+						</div>
+						<div class="description">
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. </p>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. </p>
+						</div>
+					</div>
+	<div class="catalogo">
+	<div class="container-catalogo">
+		<div class="container">
+			<div class="container-img">
+				<div class="row">
+				<?php 
+					foreach($subcategorias[217] as $sub){
+						foreach($sub as $clave =>$cat_name){  
+							$str = '<div class="col-xs-12 col-sm-6 col-md-3">';
+								$str.= '<a href="" class="item">';
+								$str.= '<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />';
+								$str.= '<p>'.$cat_name.'</p>';
+								$str.= '</a>';
+							$str.= '</div>';
+							echo $str;		
+						}	
+					}
+				?>	
+					<!--
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<a href="" class="item">
+							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
+							<p>Verdes</p>
+						</a>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<a href="" class="item">
+							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
+							<p>Blancas</p>
+						</a>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<a href="" class="item">
+							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
+							<p>Amarillas</p>
+						</a>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<a href="" class="item">
+							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
+							<p>Rojas</p>
+						</a>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<a href="" class="item">
+							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
+							<p>Naranjas</p>
+						</a>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<a href="" class="item">
+							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
+							<p>Negras</p>
+						</a>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<a href="" class="item">
+							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
+							<p>Verdes</p>
+						</a>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<a href="" class="item">
+							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
+							<p>Grises</p>
+						</a>
+					</div>
+					-->
 				</div>
 			</div>	
 		</div>
@@ -525,8 +673,10 @@
 	</div>
 	
 	
-	<h2 style="font-weight: 700; font-size: 60px; margin-bottom: 50px; text-align: center;">Sillas por características</h2>
-	
+	<!-- <h2 style="font-weight: 700; font-size: 60px; margin-bottom: 50px; text-align: center;">Sillas por tipos</h2> -->
+	<h2 style="font-weight: 700; font-size: 60px; margin-bottom: 50px; text-align: center;"><?php echo $categorias[240]; ?></h2>
+				
+
 	
 					<div class="container-info" style="background-color: #ECECEC; padding: 30px; max-width: 1137px; margin: 20px auto;">
 						<div class="titular">
@@ -542,6 +692,20 @@
 		<div class="container">
 			<div class="container-img">
 				<div class="row">
+				<?php 
+					foreach($subcategorias[240] as $sub){
+						foreach($sub as $clave =>$cat_name){  
+							$str = '<div class="col-xs-12 col-sm-6 col-md-3">';
+								$str.= '<a href="" class="item">';
+								$str.= '<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />';
+								$str.= '<p>'.$cat_name.'</p>';
+								$str.= '</a>';
+							$str.= '</div>';
+							echo $str;		
+						}	
+					}
+				?>
+					<!--
 					<div class="col-xs-12 col-sm-6 col-md-3">
 						<a href="" class="item">
 							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
@@ -590,78 +754,7 @@
 							<p>Grises</p>
 						</a>
 					</div>
-				</div>
-			</div>	
-		</div>
-	</div>
-	</div>
-	
-	
-	<h2 style="font-weight: 700; font-size: 60px; margin-bottom: 50px; text-align: center;">Sillas por tipos</h2>
-	
-	
-					<div class="container-info" style="background-color: #ECECEC; padding: 30px; max-width: 1137px; margin: 20px auto;">
-						<div class="titular">
-							<h3>Espacios acogedores </h3>
-						</div>
-						<div class="description">
-							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. </p>
-							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. </p>
-						</div>
-					</div>
-	<div class="catalogo">
-	<div class="container-catalogo">
-		<div class="container">
-			<div class="container-img">
-				<div class="row">
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Verdes</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Blancas</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Amarillas</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Rojas</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Naranjas</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Negras</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Verdes</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Grises</p>
-						</a>
-					</div>
+					-->
 				</div>
 			</div>	
 		</div>

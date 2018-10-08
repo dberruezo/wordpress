@@ -49,6 +49,7 @@ function pm_remove_all_styles() {
     $wp_styles->queue = array();
 }
 add_action('wp_print_styles', 'pm_remove_all_styles', 100);
+
 /*
 function pm_remove_all_scripts() {
     global $wp_scripts;
@@ -94,7 +95,7 @@ add_image_size( 'featured-image', 720, 400, TRUE );
 add_filter( 'genesis_author_box_gravatar_size', 'genesis_sample_author_box_gravatar' );
 function genesis_sample_author_box_gravatar( $size ) {
 	return 90;
-}
+} 
 
 // Modify size of the Gravatar in the entry comments.
 add_filter( 'genesis_comment_list_args', 'genesis_sample_comments_gravatar' );
@@ -169,7 +170,6 @@ function sp_footer_creds_filter( $creds ) {
 
 
 function topventas($atts = [],$content=NULL) {
-	
 	/*
 	$categoria= 206;
 	$pageid=2648;
@@ -1005,9 +1005,6 @@ function textoseo($atts = [],$content=NULL) {
 add_shortcode( 'textoseo', 'textoseo' );
 
 
-
-
-
 function menupilar($elgrupo) {
     $args = array(
         'sort_order'   => 'ASC',
@@ -1055,6 +1052,8 @@ function menupilar($elgrupo) {
 	return $i;
 	
 }
+
+
 function listarcategorias($categorias,$id) {
 		$i="";
 		foreach ($categorias[$id] as $pos) {
@@ -1068,6 +1067,7 @@ function listarcategorias($categorias,$id) {
 		}
 		return $i;
 }
+
 function listaproductos($atts = [],$content=NULL) {
 	$categoria= get_field( "prestashop_id", get_the_ID() );
 	if($atts['idcat']!="") {
@@ -1528,9 +1528,8 @@ function subcategorias($atts = [],$content=NULL) {
 		};
 	}
 	$i.='</div>';
-
+	print_r($i);
 	return $i;
-	
 }
 
 add_shortcode( 'subcategorias', 'subcategorias' );
@@ -1803,21 +1802,195 @@ add_shortcode( 'datostienda', 'datostienda' );
 
 
 /*
+ * Funciones David
+ */
+
+
+/*
+ *	 ESTRATEGIA 1
+ *   Esto es el principio de un plugin
+ *   webservice que se conecta a prestashop
+ *   y devuelve todos los datos
+ *   EL UNICO PROBLEMA POR RESOLVER AHORA
+ *   ES CAMBIAR CURL POR MULTICURL 
+ *   PARA ASI PODER MEJORAR LA VELOCIDAD
+ * 	 Y CARGAR TODOS LOS DATOS COMO DIOS MANDA 
+ */
+
+/*
+$application = new OfiprixClient();
+$application->setOpcion("categories");
+//$application->getData();
+$application->getCategories();
+*/
+
+
+/*
+ *	 ESTRATEGIA 2
+ *   Esto es el principio de cargar
+ *   la estructura de prestashop
+ *   y cargar los objetos para asi 
+ *   poder interactuar con las consultas
+ *   de los objetos en 1.6 va perfecto en 1.7
+ *   hace un redirect dnd esta la tienda 
+ * 	 hay que mirarlo 
+ */
+
+
+/* 
+include(dirname(__FILE__).'/config/config.inc.php');
+include(dirname(__FILE__).'/init.php');
+Context::getContext()->cookie->id_lang
+$default_lang = Configuration::get('PS_LANG_DEFAULT');
+*/
+
+
+/*
  * Get paginas_pilar
  * por el custom_field
  * paginas_pilar == si
  */
 
+/*
 function get_paginas_pilar(){
 	$paginas = get_pages();
 	foreach ($paginas as $pagina){
-		//$grupo= get_field( "grupo", get_the_ID() );
 		$pilar = get_field('pagina-pilar', $pagina->ID );
-		//$pagina_pilar = get_post_meta($pagina->ID,'pagina_pilar',true);
-		echo "La pagina pilar vale: ".$pilar."<br>";
 	}
 	// get pages
-	// recorrer pages y preguntar por <?php echo get_post_meta($post->ID, 'key', true);
 }
 
 get_paginas_pilar();
+*/
+
+
+/*
+ * Menu functions 
+ */
+ 
+function menupilar_menu($elgrupo) {
+    $args = array(
+        'sort_order'   => 'ASC',
+        'sort_column'  => 'post_title',
+        'hierarchical' => 1,
+        'post_type'    => 'page',
+        'post_status'  => 'publish',
+    );
+	$i='';
+    $pages = get_pages($args);
+	if($elgrupo=="productos") {
+		foreach ($pages as $pos) {
+			$pos->categoria = get_field('categoria', $pos->ID );
+			$pos->grupo = get_field('grupo', $pos->ID );
+			$pos->prestashop_id = get_field('prestashop_id', $pos->ID );
+			$que="SELECT * FROM `ps_category` where id_category='".$pos->prestashop_id."'";
+			$query = $GLOBALS['wpdb']->get_results( $que, OBJECT );
+			foreach ($query as $row) {
+				$parent=$row->id_parent;
+			}
+			if($pos->categoria!="" && $pos->grupo==$elgrupo) {
+			$categorias[$parent][$pos->ID]=$pos;
+			};
+		};
+		$i= '<ul class="principal">';
+		foreach ($categorias[2] as $pos) {
+				//$i.='<li class="col-xs-12 col-sm-6 col-md-3">
+				$i.='<li>
+				<a href="'.get_permalink($pos->ID).'">'.$pos->post_title.'</a>';
+				if(count($categorias[$pos->prestashop_id])>0) {
+				$i.='<div class="mega-menu">';
+				$i.='<ul>';
+				$i.=listarcategorias_menu($categorias,$pos->prestashop_id);
+				$i.='</ul>';
+				$i.='</div>';
+				};
+				$i.='</li>';
+		}
+		$i.= '</ul>';
+	} else {
+		foreach ($pages as $pos) {
+			$categoria = get_field('categoria', $pos->ID );
+			$grupo = get_field('grupo', $pos->ID );
+			if($categoria!="" && $grupo==$elgrupo) {
+				$i.='<li><a href="'.get_permalink($pos->ID).'">'.$pos->post_title.'</a></li>';
+			};
+		};
+	}
+	return $i;
+}
+
+function listarcategorias_menu($categorias,$id) {
+	$i="";
+	$contador = 0;
+	foreach ($categorias[$id] as $pos) {
+		if ($contador == 0){
+			$i.='<li><a class="ver-catalogo" href="'.get_permalink($pos->ID).'">'.$pos->post_title.'</a>';
+		}else{
+			$i.='<li><a href="'.get_permalink($pos->ID).'"><img src="http://placehold.it/80x80/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen"/><p>'.$pos->post_title.'</p></a>';
+		}
+		if(count($categorias[$pos->prestashop_id])>0) {
+		$i.='<ul>';
+		$i.=listarcategorias_menu($categorias,$pos->prestashop_id);
+		$i.='</ul>';
+		};
+		$i.='</li>';
+		$contador++;
+	}
+	return $i;
+}
+
+/*
+ * Categorias en 
+ * home
+ * 
+ */ 
+
+ $categorias_raiz = array();
+ $subcategorias   = array();	
+
+ function categorias_destacadas_home($prestashop_id){
+	$categorias = getsubcategorias($prestashop_id);
+	return $categorias;
+}
+
+
+function categorias_raiz(){
+	global $categorias_raiz;
+	$sql="SELECT categorylang.name,category.id_category ";
+	$sql.="from ps_category as category "; 
+	$sql.="LEFT JOIN ps_category_lang as categorylang "; 
+	$sql.="ON categorylang.id_category = category.id_category ";
+	$sql.="where categorylang.id_lang = 1 ";
+	$sql.="AND category.id_parent = 2 ";
+	$query = $GLOBALS['wpdb']->get_results( $sql, OBJECT );
+				foreach ($query as $row) {
+					$categorias_raiz[$row->id_category] = $row->name;
+				}
+	//print_r($categorias_raiz);
+	return $categorias_raiz;
+}
+
+function subcategorias_raiz(){
+	global $categorias_raiz;
+	foreach ($categorias_raiz as $indice => $nombre){
+		$sql="SELECT categorylang.name,category.id_category ";
+		$sql.="from ps_category as category "; 
+		$sql.="LEFT JOIN ps_category_lang as categorylang "; 
+		$sql.="ON categorylang.id_category = category.id_category ";
+		$sql.="where categorylang.id_lang = 1 ";
+		$sql.="AND category.id_parent = ".$indice;
+		$query = $GLOBALS['wpdb']->get_results( $sql, OBJECT );
+					foreach ($query as $row) {
+						if (!is_array($subcategorias[$indice])){
+							$subcategorias[$indice] = array();
+						}
+						$temp = array(
+							$row->id_category => $row->name
+						);
+						array_push($subcategorias[$indice],$temp);
+					}
+	}
+	//print_r($subcategorias);
+	return $subcategorias;
+}
+
