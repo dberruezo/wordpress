@@ -1919,6 +1919,10 @@ function menupilar_menu($elgrupo) {
 	return $i;
 }
 
+function menu_products_by_categoria($id_categoria){
+	echo "Consulta productos por categorias";	
+}
+
 function listarcategorias_menu($categorias,$id) {
 	$i="";
 	$contador = 0;
@@ -1993,4 +1997,12 @@ function subcategorias_raiz(){
 	//print_r($subcategorias);
 	return $subcategorias;
 }
+
+
+/*
+ * Consulta para hacer las queries 
+ * de los productos mas vendidos 
+ */
+
+
 

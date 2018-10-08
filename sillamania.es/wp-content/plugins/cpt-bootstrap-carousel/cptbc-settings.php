@@ -124,6 +124,7 @@ class cptbc_settings_page {
 		);
         
 		// Behaviour Fields
+		// add_settings_field( $id, $title, $callback, $page, $section, $args ); 
 		add_settings_field(
 				'interval', // ID
 				__('Slide Interval (milliseconds)', 'cpt-bootstrap-carousel'), // Title

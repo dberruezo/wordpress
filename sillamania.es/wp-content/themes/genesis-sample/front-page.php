@@ -71,153 +71,10 @@
 		</div>
 	</div>
 	
-	<header>
-		<div class="top-bar">
-			<div class="inicio-sesion">
-				<p>Descubre los mejores descuentos en sofás48! <a href="" >Entra y disfruta</a></p>
-			</div>
-			<div class="info-extra">
-				<ul>
-					<li><i class="fa icon-devolucion"></i>Devolución 14 días</li>
-					<li><i class="fa icon-envio"></i>Envío gratis</li>
-					<li><i class="fa icon-garantia"></i>Garantía 2 años</li>
-					<li><i class="fa icon-stock"></i>Productos en stock</li>
-				</ul>
-			</div>
-			<i class="fa icon-close"></i>
-		</div>
+	<?php get_template_part( "template-parts/cabecera_home"); ?>
 
-		<div class="nav">
-			<div class="container-cabecera">
-				<a class="logo" href="" ><img src="<?php echo get_template_directory_uri(); ?>/images_maquetas/sofas48.png" alt="" title="Titulo de la imagen" /></a>
-				<i class="fa icon-menu"></i>
-				<i class="fa icon-close"></i>				
-			</div>
-			
-			<?php echo menupilar_menu('productos');?>
-
-			<!--
-			<ul class="principal">
-				<li><a href="" >Oficina</a>
-					<div class="mega-menu">
-						<ul>
-							<li><a class="ver-catalogo" href="" >Ver catálogo</a></li>
-							<li><a href="" ><img src="http://placehold.it/80x80/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen"/><p>Sillas operativas</p></a></li>
-							<li><a href="" ><img src="http://placehold.it/80x80/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" /><p>Sillas giratorias</p></a></li>
-							<li><a href="" ><img src="http://placehold.it/80x80/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" /><p>Sillones de oficina</p></a></li>
-							<li><a href="" ><img src="http://placehold.it/80x80/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" /><p>Sillas ergonómicas</p></a></li>
-						</ul>
-					</div>
-				</li>
-				<li><a href="" >Tipos</a>
-					<div class="mega-menu">
-						<ul>
-							<li><a class="ver-catalogo" href="" >Ver catacterísticas</a></li>
-							<li><a href="" ><img src="http://placehold.it/80x80/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen"/><p>Sillas para bares</p></a></li>
-							<li><a href="" ><img src="http://placehold.it/80x80/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen"/><p>Sillas acolchadas</p></a></li>
-							<li><a href="" ><img src="http://placehold.it/80x80/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" /><p>Sillas apilables</p></a></li>
-							<li><a href="" ><img src="http://placehold.it/80x80/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" /><p>Sillas con brazos regulables</p></a></li>
-							<li><a href="" ><img src="http://placehold.it/80x80/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" /><p>Sillas con reposabrazos</p></a></li>
-							<li><a href="" ><img src="http://placehold.it/80x80/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" /><p>Sillas de con ruedas</p></a></li>
-						</ul>
-					</div>
-				</li>
-				<li><a href="" >Características</a>
-					<div class="mega-menu">
-						<ul>
-							<li><a class="ver-catalogo" href="" >Ver catálogo</a></li>
-							<li><a href="" ><img src="http://placehold.it/80x80/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen"/><p>Sillas comedor</p></a></li>
-							<li><a href="" ><img src="http://placehold.it/80x80/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" /><p>Sillas de cocina</p></a></li>
-							<li><a href="" ><img src="http://placehold.it/80x80/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" /><p>Sillas juveniles</p></a></li>
-							<li><a href="" ><img src="http://placehold.it/80x80/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" /><p>Sillas gaming</p></a></li>
-							<li><a href="" ><img src="http://placehold.it/80x80/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" /><p>Sillas de escritorio</p></a></li>
-						</ul>
-					</div>
-				</li>
-				<li><a href="" >Por estilos</a>
-					<div class="mega-menu">
-						<ul>
-							<li><a class="ver-catalogo" href="" >Ver estilos</a></li>
-							<li><a href="" ><img src="http://placehold.it/80x80/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen"/><p>Sillas de diseño</p></a></li>
-							<li><a href="" ><img src="http://placehold.it/80x80/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" /><p>Sillas estilo nórdico</p></a></li>
-							<li><a href="" ><img src="http://placehold.it/80x80/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" /><p>Sillas modernas</p></a></li>
-						</ul>
-					</div>
-				</li>
-				<li><a href="" >Por materiales</a>
-					<div class="mega-menu">
-						<ul>
-							<li><a class="ver-catalogo" href="" >Ver catálogo</a></li>
-							<li><a href="" ><img src="http://placehold.it/80x80/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen"/><p>cuero</p></a></li>
-							<li><a href="" ><img src="http://placehold.it/80x80/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" /><p>madera</p></a></li>
-							<li><a href="" ><img src="http://placehold.it/80x80/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" /><p>plástico</p></a></li>
-							<li><a href="" ><img src="http://placehold.it/80x80/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" /><p>tela</p></a></li>
-							<li><a href="" ><img src="http://placehold.it/80x80/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" /><p>metacrilato</p></a></li>
-							<li><a href="" ><img src="http://placehold.it/80x80/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" /><p>metal</p></a></li>
-							<li><a href="" ><img src="http://placehold.it/80x80/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" /><p>poliuretano</p></a></li>
-							<li><a href="" ><img src="http://placehold.it/80x80/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" /><p>tapizadas</p></a></li>
-						</ul>
-					</div>
-				</li>
-				<li><a href="" >Por colores</a>
-					<div class="mega-menu">
-						<ul>
-							<li><a class="ver-catalogo" href="" >Ver todos los colores</a></li>
-							<li><a href="" ><img src="http://placehold.it/80x80/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen"/><p>amarillas</p></a></li>
-							<li><a href="" ><img src="http://placehold.it/80x80/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" /><p>blancas</p></a></li>
-							<li><a href="" ><img src="http://placehold.it/80x80/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" /><p>negras</p></a></li>
-							<li><a href="" ><img src="http://placehold.it/80x80/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" /><p>transparentes</p></a></li>
-							<li><a href="" ><img src="http://placehold.it/80x80/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" /><p>verdes</p></a></li>
-						</ul>
-					</div>
-				</li>
-				
-				
-				<li><a href="">Ofertas</a></li>
-				<li><a href="">Más vendidos</a></li>
-				
-
-			</ul>
-			-->
-
-			<div class="right">
-				<div class="enlaces">
-					<ul>
-						<li>
-							<a href="" >Mi cuenta</a>
-							<ul class="mega-menu">
-								<li><a href="#">Mi cuenta</a></li>
-								<li><a href="#">Wishlist</a></li>
-								<li><a href="#">Mis pedidos</a></li>
-								<li><a href="#">Sigue tu pedido</a></li>
-								<li><a href="#">Descuentos</a></li>
-								<li><a href="#">Salir</a></li>
-							</ul>						
-						</li>
-						<li>
-							<a href="" >Contactar</a>
-						</li>
-					</ul>					
-				</div>
-				<form class="buscador" name="" id="" action="" method="post">
-					<i class="fa icon-search"></i>
-					<div class="container-buscador">
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Buscador" /></i>
-						</div>
-						<button type="submit" class="btn btn-rojo">Buscar</button>
-					</div>
-				</form>
-				<div class="carrito">
-					<span class="cantidad">€ <span class="precio">240</span></span>
-					<i class="fa icon-buy_off"></i>
-				</div>
-			</div>
-		</div>
-	</header>
+	<?php echo do_shortcode("[image-carousel category='grupo1']"); ?>
 	
-	<?php echo do_shortcode("[image-carousel]"); ?>
-
 	<div class="container-hero"> 
 		<div class="carrusel-hero">
 			<div class="item"></div>
@@ -271,9 +128,8 @@
 	<?php $subcategorias = subcategorias_raiz(); ?>
 	<?php $destacadas    = categorias_destacadas_home(); ?>
 
-	<?php print_r($categorias); ?>
+	<?php // print_r($categorias); ?>
 
-	<!-- <h2 style="font-weight: 700; font-size: 60px; margin-bottom: 50px; text-align: center;">Sillas por colores</h2> -->
 	<h2 style="font-weight: 700; font-size: 60px; margin-bottom: 50px; text-align: center;"><?php echo $categorias[233]; ?></h2>
 	
 	<div class="container-info" style="background-color: #ECECEC; padding: 30px; max-width: 1137px; margin: 20px auto;">
@@ -306,56 +162,6 @@
 							}
 						?>
 
-						<!--
-						<div class="col-xs-12 col-sm-6 col-md-3">
-							<a href="" class="item">
-								<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-								<p>Verdes</p>
-							</a>
-						</div>
-						<div class="col-xs-12 col-sm-6 col-md-3">
-							<a href="" class="item">
-								<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-								<p>Blancas</p>
-							</a>
-						</div>
-						<div class="col-xs-12 col-sm-6 col-md-3">
-							<a href="" class="item">
-								<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-								<p>Amarillas</p>
-							</a>
-						</div>
-						<div class="col-xs-12 col-sm-6 col-md-3">
-							<a href="" class="item">
-								<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-								<p>Rojas</p>
-							</a>
-						</div>
-						<div class="col-xs-12 col-sm-6 col-md-3">
-							<a href="" class="item">
-								<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-								<p>Naranjas</p>
-							</a>
-						</div>
-						<div class="col-xs-12 col-sm-6 col-md-3">
-							<a href="" class="item">
-								<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-								<p>Negras</p>
-							</a>
-						</div>
-						<div class="col-xs-12 col-sm-6 col-md-3">
-							<a href="" class="item">
-								<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-								<p>Verdes</p>
-							</a>
-						</div>
-						<div class="col-xs-12 col-sm-6 col-md-3">
-							<a href="" class="item">
-								<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-								<p>Grises</p>
-							</a>
-						</div>
-						-->
 					</div>
 				</div>	
 			</div>
@@ -527,56 +333,7 @@
 						}	
 					}
 				?>
-					<!--
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Verdes</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Blancas</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Amarillas</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Rojas</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Naranjas</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Negras</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Verdes</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Grises</p>
-						</a>
-					</div>
-					-->
+					
 				</div>
 			</div>	
 		</div>
@@ -585,10 +342,7 @@
 	
 
 	<h2 style="font-weight: 700; font-size: 60px; margin-bottom: 50px; text-align: center;"><?php echo $categorias[217]; ?></h2>
-				
-	<!-- <h2 style="font-weight: 700; font-size: 60px; margin-bottom: 50px; text-align: center;">Sillas por características</h2> -->
-	
-	
+					
 					<div class="container-info" style="background-color: #ECECEC; padding: 30px; max-width: 1137px; margin: 20px auto;">
 						<div class="titular">
 							<h3>Espacios acogedores </h3>
@@ -616,68 +370,15 @@
 						}	
 					}
 				?>	
-					<!--
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Verdes</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Blancas</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Amarillas</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Rojas</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Naranjas</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Negras</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Verdes</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Grises</p>
-						</a>
-					</div>
-					-->
+					
 				</div>
 			</div>	
 		</div>
 	</div>
 	</div>
 	
-	
-	<!-- <h2 style="font-weight: 700; font-size: 60px; margin-bottom: 50px; text-align: center;">Sillas por tipos</h2> -->
 	<h2 style="font-weight: 700; font-size: 60px; margin-bottom: 50px; text-align: center;"><?php echo $categorias[240]; ?></h2>
-				
 
-	
 					<div class="container-info" style="background-color: #ECECEC; padding: 30px; max-width: 1137px; margin: 20px auto;">
 						<div class="titular">
 							<h3>Espacios acogedores </h3>
@@ -705,56 +406,7 @@
 						}	
 					}
 				?>
-					<!--
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Verdes</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Blancas</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Amarillas</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Rojas</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Naranjas</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Negras</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Verdes</p>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3">
-						<a href="" class="item">
-							<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />
-							<p>Grises</p>
-						</a>
-					</div>
-					-->
+					
 				</div>
 			</div>	
 		</div>
@@ -1081,4 +733,5 @@
 			</div>
 		</div>
 	</div>
+
 <?php get_footer(); ?>

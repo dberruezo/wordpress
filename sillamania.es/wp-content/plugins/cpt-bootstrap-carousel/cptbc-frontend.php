@@ -13,14 +13,15 @@
 
 // Shortcode
 function cptbc_shortcode($atts, $content = null) {
-		// Set default shortcode attributes
+	// Set default shortcode attributes
 	$options = get_option( 'cptbc_settings' );
+	//print_r($atts);
 	if(!$options){
 		cptbc_set_options ();
 		$options = get_option( 'cptbc_settings' );
 	}
 	$options['id'] = '';
-
+	$options['category'] = $atts['category'];
 	// Parse incomming $atts into an array and merge it with $defaults
 	$atts = shortcode_atts($options, $atts);
 
@@ -78,164 +79,153 @@ function cptbc_frontend($atts){
 	if(count($images) > 0){
 		ob_start();
 		?>
+	
+		<?php //print_r($images); ?>
 
-		<div class="container-hero"> 
+		<div class="container-hero" id="cptbc_<?php echo $id; ?>"> 
 		
-		<div class="carrusel-hero">
-			<div class="item"></div>
-			<div class="item"></div>
-			<div class="item"></div>				
-		</div>
-
-		<div class="container-description">
-			<p class="desde">Desde</p>
-			
-			<div class="carrusel-hero-titular">	
-				<div class="item">	
-					<div class="titular">
-						<h3>Sofá Titular Uno</h3>
-						<a href="">Ver producto </a>				
-					</div>
-				</div>
-				<div class="item">	
-					<div class="titular">
-						<h3>Sofá Titular Dos</h3>
-						<a href="">Ver producto </a>				
-					</div>
-				</div>
-				<div class="item">	
-					<div class="titular">
-						<h3>Sofá Titular Tres</h3>
-						<a href="">Ver producto </a>				
-					</div>
-				</div>
+			<div class="carrusel-hero">
+				<?php foreach ($images as $key => $image) { ?>	
+					<div class="item" style="background-image:url('<?php echo $image['img_src'];  ?>')"></div>
+				<?php } ?>		
 			</div>
 
-			<div class="carrusel-hero-precio">	
-				<div class="item">	
-					<div class="precio">
-						<p class="cantidad">€ <span>790</span> <span class="ud">ud</span></p>
-					</div>	
+			<div class="container-description">
+				<p class="desde">Desde</p>
+				
+				<div class="carrusel-hero-titular">	
+					<?php foreach ($images as $key => $image) { ?>
+						<div class="item">	
+							<div class="titular">
+								<h3><?php echo $image['title']?></h3>
+								<a href="<?php echo $image['url']?>">Ver producto</a>				
+							</div>
+						</div>
+					<?php } ?>
 				</div>
-				<div class="item">	
-					<div class="precio">
-						<p class="cantidad">€ <span>850</span> <span class="ud">ud</span></p>
-					</div>	
-				</div>
-				<div class="item">	
-					<div class="precio">
-						<p class="cantidad">€ <span>320</span> <span class="ud">ud</span></p>
-					</div>	
+
+				<div class="carrusel-hero-precio">	
+					<?php foreach ($images as $key => $image) { ?>
+						<div class="item">	
+							<div class="precio">
+								<p class="cantidad">€ <span>
+								<?php echo $image['content'] ?></span> 
+								<span class="ud">ud</span></p>
+							</div>	
+						</div>
+					<?php } ?>
 				</div>
 			</div>
-
-		</div>
 		
 	</div>
+		
 
-		<div id="cptbc_<?php echo $id; ?>" class="carousel slide" <?php if($atts['use_javascript_animation'] == '0'){ echo ' data-ride="carousel"'; } ?> data-interval="<?php echo $atts['interval']; ?>">
+		<!--
+		<div id="cptbc_<?php //echo $id; ?>" class="carousel slide" <?php //if($atts['use_javascript_animation'] == '0'){ echo ' data-ride="carousel"'; } ?> data-interval="<?php // echo $atts['interval']; ?>">
 			
 			<?php // First content - the carousel indicators
-			if( count( $images ) > 1 ){ ?>
+			//if( count( $images ) > 1 ){ ?>
 				<ol class="carousel-indicators">
-				<?php foreach ($images as $key => $image) { ?>
-					<li data-target="#cptbc_<?php echo $id; ?>" data-slide-to="<?php echo $key; ?>" <?php echo $key == 0 ? 'class="active"' : ''; ?>></li>
-				<?php } ?>
+				<?php //foreach ($images as $key => $image) { ?>
+					<li data-target="#cptbc_<?php // echo $id; ?>" data-slide-to="<?php // echo $key; ?>" <?php // echo $key == 0 ? 'class="active"' : ''; ?>></li>
+				<?php // } ?>
 				</ol>
-			<?php } ?>
+			<?php // } ?>
 
 			<div class="carousel-inner">
 			<?php
 			// Carousel Content
-			foreach ($images as $key => $image) {
-				
-				if( !isset($atts['link_button']) ) {
-					$atts['link_button'] = 0;
-				}
-				
+			//foreach ($images as $key => $image) {
+				//if( !isset($atts['link_button']) ) {
+					//$atts['link_button'] = 0;
+				//}
 				// Build anchor link so it can be reused
-				$linkstart = '';
-				$linkend = '';
-				if($image['url'] && $atts['link_button'] == 0) {
-					$linkstart = '<a href="'.$image['url'].'"';
-					if($image['url_openblank']) {
-						$linkstart .= ' target="_blank"';
-					}
-					$linkstart .= '>';
-					$linkend = '</a>';
-				} ?>
+				//$linkstart = '';
+				//$linkend = '';
+				//if($image['url'] && $atts['link_button'] == 0) {
+					//$linkstart = '<a href="'.$image['url'].'"';
+					//if($image['url_openblank']) {
+						//$linkstart .= ' target="_blank"';
+					//}
+					//$linkstart .= '>';
+					//$linkend = '</a>';
+				//} ?>
 
-				<div class="item <?php echo $key == 0 ? 'active' : ''; ?>" id="cptbc-item-<?php echo $image['post_id']; ?>" <?php if($atts['use_background_images'] == 1){ echo ' style="height: '.$atts['background_images_height'].'px; background: url(\''.$image['img_src'].'\') no-repeat center center ; -webkit-background-size: ' . $atts['select_background_images_style_size'] . '; -moz-background-size: ' . $atts['select_background_images_style_size'] . '; -o-background-size: ' . $atts['select_background_images_style_size'] . '; background-size: ' . $atts['select_background_images_style_size'] . ';"'; } ?>>
+				<div class="item <?php // echo $key == 0 ? 'active' : ''; ?>" id="cptbc-item-<?php // echo $image['post_id']; ?>" <?php // if($atts['use_background_images'] == 1){ echo ' style="height: '.$atts['background_images_height'].'px; background: url(\''.$image['img_src'].'\') no-repeat center center ; -webkit-background-size: ' . $atts['select_background_images_style_size'] . '; -moz-background-size: ' . $atts['select_background_images_style_size'] . '; -o-background-size: ' . $atts['select_background_images_style_size'] . '; background-size: ' . $atts['select_background_images_style_size'] . ';"'; } ?>>
 					<?php
 					// Regular behaviour - display image with link around it
-					if($atts['use_background_images'] == 0){
-						echo $linkstart.$image['image'].$linkend;
+					// if($atts['use_background_images'] == 0){
+						// echo $linkstart.$image['image'].$linkend;
 					// Backgorund images mode - need block level link inside carousel link if we have a linl
-					} else if($image['url'] && $atts['link_button'] == 0) {
-						echo '<a href="'.$image['url'].'"';
-						if($image['url_openblank']) {
-							$linkstart .= ' target="_blank"';
-						}
-						echo ' style="display:block; width:100%; height:100%;">&nbsp;</a>';
-					} 
+					// } else if($image['url'] && $atts['link_button'] == 0) {
+						// echo '<a href="'.$image['url'].'"';
+						// if($image['url_openblank']) {
+							// $linkstart .= ' target="_blank"';
+						// }
+						// echo ' style="display:block; width:100%; height:100%;">&nbsp;</a>';
+					// } 
 					// The Caption div
-					if(($atts['showcaption'] === 'true' && (strlen($image['title']) > 0 || strlen($image['content']) > 0)) || ($image['url'] && $atts['link_button'] == 1))  {
-						echo '<div class="carousel-caption">';
+					// if(($atts['showcaption'] === 'true' && (strlen($image['title']) > 0 || strlen($image['content']) > 0)) || ($image['url'] && $atts['link_button'] == 1))  {
+						// echo '<div class="carousel-caption">';
 						// Title
-						if(strlen($image['title']) > 0){
-							echo $atts['before_title'].$linkstart.$image['title'].$linkend.$atts['after_title'];
-						}
+						// if(strlen($image['title']) > 0){
+							// echo $atts['before_title'].$linkstart.$image['title'].$linkend.$atts['after_title'];
+						// }
 						// Caption
-						if(strlen($image['content']) > 0){
-							echo $atts['before_caption'].$linkstart.$image['content'].$linkend.$atts['after_caption'];
-						}
+						// if(strlen($image['content']) > 0){
+							// echo $atts['before_caption'].$linkstart.$image['content'].$linkend.$atts['after_caption'];
+						// }
 						// Link Button
-						if($image['url'] && $atts['link_button'] == 1){ 
-							if(isset($atts['link_button_before'])) echo $atts['link_button_before'];
-							$target = '';
-							if($image['url_openblank']) {
-								$target = ' target="_blank"';
-							}
-							echo '<a href="'.$image['url'].'" '.$target.' class="'.$atts['link_button_class'].'">';
-							if(isset($image['link_text']) && strlen($image['link_text']) > 0) {
-								echo $image['link_text'];
-							} else {
-								echo $atts['link_button_text'];
-							}
-							echo '</a>';
-							if(isset($atts['link_button_after'])) echo $atts['link_button_after'];
-						}
-						echo '</div>';
-					} ?>
+						// if($image['url'] && $atts['link_button'] == 1){ 
+							// if(isset($atts['link_button_before'])) echo $atts['link_button_before'];
+							// $target = '';
+							// if($image['url_openblank']) {
+								// $target = ' target="_blank"';
+							// }
+							// echo '<a href="'.$image['url'].'" '.$target.' class="'.$atts['link_button_class'].'">';
+							// if(isset($image['link_text']) && strlen($image['link_text']) > 0) {
+								// echo $image['link_text'];
+							// } else {
+								// echo $atts['link_button_text'];
+							// }
+							// echo '</a>';
+							// if(isset($atts['link_button_after'])) echo $atts['link_button_after'];
+						// }
+						// echo '</div>';
+					// } ?>
 				</div>
 
-			<?php } ?>
+			<?php // } ?>
 			</div>
 
 			<?php // Previous / Next controls
-			if( count( $images ) > 1 ){
-				if($atts['showcontrols'] === 'true' && $atts['twbs'] == '3') { ?>
-					<a class="left carousel-control" href="#cptbc_<?php echo $id; ?>" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-					<a class="right carousel-control" href="#cptbc_<?php echo $id; ?>" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-				<?php } else if($atts['showcontrols'] === 'true'){ ?>
-					<a class="left carousel-control" href="#cptbc_<?php echo $id; ?>" data-slide="prev">‹</a>
-					<a class="right carousel-control" href="#cptbc_<?php echo $id; ?>" data-slide="next">›</a>
-				<?php } else if($atts['showcontrols'] === 'custom' && $atts['twbs'] == '3' &&  $atts['customprev'] != '' &&  $atts['customnext'] != ''){ ?>
-					<a class="left carousel-control" href="#cptbc_<?php echo $id; ?>" data-slide="prev"><span class="<?php echo $atts['customprev'] ?> icon-prev"></span></a>
-					<a class="right carousel-control" href="#cptbc_<?php echo $id; ?>" data-slide="next"><span class="<?php echo $atts['customnext'] ?> icon-next"></span></a>
-				<?php }
-			} ?>
+			// if( count( $images ) > 1 ){
+				// if($atts['showcontrols'] === 'true' && $atts['twbs'] == '3') { ?>
+					<a class="left carousel-control" href="#cptbc_<?php // echo $id; ?>" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+					<a class="right carousel-control" href="#cptbc_<?php // echo $id; ?>" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+				<?php // } else if($atts['showcontrols'] === 'true'){ ?>
+					<a class="left carousel-control" href="#cptbc_<?php // echo $id; ?>" data-slide="prev">‹</a>
+					<a class="right carousel-control" href="#cptbc_<?php // echo $id; ?>" data-slide="next">›</a>
+				<?php // } else if($atts['showcontrols'] === 'custom' && $atts['twbs'] == '3' &&  $atts['customprev'] != '' &&  $atts['customnext'] != ''){ ?>
+					<a class="left carousel-control" href="#cptbc_<?php // echo $id; ?>" data-slide="prev"><span class="<?php echo $atts['customprev'] ?> icon-prev"></span></a>
+					<a class="right carousel-control" href="#cptbc_<?php // echo $id; ?>" data-slide="next"><span class="<?php echo $atts['customnext'] ?> icon-next"></span></a>
+				<?php // }
+			// } ?>
 
 		</div>
+		-->		
+
 
         <?php // Javascript animation fallback
         if($atts['use_javascript_animation'] == '1'){ ?>
 		<script type="text/javascript">
+			/*
 			jQuery(document).ready(function() {
-				jQuery('#cptbc_<?php echo $id; ?>').carousel({
-					interval: <?php echo $atts['interval']; ?>
+				jQuery('#cptbc_<?php //echo $id; ?>').carousel({
+					interval: <?php //echo $atts['interval']; ?>
 				});
 			});
+			*/
 		</script>
         <?php }
 

@@ -286,6 +286,7 @@
 				</ul>
 			</div>
 		</div>
+		
 		<div class="nav">
 			<div class="container-cabecera">
 				<a class="logo" href="" ><img src="_/images/sofas48.png" alt="" title="Titulo de la imagen" /></a>
@@ -313,6 +314,7 @@
 				<li><a href="">Ofertas</a></li>
 				<li><a href="">Más vendidos</a></li>
 			</ul>
+
 			<div class="right">
 				<div class="enlaces">
 					<ul>
@@ -357,6 +359,7 @@
 		  	<li class="active">Chaiselongue</li>
 		</ol>	
 	</div>
+
 	<div class="container">
 		<div class="container-hero">
 			<div class="titular">

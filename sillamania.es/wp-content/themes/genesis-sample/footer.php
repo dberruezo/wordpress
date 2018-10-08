@@ -79,6 +79,14 @@
 		</div>
 	</footer>
 	
+	<script src="http://localhost/sillamania.es/maquetas/_/js/jquery-1.12.4.min.js"></script>
+	<script src="http://localhost/sillamania.es/maquetas/_/js/bootstrap.min.js"></script>
+	<script src="http://localhost/sillamania.es/maquetas/_/js/slick.min.js"></script>
+	<script src="http://localhost/sillamania.es/maquetas/_/js/bootstrap-select.min.js"></script>
+	<script src="http://localhost/sillamania.es/maquetas/_/js/main.js"></script>
+	<script src="http://localhost/sillamania.es/maquetas/_/js/distribuidora.js"></script>
+	<script src="http://localhost/sillamania.es/maquetas/_/js/placeholders.min.js"></script>
+	<script src="http://localhost/sillamania.es/maquetas/_/js/jquery-ui.min.js"></script>
 	
 </body>
 </html>

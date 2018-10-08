@@ -1,0 +1,22 @@
+PROYECTO
+-------------------------------------
+
+EN LOS PERMALINKS AL PRINCIPIO ESTABA PUESTO ESSTRUCTURA PERSONALZIADA
+------------------------------------------------------------------------
+1.- Estructura personalizada	http://localhost/sillamania.es  
+/%category%/%postname%/
+
+2.- Etiquetas disponibles:
+%year% %monthnum% %day% %hour% %minute% %second% %post_id% %postname% %category% %author%
+
+
+
+MOBILE
+------------------------------------------------------------------------
+1.- MEDIA QUERY TAMANO MOVIL CUANDO POPUP ABIERTO NO SE HA DE MOSTRAR LA IMAGEN DE LA DERECHA .... ASÍ EL POPUP QUEDARA RECTANGULAR VERTICAL COMO EN EL TAMANO
+DE UN MOVIL, LUEGO CUANDO SE CARGUE HARÁ UNA PEQUEÑA ANIMACION HACIA ARRIBA Y OCUPARA EL 75% DE LA PANTALLA VERTICALMENTE
+
+
+PLUGIN SLIDER
+------------------------------------------------------------------------
+Campo Expert: Link: http://www.google.com; Precio: 32.000€

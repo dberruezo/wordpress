@@ -21,6 +21,7 @@ add_action('plugins_loaded', 'cptbc_loadtranslations');
 // Custom Post Type Setup
 ////////////////////////////
 add_action( 'init', 'cptbc_post_type' );
+
 function cptbc_post_type() {
 	$labels = array(
 		'name' => __('Carousel Images', 'cpt-bootstrap-carousel'),
@@ -52,6 +53,7 @@ function cptbc_post_type() {
 		'menu_icon' => 'dashicons-images-alt',
 		'supports' => array('title','excerpt','thumbnail', 'page-attributes')
 	); 
+
 	register_post_type('cptbc', $args);
 }
 // Create a taxonomy for the carousel post type

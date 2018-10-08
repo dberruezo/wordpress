@@ -1,5 +1,4 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 	<meta charset="utf-8">
@@ -8,16 +7,15 @@
 	<title>Ofiprix</title>
 	<link href="_/css/bootstrap.min.css" rel="stylesheet">
 	<link href="_/css/styles.css" rel="stylesheet">
-	
 	<!--[if lt IE 9]>
 	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
-			
 	<!--[if lt IE 10]>
 	    <link rel="stylesheet" type="text/css" href="_/css/ie.css" />
 	<![endif]-->
 </head>
+
 <!-- Carrito -->
 <div class="container-fondo-carrito"></div>
 <!-- Carrito -->
@@ -83,6 +81,7 @@
 			</div>
 			<i class="fa icon-close"></i>
 		</div>
+		
 		<div class="nav">
 			<div class="container-cabecera">
 				<a class="logo" href="" ><img src="_/images/sofas48.png" alt="" title="Titulo de la imagen" /></a>

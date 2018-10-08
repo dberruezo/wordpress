@@ -122,6 +122,7 @@ if (!$_SESSION['modal']){
 			</div>
 			<i class="fa icon-close"></i>
 		</div>
+		
 		<div class="nav">
 			<div class="container-cabecera">
 				<a class="logo" href="" ><img src="_/images/sofas48.png" alt="" title="Titulo de la imagen" /></a>

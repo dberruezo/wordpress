@@ -71,6 +71,7 @@ function cptbc_admin_init_custpost(){
 	add_meta_box("cptbc_image_url", "Image Link URL", "cptbc_image_url", "cptbc", "side", "low");
 }
 add_action("add_meta_boxes", "cptbc_admin_init_custpost");
+
 function cptbc_mb_save_details(){
 	global $post;
 	if (isset($_POST["cptbc_image_url"])) {
@@ -147,7 +148,7 @@ function cptbc_contextual_help_tab() {
             'id' => 'cptbc_contextual_help',
             'title' => __('Carousel'),
             'content' => __($help)
-                ) );
+            ));
         }
     } // if( $screen->post_type === 'cptbc'){
 add_action('load-post.php', 'cptbc_contextual_help_tab');
