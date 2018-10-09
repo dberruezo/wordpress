@@ -38,6 +38,7 @@ if (!$_SESSION['modal']){
 </head>
 
 <body class="home">
+	
 	<div class="modal fade modal-bienvenida" role="dialog">
 		<div class="modal-dialog">
 			<!-- Modal content-->

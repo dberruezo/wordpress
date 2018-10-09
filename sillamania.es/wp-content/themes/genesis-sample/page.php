@@ -11,8 +11,11 @@
  *
  */
 
- // Remove default loop
+ /*
+  *  All genesis functions
+  */
 
+ // Remove default loop
 /*
 remove_action( 'genesis_sidebar', 'genesis_do_sidebar' );
 remove_action( 'genesis_loop', 'genesis_do_loop' );
@@ -51,9 +54,8 @@ function wps_category_do_loop_intro() {
         echo '</div>';
     }
 }
-
-genesis();
 */
+
 
 
 /*
@@ -69,15 +71,85 @@ genesis();
  * Funciones David
  */
 
- //$productos = menu_products_by_categoria(get_field("prestashop_id", $pos->ID ));   
+get_header(); 
+if (get_the_title() == "home"){ ?>
+	<?php echo ('<script>jQuery(document).ready(function(){ jQuery(".entry-title").hide(); });</script>'); ?>
+	<body class="home">
+	<div class="modal fade modal-bienvenida" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<span class="icon-close close" data-dismiss="modal"></span>
+				<div class="modal-body">
+					<div class="text-container">
+						<div class="titular">
+							<h2>Bienvenido </h2>
+						</div>
+						<div class="description">
+							<p>Lorem ipsum dolor sit amet, lorem ipsum consectetur.</p>
+						</div>
+				
+						<form action="" method="" id="formulario-bienvenida">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Name*" />
+							</div>
+							<div class="form-group">
+								<input type="email" class="form-control" placeholder="Mail*" />
+							</div>
+							<p class="obligatorio">*Datos obligatorios</p>
+							<button type="submit" class="btn btn-rojo">OK</button>
+							<div class="checkbox">
+		                        <input id="checkbox5" type="checkbox" class="styled" />
+		                        <label for="checkbox5">
+		                            Deseo recibir información de Ofiprix
+		                        </label>
+		                    </div>
+						</form>
+					</div>				
+	
+					<div class="container-img"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal fade modal-cookies" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-body">
+					<!-- <form action="" method="" id="formulario-cookies"> -->
+						<div class="texto-legal">
+							<p>Utilizamos cookies propias y de terceros para ofrecerte una mejor experiencia y servicio, de acuerdo a tus hábitos de navegación. Si continúas navegando, consideramos que aceptas su uso. Puedes obtener más información <a hred=""> política de cookies.</a></p>
+					</div>
+						<button type="button" class="btn btn-borde-rojo">Aceptar cookies</button>
+					<!-- </form> -->		
+				</div>
+			</div>
+		</div>
+	</div>
 
-?>
+	<div class="podemos-ayudarte">
+		<div class="cerrar">
+			<span class="icon-close"></span>
+		</div>
+		<div class="text-container">
+			<div class="description">
+				<p>Podemos ayudarte </p>
+			</div>
+			<div class="telefono">
+				<p>902 120 000</p>
+			</div>
+			<a class="btn btn-borde-rojo-tw" href="" >Contactar</a>			
+		</div>
+	</div>
+	<?php get_template_part( "template-parts/cabecera_home"); ?>
+	
+<?php }else{  ?>
+	<body class="distribuidora">
+	<?php $productos = menu_products_by_categoria(get_field("prestashop_id", $pos->ID ));  ?>
+	<div class="container-fondo-carrito"></div>
 
-<?php get_header(); ?>
-
-<!-- Carrito -->
-<div class="container-fondo-carrito"></div>
-<!-- Carrito -->
 <div class="block block-minicart empty ui-dialog-content ui-widget-content" id="ui-id-2">
     <div id="minicart-content-wrapper">
 		<div class="block-content">
@@ -89,7 +161,7 @@ genesis();
 	            <span class="count"><i class="fa icon-buy_on"><span>0</span></i></span>
 	            <span>TU CESTA</span>
 	        </div>
-	        <!-- Si no tienes productos en la cesta -->
+	        
 			<div class="subtitle empty">
 	            <h2>Tu cesta está vacía</h2>
 	            <a class="enlace-line" href="">Ver catálogo de productos</a>
@@ -123,9 +195,9 @@ genesis();
 	</div>
 </div>
 
+
 <body class="distribuidora">
 
-<!-- <body class="distribuidora"> -->
 
 	<header>
 		<div class="top-bar">
@@ -696,7 +768,6 @@ genesis();
 			</div>
 		</div>
 	</div>
-	
 	<script>
 		/*
 		 * Genesis framework 
@@ -709,6 +780,17 @@ genesis();
 			$('body').addClass('distribuidora');	
 			// removeClass('change_me').
 		});
-	</script>	
+	</script>
+<?php } ?>
+<?php 
 
-    <?php get_footer(); ?>
+/*
+ * Genesis execute
+ */
+genesis();
+
+/*
+ * Footer execute
+ */
+get_footer();
+?>

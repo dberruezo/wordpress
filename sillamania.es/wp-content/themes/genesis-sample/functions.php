@@ -1920,7 +1920,7 @@ function menupilar_menu($elgrupo) {
 }
 
 function menu_products_by_categoria($id_categoria){
-	echo "Consulta productos por categorias";	
+	//echo "Consulta productos por categorias";	
 }
 
 function listarcategorias_menu($categorias,$id) {
@@ -1974,6 +1974,7 @@ function categorias_raiz(){
 	return $categorias_raiz;
 }
 
+/*
 function subcategorias_raiz(){
 	global $categorias_raiz;
 	foreach ($categorias_raiz as $indice => $nombre){
@@ -1997,7 +1998,624 @@ function subcategorias_raiz(){
 	//print_r($subcategorias);
 	return $subcategorias;
 }
+*/
 
+function subcategorias_raiz($atts = [], $content = null, $tag = ''){
+	$categorias    = categorias_raiz();
+	global $categorias_raiz;
+	foreach ($categorias_raiz as $indice => $nombre){
+		$sql="SELECT categorylang.name,category.id_category ";
+		$sql.="from ps_category as category "; 
+		$sql.="LEFT JOIN ps_category_lang as categorylang "; 
+		$sql.="ON categorylang.id_category = category.id_category ";
+		$sql.="where categorylang.id_lang = 1 ";
+		$sql.="AND category.id_parent = ".$indice;
+		$query = $GLOBALS['wpdb']->get_results( $sql, OBJECT );
+					foreach ($query as $row) {
+						if (!is_array($subcategorias[$indice])){
+							$subcategorias[$indice] = array();
+						}
+						$temp = array(
+							$row->id_category => $row->name
+						);
+						array_push($subcategorias[$indice],$temp);
+					}
+	}
+	$str='<div class="catalogo">';
+	$str.='<div class="container-catalogo">';
+	$str.='	<div class="container">';
+	$str.='		<div class="container-img">';
+	$str.='			<div class="row">';
+	 
+	foreach($subcategorias[$atts['subcategoria']] as $sub){
+		foreach($sub as $clave =>$cat_name){  
+			$str.= '<div class="col-xs-12 col-sm-6 col-md-3">';
+				$str.= '<a href="" class="item">';
+				$str.= '<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />';
+				$str.= '<p>'.$cat_name.'</p>';
+				$str.= '</a>';
+			$str.= '</div>';
+		}
+	}
+	$str.='			</div>';
+	$str.='		</div>';	
+	$str.='	</div>';
+	$str.='</div>';
+	$str.='</div>';
+	return $str;
+}
+
+add_shortcode( 'subcategorias_raiz', 'subcategorias_raiz' );
+
+function titulo_categoria($atts = [], $content = null, $tag = ''){
+	$categorias    = categorias_raiz();
+	// $categorias[233]
+	$str= '<h2 style="font-weight: 700; font-size: 60px; margin-bottom: 50px; text-align: center;">'.$categorias[$atts['subcategoria']].'</h2>';
+	$str.= '<div class="container-info" style="background-color: #ECECEC; padding: 30px; max-width: 1137px; margin: 20px auto;">';
+	$str.= '<div class="titular">';
+	$str.= '	<h3>Espacios acogedores </h3>';
+	$str.= '</div>';
+	$str.= '<div class="description">';
+	$str.= '	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. </p>';
+	$str.= '	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. </p>';
+	$str.= '</div>';
+	$str.='</div>';
+	return $str;
+}
+
+add_shortcode( 'titulo_categoria', 'titulo_categoria' );
+
+function encuentra_el_mejor_sofa(){
+	$str='<div class="container">';
+	$str.='	<div class="titular-separador">';
+	$str.='		<h2>Encuentra el mejor sofá para tu casa</h2>';
+	$str.='	</div>';
+	$str.='</div>';
+	return $str;
+}
+
+add_shortcode( 'encuentra_el_mejor_sofa', 'encuentra_el_mejor_sofa' );
+
+function bloque_mas_vendidos($atts = [], $content = null, $tag = ''){
+	$str='<div class="container-mas-vendidos bloque-destacados">';
+	$str.='	<div class="container">';
+	$str.='		<div class="row">';
+	$str.='	<div class="col-xs-12 col-md-3">';
+	$str.='		<div class="titular">';
+	$str.='			<h2>Los más vendidos</h2>';
+	$str.='			<a href="" >Explorar</a>';
+	$str.='		</div>';
+	$str.='	</div>';
+	$str.='	<div class="col-xs-12 col-md-9">';
+	$str.='		<div class="carrusel-mas-vendidos carrusel productos">';
+	$str.='			<a class="item-prod">';
+	$str.='				<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />';
+	$str.='				<div class="container-text">';
+	$str.='					<div class="wrapper-position">';
+	$str.='						<div class="extra-info porcentaje-descuento">';
+	$str.='							<p>20%</p>';
+	$str.='						</div>';
+	$str.='						<div class="info">';
+	$str.='							<div class="descripcion">';
+	$str.='								<p>Sillón tela confort</p>';
+	$str.='							</div>';
+	$str.='							<div class="price-box">';
+	$str.='								<span class="price-container old-price">';
+	$str.='									<span class="price-wrapper ">€ 320</span> <span class="unidad">ud</span>';
+	$str.='								</span>';
+	$str.='								<span class="price-container special-price">';
+	$str.='									<span class="price-wrapper ">€ 300</span> <span class="unidad">ud</span>';
+	$str.='								</span>';
+	$str.='							</div>';							
+	$str.='						</div>';	
+	$str.='					</div>';
+	$str.='				</div>';		
+	$str.='			</a>';
+	$str.='				<a class="item-prod">';
+	$str.='				<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />';
+	$str.='				<div class="container-text">';
+	$str.='					<div class="wrapper-position">';
+	$str.='						<div class="extra-info porcentaje-descuento">';
+	$str.='							<p>20%</p>';
+	$str.='						</div>';
+	$str.='						<div class="info">';
+	$str.='							<div class="descripcion">';
+	$str.='								<p>Sillón tela confort</p>';
+	$str.='							</div>';
+	$str.='							<div class="price-box">';
+	$str.='								<span class="price-container old-price">';
+	$str.='									<span class="price-wrapper ">€ 320</span> <span class="unidad">ud</span>';
+	$str.='								</span>';
+	$str.='								<span class="price-container special-price">';
+	$str.='									<span class="price-wrapper ">€ 300</span> <span class="unidad">ud</span>';
+	$str.='								</span>';
+	$str.='							</div>';							
+	$str.='						</div>';	
+	$str.='					</div>';
+	$str.='				</div>';		
+	$str.='			</a>';
+	$str.='		<a class="item-prod">';
+	$str.='				<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />';
+	$str.='				<div class="container-text">';
+	$str.='					<div class="wrapper-position">';
+	$str.='						<div class="extra-info porcentaje-descuento">';
+	$str.='							<p>20%</p>';
+	$str.='						</div>';
+	$str.='						<div class="info">';
+	$str.='							<div class="descripcion">';
+	$str.='								<p>Sillón tela confort</p>';
+	$str.='							</div>';
+	$str.='							<div class="price-box">';
+	$str.='								<span class="price-container old-price">';
+	$str.='									<span class="price-wrapper ">€ 320</span> <span class="unidad">ud</span>';
+	$str.='								</span>';
+	$str.='								<span class="price-container special-price">';
+	$str.='									<span class="price-wrapper ">€ 300</span> <span class="unidad">ud</span>';
+	$str.='								</span>';
+	$str.='							</div>';							
+	$str.='						</div>';	
+	$str.='					</div>';
+	$str.='				</div>';		
+	$str.='			</a>';
+	$str.='		</div>';
+	$str.='	</div>';
+	$str.='</div>';	
+	$str.='	</div>';	
+	$str.='</div>';
+	return $str;
+}
+
+add_shortcode( 'bloque_mas_vendidos', 'bloque_mas_vendidos' );
+
+function banner_prueba(){
+	$str='<div class="container-tapiceria">';
+	$str.='	<div class="container">';
+	$str.='<div class="container-text">';
+	$str.='	<h2>La tapicería perfecta</h2>';
+	$str.='	<div class="description">';
+	$str.='		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>';
+	$str.='	</div>';
+	$str.='</div>';
+	$str.='<div class="container-img">';
+	$str.='	<div class="row">';
+	$str.='		<div class="col-xs-12 col-sm-4">';
+	$str.='			<div class="row">';
+	$str.='				<div class="col-xs-6 col-sm-12">';
+	$str.='					<div class="item">';
+	$str.='						<img src="http://placehold.it/768x768/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />';
+	$str.='					</div>';
+	$str.='				</div>';
+	$str.='				<div class="col-xs-6 col-sm-12">';
+	$str.='					<div class="item">';
+	$str.='						<img src="http://placehold.it/768x768/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />';
+	$str.='					</div>';
+	$str.='				</div>';
+	$str.='			</div>';
+	$str.='		</div>';
+	$str.='		<div class="col-xs-12 col-sm-8">';
+	$str.='			<div class="item">';
+	$str.='				<img src="http://placehold.it/768x768/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />';
+	$str.='			</div>';
+	$str.='		</div>';
+	$str.='	</div>';
+	$str.='</div>';
+	$str.='	</div>';
+	$str.='</div>';
+	return $str;
+}
+
+add_shortcode( 'banner_prueba', 'banner_prueba' );
+
+function ofertas_destacadas(){
+	$str='<div class="container-ofertas-destacadas bloque-destacados">';
+	$str.='	<div class="container">';
+	$str.='		<div class="row">';
+	$str.='			<div class="col-xs-12 col-md-3">';
+	$str.='				<div class="titular">';
+	$str.='					<h2>Ofertas destacadas</h2>';
+	$str.='					<a href="" >Explorar</a>';
+	$str.='				</div>';
+	$str.='			</div>';
+	$str.='			<div class="col-xs-12 col-md-9">';
+	$str.='				<div class="carrusel-mas-vendidos carrusel productos">';
+	$str.='					<a class="item-prod">';
+	$str.='						<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />';
+	$str.='						<div class="container-text">';
+	$str.='							<div class="wrapper-position">';
+	$str.='								<div class="extra-info porcentaje-descuento">';
+	$str.='									<p>20%</p>';
+	$str.='								</div>';
+	$str.='								<div class="info">';
+	$str.='									<div class="descripcion">';
+	$str.='										<p>Sillón tela confort</p>';
+	$str.='									</div>';
+	$str.='									<div class="price-box">';
+	$str.='										<span class="price-container old-price">';
+	$str.='											<span class="price-wrapper ">€ 320</span> <span class="unidad">ud</span>';
+	$str.='										</span>';
+	$str.='										<span class="price-container special-price">';
+	$str.='											<span class="price-wrapper ">€ 300</span> <span class="unidad">ud</span>';
+	$str.='										</span>';
+	$str.='									</div>';					
+	$str.='								</div>';	
+	$str.='							</div>';
+	$str.='						</div>';		
+	$str.='					</a>';
+	$str.='					<a class="item-prod">';
+	$str.='						<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />';
+	$str.='						<div class="container-text">';
+	$str.='							<div class="wrapper-position">';
+	$str.='								<div class="extra-info porcentaje-descuento">';
+	$str.='									<p>20%</p>';
+	$str.='								</div>';
+	$str.='								<div class="info">';
+	$str.='									<div class="descripcion">';
+	$str.='										<p>Sillón tela confort</p>';
+	$str.='									</div>';
+	$str.='									<div class="price-box">';
+	$str.='										<span class="price-container old-price">';
+	$str.='											<span class="price-wrapper ">€ 320</span> <span class="unidad">ud</span>';
+	$str.='										</span>';
+	$str.='										<span class="price-container special-price">';
+	$str.='											<span class="price-wrapper ">€ 300</span> <span class="unidad">ud</span>';
+	$str.='										</span>';
+	$str.='									</div>';							
+	$str.='								</div>';	
+	$str.='							</div>';
+	$str.='						</div>';		
+	$str.='					</a>';
+	$str.='					<a class="item-prod">';
+	$str.='						<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />';
+	$str.='						<div class="container-text">';
+	$str.='							<div class="wrapper-position">';
+	$str.='								<div class="extra-info porcentaje-descuento">';
+	$str.='									<p>20%</p>';
+	$str.='								</div>';
+	$str.='								<div class="info">';
+	$str.='									<div class="descripcion">';
+	$str.='										<p>Sillón tela confort</p>';
+	$str.='									</div>';
+	$str.='									<div class="price-box">';
+	$str.='										<span class="price-container old-price">';
+	$str.='											<span class="price-wrapper ">€ 320</span> <span class="unidad">ud</span>';
+	$str.='										</span>';
+	$str.='										<span class="price-container special-price">';
+	$str.='											<span class="price-wrapper ">€ 300</span> <span class="unidad">ud</span>';
+	$str.='										</span>';
+	$str.='									</div>';							
+	$str.='								</div>';	
+	$str.='							</div>';
+	$str.='						</div>';		
+	$str.='					</a>';
+	$str.='				</div>';
+	$str.='			</div>';
+	$str.='		</div>';	
+	$str.='	</div>';	
+	$str.='	</div>';
+	return $str;
+}
+
+add_shortcode( 'ofertas_destacadas', 'ofertas_destacadas' );
+
+function carousel_destacados(){
+	$str='<div class="carrusel-destacados">';
+	$str.='	<div class="item">';
+	$str.='		<div class="contenedor-img"></div>';
+	$str.='		<div class="contenedor-info">';
+	$str.='			<div class="titular">';
+	$str.='				<h3>Sofá gris tela</h3>';
+	$str.='			</div>';
+	$str.='			<div class="description">';
+	$str.='				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>';
+	$str.='			</div>';
+	$str.='			<div class="container-desde-precio">';
+	$str.='				<div class="desde">';
+	$str.='					<p>Desde</p>';
+	$str.='				</div>';
+	$str.='				<div class="precio">';
+	$str.='					<p>€ 590 <span>ud</span></p>';
+	$str.='				</div>';
+	$str.='			</div>';
+	$str.='		</div>';
+	$str.='	</div>';
+	$str.='	<div class="item">';
+	$str.='		<div class="contenedor-img"></div>';
+	$str.='		<div class="contenedor-info">';
+	$str.='			<div class="titular">';
+	$str.='				<h3>Titular producto 2</h3>';
+	$str.='			</div>';
+	$str.='			<div class="description">';
+	$str.='				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>';
+	$str.='			</div>';
+	$str.='			<div class="container-desde-precio">';
+	$str.='				<div class="desde">';
+	$str.='					<p>Desde</p>';
+	$str.='				</div>';
+	$str.='				<div class="precio">';
+	$str.='					<p>€ 590 <span>ud</span></p>';
+	$str.='				</div>';
+	$str.='			</div>';
+	$str.='		</div>';
+	$str.='	</div>';
+	$str.='	<div class="item">';
+	$str.='		<div class="contenedor-img"></div>';
+	$str.='		<div class="contenedor-info">';
+	$str.='			<div class="titular">';
+	$str.='				<h3>Titular producto 3</h3>';
+	$str.='			</div>';
+	$str.='			<div class="description">';
+	$str.='				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>';
+	$str.='			</div>';
+	$str.='			<div class="container-desde-precio">';
+	$str.='				<div class="desde">';
+	$str.='					<p>Desde</p>';
+	$str.='				</div>';
+	$str.='				<div class="precio">';
+	$str.='					<p>€ 590 <span>ud</span></p>';
+	$str.='				</div>';
+	$str.='			</div>';
+	$str.='		</div>';
+	$str.='	</div>';
+	$str.='</div>';
+	$str.='<div class="container-te-puede-interesar bloque-destacados">';
+	$str.='	<div class="container">';
+	$str.='		<div class="row">';
+	$str.='			<div class="col-xs-12 col-md-3">';
+	$str.='				<div class="titular">';
+	$str.='					<h2>Te puede interesar</h2>';
+	$str.='					<a href="" >Explorar</a>';
+	$str.='				</div>';
+	$str.='			</div>';
+	$str.='			<div class="col-xs-12 col-md-9">';
+	$str.='				<div class="carrusel-mas-vendidos carrusel productos">';
+	$str.='					<a class="item-prod">';
+	$str.='						<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />';
+	$str.='						<div class="container-text">';
+	$str.='							<div class="wrapper-position">';
+	$str.='								<div class="extra-info porcentaje-descuento">';
+	$str.='									<p>20%</p>';
+	$str.='								</div>';
+	$str.='								<div class="info">';
+	$str.='									<div class="descripcion">';
+	$str.='										<p>Sillón tela confort</p>';
+	$str.='									</div>';
+	$str.='									<div class="price-box">';
+	$str.='										<span class="price-container old-price">';
+	$str.='											<span class="price-wrapper ">€ 320</span> <span class="unidad">ud</span>';
+	$str.='										</span>';
+	$str.='										<span class="price-container special-price">';
+	$str.='											<span class="price-wrapper ">€ 300</span> <span class="unidad">ud</span>';
+	$str.='										</span>';
+	$str.='									</div>';						
+	$str.='								</div>';
+	$str.='							</div>';
+	$str.='						</div>';		
+	$str.='					</a>';
+	$str.='					<a class="item-prod">';
+	$str.='						<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />';
+	$str.='						<div class="container-text">';
+	$str.='							<div class="wrapper-position">';
+	$str.='								<div class="extra-info porcentaje-descuento">';
+	$str.='									<p>20%</p>';
+	$str.='								</div>';
+	$str.='								<div class="info">';
+	$str.='									<div class="descripcion">';
+	$str.='										<p>Sillón tela confort</p>';
+	$str.='									</div>';
+	$str.='									<div class="price-box">';
+	$str.='										<span class="price-container old-price">';
+	$str.='											<span class="price-wrapper ">€ 320</span> <span class="unidad">ud</span>';
+	$str.='										</span>';
+	$str.='										<span class="price-container special-price">';
+	$str.='											<span class="price-wrapper ">€ 300</span> <span class="unidad">ud</span>';
+	$str.='										</span>';
+	$str.='									</div>';							
+	$str.='								</div>';	
+	$str.='							</div>';
+	$str.='						</div>';		
+	$str.='					</a>';
+	$str.='					<a class="item-prod">';
+	$str.='						<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />';
+	$str.='						<div class="container-text">';
+	$str.='							<div class="wrapper-position">';
+	$str.='								<div class="extra-info porcentaje-descuento">';
+	$str.='									<p>20%</p>';
+	$str.='								</div>';
+	$str.='								<div class="info">';
+	$str.='									<div class="descripcion">';
+	$str.='										<p>Sillón tela confort</p>';
+	$str.='									</div>';
+	$str.='									<div class="price-box">';
+	$str.='										<span class="price-container old-price">';
+	$str.='											<span class="price-wrapper ">€ 320</span> <span class="unidad">ud</span>';
+	$str.='										</span>';
+	$str.='										<span class="price-container special-price">';
+	$str.='											<span class="price-wrapper ">€ 300</span> <span class="unidad">ud</span>';
+	$str.='										</span>';
+	$str.='									</div>';							
+	$str.='								</div>';	
+	$str.='							</div>';
+	$str.='						</div>';		
+	$str.='					</a>';
+	$str.='				</div>';
+	$str.='			</div>';			
+	$str.='		</div>';	
+	$str.='	</div>';	
+	$str.='</div>';
+	return $str;
+}
+
+add_shortcode( 'carousel_destacados', 'carousel_destacados' );
+
+function espacios_acogedores(){
+	$str='<div class="container-otros">';
+	$str.='	<div class="container">';
+	$str.='	<div class="row">';
+	$str.='		<div class="col-xs-12 col-sm-8">';
+	$str.='			<div class="container-img"></div>';
+	$str.='			<div class="container-info">';
+	$str.='				<div class="titular">';
+	$str.='					<h3>Espacios acogedores </h3>';
+	$str.='				</div>';
+	$str.='				<div class="description">';
+	$str.='					<p>Disfruta de todas nuestras ofertas y promociones</p>';
+	$str.='				</div>';
+	$str.='				<a class="enlace-line" href="">Descubrir</a>';
+	$str.='			</div>';
+	$str.='		</div>';
+	$str.='		<div class="col-xs-12 col-sm-4">';
+	$str.='			<div class="carrusel-ultima-semana">';
+	$str.='				<div class="item">';
+	$str.='					<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />';
+	$str.='					<div class="description">';
+	$str.='						<p>Descubre lo último de esta semana</p>';
+	$str.='					</div>';
+	$str.='					<a class="enlace-line" href="">Descubrir</a>';
+	$str.='				</div>';
+	$str.='				<div class="item">';
+	$str.='					<img src="http://placehold.it/770x511/bcbcbc" class="img-responsive" alt="Alt de la imagen" title="Titulo de la imagen" />';
+	$str.='					<div class="description">';
+	$str.='						<p>Descubre lo último de esta semana</p>';
+	$str.='					</div>';
+	$str.='					<a class="enlace-line" href="">Descubrir</a>';
+	$str.='				</div>';
+	$str.='			</div>';
+	$str.='		</div>';
+	$str.='	</div>';
+	$str.='</div>';
+	$str.='</div>';	
+	$str.='<div class="container-otros-2">';
+	$str.='<div class="container">';
+	$str.='	<div class="row">';
+	$str.='		<div class="col-xs-12 col-sm-12 col-md-5">';
+	$str.='			<div class="container-info">';
+	$str.='				<div class="titular">';
+	$str.='					<h3>Espacios acogedores </h3>';
+	$str.='				</div>';
+	$str.='				<div class="description">';
+	$str.='					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. </p>';
+	$str.='				</div>';
+	$str.='			</div>';
+	$str.='		</div>';
+	$str.='		<div class="col-xs-12 col-sm-5 col-md-3">';
+	$str.='			<div class="container-img img-3">';
+	$str.='			</div>';
+	$str.='		</div>';
+	$str.='		<div class="col-xs-12 col-sm-7 col-md-4 hidden-xs">';
+	$str.='			<div class="container-img img-4">';
+	$str.='			</div>';
+	$str.='		</div>';
+	$str.='	</div>';
+	$str.='</div>';
+	$str.='</div>';
+	return $str;
+}
+
+add_shortcode( 'espacios_acogedores', 'espacios_acogedores' );
+
+function newsletter(){
+	$str= '<div class="container">';
+	$str.= '<div class="container-newsletter">';
+	$str.=	'	<div class="row">';
+	$str.=	'		<div class="col-xs-12 col-sm-10 col-sm-offset-1">';
+	$str.=	'			<div class="container-info">';
+	$str.=	'				<div class="titular">';
+	$str.=	'					<h3>Suscríbete a nuestra newsletter</h3>';
+	$str.=	'				</div>';
+	$str.=	'				<div class="description">';
+	$str.=	'					<p>Introduce tu email para recibir las últimas ofertas</p>';
+	$str.=	'				</div>';
+	$str.=	'			</div>';
+	$str.=	'			<form action="" method="" id="formulario-newsletter">';
+	$str.=	'				<div class="form-group">';
+	$str.=	'					<input type="email" class="form-control" placeholder="Mail*" />';
+	$str.=	'				</div>';
+	$str.=	'				<button type="submit" class="btn">OK</button>';
+	$str.=	'			</form>';
+	$str.=	'		</div>';
+	$str.=	'	</div>';
+	$str.=	'</div>';
+	$str.='</div>';
+	return $str;
+}
+
+add_shortcode( 'newsletter', 'newsletter' );
+
+function modal_home(){
+	$str = "";
+	$str.= '<div class="modal fade modal-bienvenida" role="dialog">';
+	$str.= '<div class="modal-dialog">';
+	$str.= '<div class="modal-content">';
+	$str.= '	<span class="icon-close close" data-dismiss="modal"></span>';
+	$str.= '	<div class="modal-body">';
+	$str.= '		<div class="text-container">';
+	$str.= '			<div class="titular">';
+	$str.= '				<h2>Bienvenido </h2>';
+	$str.= '			</div>';
+	$str.= '			<div class="description">';
+	$str.= '				<p>Lorem ipsum dolor sit amet, lorem ipsum consectetur.</p>';
+	$str.= '			</div>';
+	$str.= '				<form action="" method="" id="formulario-bienvenida">';
+	$str.= '				<div class="form-group">';
+	$str.= '					<input type="text" class="form-control" placeholder="Name*" />';
+	$str.= '				</div>';
+	$str.= '				<div class="form-group">';
+	$str.= '					<input type="email" class="form-control" placeholder="Mail*" />';
+	$str.= '				</div>';
+	$str.= '				<p class="obligatorio">*Datos obligatorios</p>';
+	$str.= '				<button type="submit" class="btn btn-rojo">OK</button>';
+	$str.= '				<div class="checkbox">';
+	$str.= '                    <input id="checkbox5" type="checkbox" class="styled" />';
+	$str.= '                    <label for="checkbox5">';
+	$str.= '                            Deseo recibir información de Ofiprix';
+	$str.= '                    </label>';
+	$str.= '                </div>';
+	$str.= '			</form>';
+	$str.= '		</div>';				
+	$str.= 
+	$str.= '		<div class="container-img"></div>';
+	$str.= '	</div>';
+	$str.= '</div>';
+	$str.= '</div>';
+	$str.= '</div>';
+	$str.= '<div class="modal fade modal-cookies" role="dialog">';
+	$str.= '	<div class="modal-dialog">';
+	$str.= '		<div class="modal-content">';
+	$str.= '			<div class="modal-body">';
+	$str.= '					<div class="texto-legal">';
+	$str.= '						<p>Utilizamos cookies propias y de terceros para ofrecerte una mejor experiencia y servicio, de acuerdo a tus hábitos de navegación. Si continúas navegando, consideramos que aceptas su uso. Puedes obtener más información <a hred=""> política de cookies.</a></p>';
+	$str.= '				</div>';
+	$str.= '					<button type="button" id="cerrarCookies" class="btn btn-borde-rojo">Aceptar cookies</button>';
+	$str.= '			</div>';
+	$str.= '		</div>';
+	$str.= '	</div>';
+	$str.= '</div>';
+	return $str;
+}
+
+add_shortcode( 'modal_home', 'modal_home' );
+
+
+function podemos_ayudarte(){
+	$str = "";
+	$str.= '<div class="podemos-ayudarte">';
+	$str.= '	<div class="cerrar">';
+	$str.= '		<span class="icon-close"></span>';
+	$str.= '	</div>';
+	$str.= '	<div class="text-container">';
+	$str.= '		<div class="description">';
+	$str.= '			<p>Podemos ayudarte </p>';
+	$str.= '		</div>';
+	$str.= '		<div class="telefono">';
+	$str.= '			<p>902 120 000</p>';
+	$str.= '		</div>';
+	$str.= '		<a class="btn btn-borde-rojo-tw" href="" >Contactar</a>';			
+	$str.= '	</div>';
+	$str.= '</div>';
+	return $str;
+}
+
+add_shortcode( 'podemos_ayudarte', 'podemos_ayudarte' );
 
 /*
  * Consulta para hacer las queries 

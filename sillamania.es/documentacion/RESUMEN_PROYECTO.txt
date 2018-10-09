@@ -1,5 +1,5 @@
 PROYECTO
--------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 EN LOS PERMALINKS AL PRINCIPIO ESTABA PUESTO ESSTRUCTURA PERSONALZIADA
 ------------------------------------------------------------------------
@@ -10,16 +10,58 @@ EN LOS PERMALINKS AL PRINCIPIO ESTABA PUESTO ESSTRUCTURA PERSONALZIADA
 %year% %monthnum% %day% %hour% %minute% %second% %post_id% %postname% %category% %author%
 
 
-
 MOBILE
 ------------------------------------------------------------------------
 1.- MEDIA QUERY TAMANO MOVIL CUANDO POPUP ABIERTO NO SE HA DE MOSTRAR LA IMAGEN DE LA DERECHA .... ASÍ EL POPUP QUEDARA RECTANGULAR VERTICAL COMO EN EL TAMANO
 DE UN MOVIL, LUEGO CUANDO SE CARGUE HARÁ UNA PEQUEÑA ANIMACION HACIA ARRIBA Y OCUPARA EL 75% DE LA PANTALLA VERTICALMENTE
 
 
-PLUGIN SLIDER
+PLUGINS UTILIZADOS EN TOTAL
 ------------------------------------------------------------------------
-Campo Expert: Link: http://www.google.com; Precio: 32.000€
+01.- ofiprix webservice prestashop (para conectar por webservice) DAVID
+02.- ACF Content Analysis for Yoast SEO
+03.- Advanced Custom Fields
+04.- Akismet Anti-Spam
+05.- AMP
+06.- Better Search Replace
+07.- Contact Form 7
+08.- CPT Bootstrap Carousel (para productos por categoria) DAVID
+09.- CPT Bootstrap Carousel (para ofertas por categoria) DAVID
+10.- Easy HTTPS (SSL) Redirection
+11.- Glue for Yoast SEO & AMP
+12.- Hello Dolly
+13.- kk Star Ratings 
+14.- Limit Login Attempts Reloaded
+15.- Newsletter
+16.- Smush
+17.- Table of Contents Plus
+18.- Ultimate Nofollow
+19.- UpdraftPlus - Backup/Restore
+20.- Wordfence Security 
+21.- Wordpress Simple Location Plugin DAVID
+22.- WP-Optimize
+23.- Yoast SEO 
+
+PLUGUINS MIOS DESARROLLADOS O DESCARGADOS
+------------------------------------------------------------------------
+01.- ofiprix webservice prestashop (para conectar por webservice) DAVID
+02.- CPT Bootstrap Carousel (para productos por categoria) DAVID
+03.- CPT Bootstrap Carousel (para ofertas por categoria) DAVID
+04.- Newsletter
+05.- Banners
 
 
- https://www.sitepoint.com/real-world-example-wordpress-plugin-development/
+
+ESTRUCTURA DE UN PLUGIN NORMAL DE WORDPRESS
+------------------------------------------------------------------------
+1.- PERMALINK O TITULO
+2.- CONTENT O DESCRIPTION
+3.- FEATURED IMAGE
+4.- CUSTOM_FIELDS
+
+
+
+
+DESARROLLO DE UN PLUGIN
+------------------------------------------------------------------------
+https://www.sitepoint.com/real-world-example-wordpress-plugin-development/
