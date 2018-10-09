@@ -20,3 +20,6 @@ DE UN MOVIL, LUEGO CUANDO SE CARGUE HARÁ UNA PEQUEÑA ANIMACION HACIA ARRIBA Y OC
 PLUGIN SLIDER
 ------------------------------------------------------------------------
 Campo Expert: Link: http://www.google.com; Precio: 32.000€
+
+
+ https://www.sitepoint.com/real-world-example-wordpress-plugin-development/
