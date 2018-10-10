@@ -2053,11 +2053,10 @@ function titulo_categoria($atts = [], $content = null, $tag = ''){
 	$str= '<h2 style="font-weight: 700; font-size: 60px; margin-bottom: 50px; text-align: center;">'.$categorias[$atts['subcategoria']].'</h2>';
 	$str.= '<div class="container-info" style="background-color: #ECECEC; padding: 30px; max-width: 1137px; margin: 20px auto;">';
 	$str.= '<div class="titular">';
-	$str.= '	<h3>Espacios acogedores </h3>';
+	$str.= '	<h3>'.$atts['titulo'].'</h3>';
 	$str.= '</div>';
 	$str.= '<div class="description">';
-	$str.= '	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. </p>';
-	$str.= '	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. </p>';
+	$str.= '	<p>'.$content.'</p>';
 	$str.= '</div>';
 	$str.='</div>';
 	return $str;
@@ -2210,7 +2209,7 @@ function banner_prueba(){
 add_shortcode( 'banner_prueba', 'banner_prueba' );
 */
 
-function ofertas_destacadas(){
+function ofertas_destacadas($atts = [], $content = null, $tag = ''){
 	$str='<div class="container-ofertas-destacadas bloque-destacados">';
 	$str.='	<div class="container">';
 	$str.='		<div class="row">';
@@ -2451,7 +2450,11 @@ function carousel_destacados(){
 
 add_shortcode( 'carousel_destacados', 'carousel_destacados' );
 
-function espacios_acogedores(){
+/*
+[espacios_acogedores titulo_izquierda="Espacios Acogedores" foto_izquierda="" titulos="Descubre lo último de esta semana, Descubre lo último de esta mes ,Descubre lo último de esta año, Descubre lo último de este siglo" imagenes="foto1, foto2, foto3, foto4" titulo_desc="Espacios acogedores" desc="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim." imagen_uno="imagen1" imagen_dos="imagen2"]
+*/
+
+function espacios_acogedores($atts = [], $content = null, $tag = ''){
 	$str='<div class="container-otros">';
 	$str.='	<div class="container">';
 	$str.='	<div class="row">';
@@ -2517,8 +2520,10 @@ function espacios_acogedores(){
 
 add_shortcode( 'espacios_acogedores', 'espacios_acogedores' );
 
+
 function newsletter(){
 	$str= '<div class="container">';
+	$str= '<a name="email_anchor" href="#"></a>';
 	$str.= '<div class="container-newsletter">';
 	$str.=	'	<div class="row">';
 	$str.=	'		<div class="col-xs-12 col-sm-10 col-sm-offset-1">';
@@ -2530,11 +2535,12 @@ function newsletter(){
 	$str.=	'					<p>Introduce tu email para recibir las últimas ofertas</p>';
 	$str.=	'				</div>';
 	$str.=	'			</div>';
-	$str.=	'			<form action="" method="" id="formulario-newsletter">';
+	$str.=	'			<form action="" method="post" name="formulario-newsletter" id="formulario-newsletter">';
 	$str.=	'				<div class="form-group">';
-	$str.=	'					<input type="email" class="form-control" placeholder="Mail*" />';
+	$str.=	'					<input type="email" name="campo_email" id="campo_email" class="form-control" placeholder="Mail*" />';
+	$str.=	' 					<p id="result" name="result"></p>';
 	$str.=	'				</div>';
-	$str.=	'				<button type="submit" class="btn">OK</button>';
+	$str.=	'				<button type="submit" id="boton_newsletter" name="boton_newsletter" class="btn">OK</button>';
 	$str.=	'			</form>';
 	$str.=	'		</div>';
 	$str.=	'	</div>';
@@ -2544,6 +2550,7 @@ function newsletter(){
 }
 
 add_shortcode( 'newsletter', 'newsletter' );
+
 
 function modal_home(){
 	$str = "";
@@ -2626,4 +2633,50 @@ add_shortcode( 'podemos_ayudarte', 'podemos_ayudarte' );
  * de los productos mas vendidos 
  */
 
+
+
+ /*
+  * Recibir formulario para insertar
+  * en base de datos el email del cliente
+  */
+  
+if ($_POST['campo_email']){
+		global $wpdb;
+		$table            = "di_mail";
+		$data             = array(
+			'id'        => null,
+			'firstname' => "no_firstname",
+			'lastname'  => "no_lastname",
+			'email'     => $_POST['campo_email']
+		);
+		$format = array(
+			'%s',
+			'%s'
+		);
+		//$success = $wpdb->insert( $table, $data, $format );
+		$query 		= "SELECT * FROM di_mail ORDER BY id ASC";
+		$mails 		= $wpdb->get_results($query, OBJECT);
+		$encontrado = false;
+		foreach ($mails as $mail){
+			if ($mail->mail == $_POST['campo_email']){
+				$encontrado = true;	
+				//echo "Hemos encotnrado el email<br>";
+			}	
+		}
+		if ($encontrado == false){
+			$success = $wpdb->insert($table,array('firstname'=>"no_firstname", 'lastname'=>"no_lastname",'mail'=>$_POST['campo_email']), array('%s','%s','%s'));
+			if($success){
+				$url = $_SERVER['REQUEST_URI'].'?gracias';	
+			}else{
+				$url = $_SERVER['REQUEST_URI'].'?error';
+			}
+		}else{
+			$url = $_SERVER['REQUEST_URI'].'?error';	
+		}
+		wp_redirect( $url );
+		exit;
+		
+}
+?>
+  
 

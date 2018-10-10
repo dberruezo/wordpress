@@ -58,4 +58,53 @@
 				</div>
 			</div>
 		</div>
+
+		<!-- Menu alternativo RESPONSIVE boton redondo -->
+		<ul class="topnav" id="myTopnav" style="display:none;">
+			<li class="subtop">
+				<a style="padding: 0; font-size: 17px;" href="<?php echo get_site_url();?>/">
+				<img src="<?php echo get_site_url();?>/wp-content/uploads/sofas48.png" alt="Sillamanía" title="Sillamanía" />
+				</a>
+			</li>
+			<li class="subtop"><span style="color:red;">% Ofertas</span>
+			</li>
+			<li class="subtop"><span>Productos</span>
+				<ul class="sub-menu row">
+				<?php echo menupilar('productos');?>
+				</ul>
+			</li>
+			<li class="subtop"><span>Más vendidos</span>
+			</li>
+			<li class="fright" onclick="carrito();$('.carritocontainer').show();">
+				<i class="fas fa-shopping-cart"></i>
+			</li>
+			<li class="fright">
+				<i class="far fa-envelope"></i>
+			</li>
+			<li class="fright">
+				<i class="far fa-user"></i>
+			</li>
+		</ul>
+
+		<div id="myTopbutton" class="wprmenu_icon" onclick="responsivemenu();"> 
+		<span class="wprmenu_ic_1"></span> 
+		<span class="wprmenu_ic_2"></span> 
+		<span class="wprmenu_ic_3"></span>
+		</div>
+		
+		<!--
+		<div class="slider">
+			<img src="http://placehold.it/1920x480/bcbcbc" class="" alt="" title="">
+			<ul class="sliderdots" style="display: block;">
+				<li class="slide active"></li>
+				<li class="slide"></li>
+				<li class="slide"></li>
+				<li class="slide"></li>
+				<li class="slide"></li>
+			</ul>
+		</div>
+		-->	
+
+		<!-- Fin de menu alternativo RESPONSIVE boton redondo -->
+
 	</header>

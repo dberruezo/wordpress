@@ -1,3 +1,7 @@
+// var
+// Menu resonsive boolean
+var menu_abierto = false;
+
 var devicewidth = jQuery(window).width();
 
 jQuery(document).ready(function() {
@@ -271,17 +275,20 @@ jQuery(document).ready(function() {
 		  	jQuery(".mega-menu").removeAttr("style");
 	  	});	
 	}
+
 	//-- Abrir/Cerrar Menu
   	jQuery(".nav .icon-menu").on('click', function(){
 		jQuery(".wrapperMenuMovil").slideToggle();
 		jQuery(this).parents(".nav").toggleClass("cerrar");
 		jQuery("body").addClass("body-sin-scroll");
+		menu_abierto = true;
 	});	
 	
 	jQuery(".nav .icon-close").on('click', function(){
 		jQuery(".wrapperMenuMovil").slideToggle();
 		jQuery(this).parents(".nav").toggleClass("cerrar");
 		jQuery("body").removeClass("body-sin-scroll");
+		menu_abierto = false;
 	});
 	
 	//-- Abrir/Cerrar Megamenu dentro del Menu	
@@ -517,9 +524,7 @@ jQuery(window).scroll(function () {
 				navFijaConScrollDesktop();
 			}		
 		}
-		
 	});
-
 });	
 
 jQuery(window).load(function() {
@@ -584,5 +589,90 @@ $(".btn-borde-rojo").click(function(event){
 
 checkCookie();
 
+/* 
+ * Funciones relativas al menu
+ */
+	
+function responsivemenu() {
+	var x = document.getElementById("myTopnav");
+	var y = document.getElementById("myTopbutton");
+	if (menu_abierto == false){
+		menu_abierto = true;
+		jQuery("body").addClass("body-sin-scroll");
+		jQuery(".icon-close").show();
+		jQuery(".icon-menu").hide();
+		x.className += " responsive";
+		y.className += " menu_is_opened";
+	}else if (menu_abierto == true){
+		menu_abierto = false;
+		jQuery("body").removeClass("body-sin-scroll");
+		jQuery(".icon-close").hide();
+		jQuery(".icon-menu").show();
+		x.className = "topnav";
+		y.className = "wprmenu_icon";
+	}
+	jQuery(this).parents(".nav").toggleClass("cerrar");
+	jQuery(".wrapperMenuMovil").slideToggle();
 
+}
 
+// Esto es lo que habia en el menu responsive
+/*
+window.onload = function(){
+	// Esto es del boton del meunu que hay online
+	var x = document.getElementById("myTopnav");
+	var y = document.getElementById("myTopbutton");
+	if (x.className === "topnav") {
+		x.className += " responsive";
+		y.className += " menu_is_opened";
+	} else {
+		x.className = "topnav";
+		y.className = "wprmenu_icon";
+	}
+}
+*/	
+
+/*
+ * Pequeño ajuste
+ * el banner ponerlo al 100%
+ * y no al 1920 * 480
+ */
+function modificar_width_clase_banner(){
+	jQuery(".slider img").attr("class","img-responsive");
+}
+
+//modificar_width_clase_banner();
+
+/*
+ * Function to validate email
+ * boton_newsletter
+ * formulario-newsletter
+ */
+
+function validateEmail(email) {
+	var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	return re.test(email);
+}
+  
+function validate(email) {
+	var $result = $("#result");
+	$result.text("");
+	if (validateEmail(email)) {
+	 	jQuery("#formulario-newsletter").submit();	
+	} else {
+	  $result.text(email + " no es válido, por favor vuelve a escribirlo");
+	  $result.css("color", "red");
+	}
+	return false;
+}
+
+jQuery("#boton_newsletter").click(function(){
+	var email = jQuery("#campo_email").val();	
+	validate(email);
+});
+
+jQuery( "#campo_email" ).keypress(function() {
+	var $result = $("#result");
+	jQuery("#result").val(" ");
+});
+  

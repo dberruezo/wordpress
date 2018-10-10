@@ -71,6 +71,49 @@ function wps_category_do_loop_intro() {
  * Funciones David
  */
 
+$mystring = $_SERVER["REQUEST_URI"];
+$findme   = "error";
+$pos 	  = strpos($mystring, $findme);
+$encontrado = false;
+//echo "El pos vale: ".$pos."<br>"; 
+if ($pos === true) {
+$encontrado = TRUE;
+?>
+	<script>
+		//jQuery(document).ready(function(){
+			$result.text("Ha habido un error o el email ya existe");
+			$result.css("color", "red");
+			function scrollToAnchor(aid){
+    			var aTag = $("a[name='"+ aid +"']");
+    			$('html,body').animate({scrollTop: aTag.offset().top},'slow');
+			}
+			scrollToAnchor('email_anchor');
+		//});
+	</script>
+<?php	
+}
+
+if ($encontrado == FALSE){
+	$mystring = $_SERVER["REQUEST_URI"];
+	$findme   = "gracias";
+	$pos 	  = strpos($mystring, $findme);
+	//echo "El pos vale: ".$pos."<br>"; 
+	if ($pos === true) {
+?>
+	<script>
+		//jQuery(document).ready(function(){
+			$result.text("Gracias por subscribirte a nuestra newsletter");
+			$result.css("color", "green");
+			function scrollToAnchor(aid){
+				var aTag = $("a[name='"+ aid +"']");
+				$('html,body').animate({scrollTop: aTag.offset().top},'slow');
+			}
+			scrollToAnchor('email_anchor');
+		//});
+	</script>
+<?php
+	}
+}
 get_header(); 
 if (get_the_title() == "home"){ ?>
 	<?php echo ('<script>jQuery(document).ready(function(){ jQuery(".entry-title").hide(); });</script>'); ?>
@@ -197,7 +240,6 @@ if (get_the_title() == "home"){ ?>
 
 
 <body class="distribuidora">
-
 
 	<header>
 		<div class="top-bar">
@@ -742,7 +784,7 @@ if (get_the_title() == "home"){ ?>
 				</div>
 			</div>
 		</div>
-		
+		<!--
 		<div class="container-otros-2">
 			<div class="row">
 				<div class="col-xs-12 col-sm-5">
@@ -767,6 +809,7 @@ if (get_the_title() == "home"){ ?>
 				</div>
 			</div>
 		</div>
+		-->
 	</div>
 	<script>
 		/*

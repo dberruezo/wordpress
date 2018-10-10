@@ -3463,6 +3463,80 @@ footer {
   .home .container-otros .carrusel-ultima-semana .fa-angle-right {
     right: 30px; }
 
+@media screen and (max-width: 767px){
+    .wprmenu_icon {
+        display: block!important;
+        position: fixed;
+        background: #fff;
+        border: 1px solid #000;
+        bottom: 30px;
+        right: 30px;
+        padding: 30px;
+        z-index: 1000;
+        border-radius: 30px;
+    }
+    
+    .wprmenu_icon .wprmenu_ic_1 {
+      top: 17px;
+    }
+
+    .wprmenu_icon .wprmenu_ic_2 {
+      top: 26px;
+    }
+
+    .wprmenu_icon .wprmenu_ic_3 {
+      top: 35px;
+    }
+
+    .wprmenu_icon span {
+      -webkit-transition: all .01s ease-in-out;
+      -moz-transition: all .01s ease-in-out;
+      -o-transition: all .01s ease-in-out;
+      -ms-transition: all .01s ease-in-out;
+      transition: all .01s ease-in-out;
+      display: block;
+      position: absolute;
+      width: 30px;
+      height: 4px;
+      left: 15px;
+      background: #000;
+    }  
+    
+    .topnav.responsive {
+        display: block;
+        position: relative;
+    }
+
+    .wprmenu_icon.menu_is_opened .wprmenu_ic_2 {
+      top: 26px!important;
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      transform: rotate(45deg);
+      zoom: 1;
+    }
+
+    .wprmenu_icon.menu_is_opened .wprmenu_ic_3 {
+      top: 26px!important;
+      -webkit-transform: rotate(-45deg);
+      -moz-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      -o-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+      zoom: 1;
+    }
+
+    .wprmenu_icon.menu_is_opened .wprmenu_ic_1 {
+      display: none;
+    }
+ 
+}
+
+#myTopbutton{
+  cursor:pointer;
+}
+
 .home .container-newsletter {
   background-color: #ECECEC;
   padding: 30px;
@@ -4621,10 +4695,12 @@ input[type="checkbox"].styled:checked + label:after {
   height: 50px; }
 
 .podemos-ayudarte {
-  position: fixed;
+  /*position: fixed;*/
+  position:absolute;
   right: 20px;
   top: 40%;
-  z-index: 9999; }
+  z-index: 999; 
+}
   .podemos-ayudarte .cerrar {
     background-color: #E42062;
     color: #fff;
