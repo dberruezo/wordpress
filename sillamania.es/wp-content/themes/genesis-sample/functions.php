@@ -2065,6 +2065,7 @@ function titulo_categoria($atts = [], $content = null, $tag = ''){
 
 add_shortcode( 'titulo_categoria', 'titulo_categoria' );
 
+/*
 function encuentra_el_mejor_sofa(){
 	$str='<div class="container">';
 	$str.='	<div class="titular-separador">';
@@ -2075,6 +2076,7 @@ function encuentra_el_mejor_sofa(){
 }
 
 add_shortcode( 'encuentra_el_mejor_sofa', 'encuentra_el_mejor_sofa' );
+*/
 
 function bloque_mas_vendidos($atts = [], $content = null, $tag = ''){
 	$str='<div class="container-mas-vendidos bloque-destacados">';
@@ -2167,6 +2169,7 @@ function bloque_mas_vendidos($atts = [], $content = null, $tag = ''){
 
 add_shortcode( 'bloque_mas_vendidos', 'bloque_mas_vendidos' );
 
+/*
 function banner_prueba(){
 	$str='<div class="container-tapiceria">';
 	$str.='	<div class="container">';
@@ -2205,6 +2208,7 @@ function banner_prueba(){
 }
 
 add_shortcode( 'banner_prueba', 'banner_prueba' );
+*/
 
 function ofertas_destacadas(){
 	$str='<div class="container-ofertas-destacadas bloque-destacados">';
@@ -2621,6 +2625,5 @@ add_shortcode( 'podemos_ayudarte', 'podemos_ayudarte' );
  * Consulta para hacer las queries 
  * de los productos mas vendidos 
  */
-
 
 
