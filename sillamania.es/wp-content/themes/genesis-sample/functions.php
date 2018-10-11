@@ -1867,7 +1867,58 @@ get_paginas_pilar();
 /*
  * Menu functions 
  */
- 
+
+
+function menupilar_mio($elgrupo) {
+    $args = array(
+        'sort_order'   => 'ASC',
+        'sort_column'  => 'post_title',
+        'hierarchical' => 1,
+        'post_type'    => 'page',
+        'post_status'  => 'publish',
+    );
+	$i='';
+    $pages = get_pages($args);
+	if($elgrupo=="productos") {
+		foreach ($pages as $pos) {
+			$pos->categoria = get_field('categoria', $pos->ID );
+			$pos->grupo = get_field('grupo', $pos->ID );
+			$pos->prestashop_id = get_field('prestashop_id', $pos->ID );
+			$que="SELECT * FROM `ps_category` where id_category='".$pos->prestashop_id."'";
+			$my_wpdb = new wpdb('root','','sillamaniaes_dos','localhost');
+			$query = $my_wpdb->get_results( $que, OBJECT );
+			//$query = $GLOBALS['wpdb']->get_results( $que, OBJECT );
+			foreach ($query as $row) {
+				$parent=$row->id_parent;
+			}
+			if($pos->categoria!="" && $pos->grupo==$elgrupo) {
+			$categorias[$parent][$pos->ID]=$pos;
+			};
+		};
+			foreach ($categorias[2] as $pos) {
+				$i.='<li class="col-xs-12 col-sm-6 col-md-3">
+				<a href="'.get_permalink($pos->ID).'">'.$pos->post_title.'</a>';
+				if(count($categorias[$pos->prestashop_id])>0) {
+				$i.='<ul>';
+				$i.=listarcategorias($categorias,$pos->prestashop_id);
+				$i.='</ul>';
+				};
+				$i.='</li>';
+			}
+	} else {
+		echo "entra aqui<br>";
+		foreach ($pages as $pos) {
+			$categoria = get_field('categoria', $pos->ID );
+			$grupo = get_field('grupo', $pos->ID );
+			if($categoria!="" && $grupo==$elgrupo) {
+				$i.='<li><a href="'.get_permalink($pos->ID).'">'.$pos->post_title.'</a></li>';
+			};
+		};
+	}
+	return $i;
+	
+} 
+
 function menupilar_menu($elgrupo) {
     $args = array(
         'sort_order'   => 'ASC',
@@ -1884,7 +1935,9 @@ function menupilar_menu($elgrupo) {
 			$pos->grupo = get_field('grupo', $pos->ID );
 			$pos->prestashop_id = get_field('prestashop_id', $pos->ID );
 			$que="SELECT * FROM `ps_category` where id_category='".$pos->prestashop_id."'";
-			$query = $GLOBALS['wpdb']->get_results( $que, OBJECT );
+			$my_wpdb = new wpdb('root','','sillamaniaes_dos','localhost');
+			$query = $my_wpdb->get_results( $que, OBJECT );
+			//$query = $GLOBALS['wpdb']->get_results( $que, OBJECT );
 			foreach ($query as $row) {
 				$parent=$row->id_parent;
 			}
@@ -1966,7 +2019,9 @@ function categorias_raiz(){
 	$sql.="ON categorylang.id_category = category.id_category ";
 	$sql.="where categorylang.id_lang = 1 ";
 	$sql.="AND category.id_parent = 2 ";
-	$query = $GLOBALS['wpdb']->get_results( $sql, OBJECT );
+	$my_wpdb = new wpdb('root','','sillamaniaes_dos','localhost');
+	$query = $my_wpdb->get_results( $sql, OBJECT );
+	//$query = $GLOBALS['wpdb']->get_results( $sql, OBJECT );
 				foreach ($query as $row) {
 					$categorias_raiz[$row->id_category] = $row->name;
 				}
@@ -2010,7 +2065,9 @@ function subcategorias_raiz($atts = [], $content = null, $tag = ''){
 		$sql.="ON categorylang.id_category = category.id_category ";
 		$sql.="where categorylang.id_lang = 1 ";
 		$sql.="AND category.id_parent = ".$indice;
-		$query = $GLOBALS['wpdb']->get_results( $sql, OBJECT );
+		$my_wpdb = new wpdb('root','','sillamaniaes_dos','localhost');
+		$query = $my_wpdb->get_results( $sql, OBJECT );
+		//$query = $GLOBALS['wpdb']->get_results( $sql, OBJECT );
 					foreach ($query as $row) {
 						if (!is_array($subcategorias[$indice])){
 							$subcategorias[$indice] = array();
@@ -2655,7 +2712,9 @@ if ($_POST['campo_email']){
 		);
 		//$success = $wpdb->insert( $table, $data, $format );
 		$query 		= "SELECT * FROM di_mail ORDER BY id ASC";
-		$mails 		= $wpdb->get_results($query, OBJECT);
+		$my_wpdb 	= new wpdb('root','','sillamaniaes_dos','localhost');
+		$mails 		= $my_wpdb->get_results( $query, OBJECT );
+		//$mails 	= $wpdb->get_results($query, OBJECT);
 		$encontrado = false;
 		foreach ($mails as $mail){
 			if ($mail->mail == $_POST['campo_email']){
@@ -2675,7 +2734,6 @@ if ($_POST['campo_email']){
 		}
 		wp_redirect( $url );
 		exit;
-		
 }
 ?>
   

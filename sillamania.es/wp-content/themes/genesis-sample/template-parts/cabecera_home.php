@@ -70,7 +70,7 @@
 			</li>
 			<li class="subtop"><span>Productos</span>
 				<ul class="sub-menu row">
-				<?php echo menupilar('productos');?>
+				<?php echo menupilar_mio('productos');?>
 				</ul>
 			</li>
 			<li class="subtop"><span>Más vendidos</span>
