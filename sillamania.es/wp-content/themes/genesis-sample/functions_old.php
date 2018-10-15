@@ -1868,6 +1868,7 @@ get_paginas_pilar();
  * Menu functions 
  */
 
+
 function menupilar_mio($elgrupo) {
     $args = array(
         'sort_order'   => 'ASC',
@@ -1918,7 +1919,6 @@ function menupilar_mio($elgrupo) {
 	
 } 
 
-
 function menupilar_menu($elgrupo) {
     $args = array(
         'sort_order'   => 'ASC',
@@ -1942,7 +1942,7 @@ function menupilar_menu($elgrupo) {
 				$parent=$row->id_parent;
 			}
 			if($pos->categoria!="" && $pos->grupo==$elgrupo) {
-				$categorias[$parent][$pos->ID]=$pos;
+			$categorias[$parent][$pos->ID]=$pos;
 			};
 		};
 		$i= '<ul class="principal">';
@@ -1971,7 +1971,6 @@ function menupilar_menu($elgrupo) {
 	}
 	return $i;
 }
-
 
 function menu_products_by_categoria($id_categoria){
 	//echo "Consulta productos por categorias";	
@@ -2010,6 +2009,7 @@ function listarcategorias_menu($categorias,$id) {
 	$categorias = getsubcategorias($prestashop_id);
 	return $categorias;
 }
+
 
 function categorias_raiz(){
 	global $categorias_raiz;
@@ -2067,7 +2067,6 @@ function subcategorias_raiz($atts = [], $content = null, $tag = ''){
 		$sql.="AND category.id_parent = ".$indice;
 		$my_wpdb = new wpdb('root','','sillamaniaes_dos','localhost');
 		$query = $my_wpdb->get_results( $sql, OBJECT );
-		//print_r($query);
 		//$query = $GLOBALS['wpdb']->get_results( $sql, OBJECT );
 					foreach ($query as $row) {
 						if (!is_array($subcategorias[$indice])){
@@ -2078,18 +2077,14 @@ function subcategorias_raiz($atts = [], $content = null, $tag = ''){
 						);
 						array_push($subcategorias[$indice],$temp);
 					}
-					//print_r($subcategorias);
 	}
 	$str='<div class="catalogo">';
 	$str.='<div class="container-catalogo">';
 	$str.='	<div class="container">';
 	$str.='		<div class="container-img">';
 	$str.='			<div class="row">';
-
-	//echo "la subcategoria es: ".get_userdata($atts['subcategoria'])."<br>";
-		
+	 
 	foreach($subcategorias[$atts['subcategoria']] as $sub){
-		//print_r($subcategorias[$atts['subcategoria']]);
 		foreach($sub as $clave =>$cat_name){  
 			$str.= '<div class="col-xs-12 col-sm-6 col-md-3">';
 				$str.= '<a href="" class="item">';
@@ -2110,7 +2105,6 @@ function subcategorias_raiz($atts = [], $content = null, $tag = ''){
 add_shortcode( 'subcategorias_raiz', 'subcategorias_raiz' );
 
 function titulo_categoria($atts = [], $content = null, $tag = ''){
-	//echo "el titulo la subcategoria es: ".$atts['subcategoria']."<br>";
 	$categorias    = categorias_raiz();
 	// $categorias[233]
 	$str= '<h2 style="font-weight: 700; font-size: 60px; margin-bottom: 50px; text-align: center;">'.$categorias[$atts['subcategoria']].'</h2>';
@@ -2693,438 +2687,9 @@ add_shortcode( 'podemos_ayudarte', 'podemos_ayudarte' );
 
 /*
  * Consulta para hacer las queries 
- * de los productos según su 
- * categoria 
- */
-function get_productos($atts = [], $content = null, $tag = ''){
-	$sql=" SELECT";
-	$sql.=" a.`id_product`,";
-	$sql.=" b.`name` AS `name`, b.`description_short` ";
-	$sql.=" `reference`,";
-	$sql.=" a.`price` AS `price`,";
-	$sql.=" sa.`active` AS `active`,";
-	$sql.=" shop.`name` AS `shopname`,";
-	$sql.=" a.`id_shop_default`,";
-	$sql.=" image_shop.`id_image` AS `id_image`,";
-	$sql.=" cl.`name` AS `name_category`,";
-	$sql.=" sa.`price`,";
-	$sql.=" 0 AS `price_final`,";
-	$sql.=" a.`is_virtual`,";
-	$sql.=" pd.`nb_downloadable`,";
-	$sql.=" sav.`quantity` AS `sav_quantity`,";
-	$sql.=" sa.`active`,";
-	$sql.=" IF(sav.`quantity` <= 0, 1, 0) AS `badge_danger`"; 
-	$sql.=" FROM";
-	$sql.=" `ps_product` a"; 
-	$sql.=" LEFT JOIN";
-	$sql.=" `ps_product_lang` b"; 
-	$sql.=" ON (b.`id_product` = a.`id_product`"; 
-	$sql.=" AND b.`id_lang` = 1"; 
-	$sql.=" AND b.`id_shop` = 1) ";
-	$sql.=" LEFT JOIN";
-	$sql.=" `ps_stock_available` sav"; 
-	$sql.=" ON (sav.`id_product` = a.`id_product`"; 
-	$sql.=" AND sav.`id_product_attribute` = 0 ";
-	$sql.=" AND sav.id_shop = 1 ";
-	$sql.=" AND sav.id_shop_group = 0 )"; 
-	$sql.=" JOIN";
-	$sql.=" `ps_product_shop` sa"; 
-	$sql.=" ON (a.`id_product` = sa.`id_product`"; 
-	$sql.=" AND sa.id_shop = a.id_shop_default) ";
-	$sql.=" LEFT JOIN";
-	$sql.=" `ps_category_lang` cl"; 
-	$sql.=" ON (sa.`id_category_default` = cl.`id_category`"; 
-	$sql.=" AND b.`id_lang` = cl.`id_lang` ";
-	$sql.=" AND cl.id_shop = a.id_shop_default)"; 
-	$sql.=" LEFT JOIN";
-		$sql.=" `ps_shop` shop"; 
-		$sql.=" ON (shop.id_shop = a.id_shop_default)"; 
-		$sql.=" LEFT JOIN";
-		$sql.=" `ps_image_shop` image_shop"; 
-		$sql.=" ON (image_shop.`id_product` = a.`id_product`"; 
-		$sql.=" AND image_shop.`cover` = 1 ";
-		$sql.=" AND image_shop.id_shop = a.id_shop_default)"; 
-	$sql.=" LEFT JOIN";
-		$sql.=" `ps_image` i"; 
-		$sql.=" ON (i.`id_image` = image_shop.`id_image`)"; 
-		$sql.=" LEFT JOIN";
-		$sql.=" `ps_product_download` pd"; 
-		$sql.=" ON (pd.`id_product` = a.`id_product`"; 
-		$sql.=" AND pd.`active` = 1) ";
-		$sql.=" WHERE";
-		$sql.=" 1 ";
-		$sql.=" AND cl.`name` LIKE '%Sillas oficina%' ";
-	$sql.=" ORDER BY";
-	$sql.=" a.`id_product` ASC";
-	$my_wpdb = new wpdb('root','','sillamaniaes_dos','localhost');
-	$query = $my_wpdb->get_results( $sql, OBJECT );
-	$cadena= '<div class="productos">';
-	$cadena.= '<div class="row">';
-	$contFila 	 = 0;
-	$contColumna = 0;
-	$inicio 	 = true;
-	foreach($query as $row){
-		//print_r($row);
-		if ($contColumna == 4){
-			$cadena.='<div class="col-xs-12 col-sm-6 col-md-3 ">';
-			$cadena.='<a href="" class="item-destacado">';
-			$cadena.='<div class="imagen-destacada"></div>';
-			$cadena.='<div class="container-text">';
-			$cadena.='<div class="wrapper-position">';
-			$cadena.='<div class="info">';
-			$cadena.='<div class="descripcion">';
-			$cadena.='<p>Sillón tela confort</p>';
-			$cadena.='</div>';	
-			$cadena.='<div class="precio">';
-			$cadena.='<p class="desde">Desde</p>';
-			$cadena.='<p class="cantidad">€ 790<span>ud</span></p>';
-			$cadena.='</div>';					
-			$cadena.='</div>';	
-			$cadena.='</div>';	
-			$cadena.='</div>';				
-			$cadena.='</a>';
-			$cadena.='</div>';
-		}else{
-				$cadena.='<div class="col-xs-12 col-sm-6 col-md-3">';
-				$cadena.='<a href="" class="item-prod">';
-				$cadena.='<div class="img-container">';
-				$cadena.='<img src="http://placehold.it/770x510/bcbcbc" class="img-responsive principal" alt="Alt de la imagen" title="Titulo de la imagen" />';
-				$cadena.='<img src="http://placehold.it/770x510/777777" class="img-responsive secundaria" alt="Alt de la imagen" title="Titulo de la imagen" />';
-				$cadena.='</div>';
-				$cadena.='<div class="container-text">';
-				$cadena.='<div class="wrapper-position">';
-				$cadena.='<div class="extra-info"></div>';
-				$cadena.='<div class="info">';
-				$cadena.='<div class="descripcion">';
-				$cadena.='<p>'.$row->name.'</p>';
-				$cadena.='</div>';
-				$cadena.='<div class="price-box">';
-				$cadena.='<span class="price-container normal-price">';
-				$cadena.='<span class="price-wrapper ">'.$row->price.'</span> <span class="unidad">ud</span>';
-				$cadena.='</span>';
-				$cadena.='</div>';	
-				$cadena.='<div class="prod-description">';
-				$cadena.='<p>'.$row->description_short.'</p>';									
-				$cadena.='</div>';					
-				$cadena.='</div>';		
-				$cadena.='</div>';						
-				$cadena.='</div>';					
-				$cadena.='</a>';
-				$cadena.='</div>';
-		}
-		$contColumna++;
-	}
-	$cadena.='</div></div>';
-	echo $cadena;
-}
-
-add_shortcode( 'get_productos', 'get_productos' );
-
-
-/*
- * Sacamos todos los 
- * productos con sus combinaciones
- * respecto a una categoria determinada
- * y luego IMPORTANTE guardamos sus filtros
- * de combinaciones en el vector_filtros_productos
- */
-$vector_filtros_productos = array();
-$print_filtros_productos; 
-function get_products_by_default_combination($atts = [], $content = null, $tag = ''){
-	global $vector_filtros_productos;
-	global $print_filtros_productos;
-	//$sql=' SELECT m.name AS manufacturer, p.id_product, pl.description,pl.name, GROUP_CONCAT(DISTINCT(al.name) SEPARATOR ", ") AS combinations,'; 
-	//$sql.=' GROUP_CONCAT(DISTINCT(cl.name) SEPARATOR ",") AS categories, p.price as real_price, pa.price, p.id_tax_rules_group, p.wholesale_price,'; 
-	//$sql.=" p.reference, p.supplier_reference, p.id_supplier, p.id_manufacturer, p.upc, p.ecotax, p.weight, s.quantity,";
-	//$sql.=" pl.description_short, pl.description, pl.meta_title, pl.meta_keywords, pl.meta_description, pl.link_rewrite,"; 
-	//$sql.=" pl.available_now, pl.available_later, p.available_for_order, p.date_add, p.show_price, p.online_only, p.condition,"; 
-	//$sql.=" p.id_shop_default,al.id_attribute as identificador_atributo";
-	//$sql.=" FROM ps_product p";
-	//$sql.=" LEFT JOIN ps_product_lang pl ON (p.id_product = pl.id_product)";
-	//$sql.=" LEFT JOIN ps_manufacturer m ON (p.id_manufacturer = m.id_manufacturer)";
-	//$sql.=" LEFT JOIN ps_category_product cp ON (p.id_product = cp.id_product)";
-	//$sql.=" LEFT JOIN ps_category_lang cl ON (cp.id_category = cl.id_category)";
-	//$sql.=" LEFT JOIN ps_category c ON (cp.id_category = c.id_category)";
-	//$sql.=" LEFT JOIN ps_stock_available s ON (p.id_product = s.id_product)";
-	//$sql.=" LEFT JOIN ps_product_tag pt ON (p.id_product = pt.id_product)";
-	//$sql.=" LEFT JOIN ps_product_attribute pa ON (p.id_product = pa.id_product)";
-	//$sql.=" LEFT JOIN ps_product_attribute_combination pac ON (pac.id_product_attribute = pa.id_product_attribute)";
-	//$sql.=" LEFT JOIN ps_attribute_lang al ON (al.id_attribute = pac.id_attribute)";
-	//$sql.=" WHERE pl.id_lang = 1";
-	//$sql.=" AND cl.id_lang = 1";
-	//$sql.=" AND p.id_shop_default = 1";
-	//$sql.=" AND c.id_shop_default = 1";
-	//$sql.=" AND c.id_category = ".$atts['id_categoria']; 
-	//$sql.=" GROUP BY pac.id_product_attribute";
-	$sql.=' SELECT m.name AS manufacturer, p.id_product, pl.name, atgl.id_attribute_group as grupo_id,atgl.name as grupo_nombre,al.name as atribute_nombre,al.id_attribute as attribute_id,GROUP_CONCAT(DISTINCT(al.name) SEPARATOR ", ") AS combinations,'; 
-	$sql.=' GROUP_CONCAT(DISTINCT(cl.name) SEPARATOR ",") AS categories, p.price as real_price, pa.price, p.id_tax_rules_group, p.wholesale_price,'; 
-	$sql.=" p.reference, p.supplier_reference, p.id_supplier, p.id_manufacturer, p.upc, p.ecotax, p.weight, s.quantity,"; 
-	$sql.=" pl.description_short, pl.description, pl.meta_title, pl.meta_keywords, pl.meta_description, pl.link_rewrite,"; 
-	$sql.=" pl.available_now, pl.available_later, p.available_for_order, p.date_add, p.show_price, p.online_only, p.condition,"; 
-	$sql.=" p.id_shop_default";
-	$sql.=" FROM ps_product p";
-	$sql.=" LEFT JOIN ps_product_lang pl ON (p.id_product = pl.id_product)";
-	$sql.=" LEFT JOIN ps_manufacturer m ON (p.id_manufacturer = m.id_manufacturer)";
-	$sql.=" LEFT JOIN ps_category_product cp ON (p.id_product = cp.id_product)";
-	$sql.=" LEFT JOIN ps_category_lang cl ON (cp.id_category = cl.id_category)";
-	$sql.=" LEFT JOIN ps_category c ON (cp.id_category = c.id_category)";
-	$sql.=" LEFT JOIN ps_stock_available s ON (p.id_product = s.id_product)";
-	$sql.=" LEFT JOIN ps_product_tag pt ON (p.id_product = pt.id_product)";
-	$sql.=" LEFT JOIN ps_product_attribute pa ON (p.id_product = pa.id_product)";
-	$sql.=" LEFT JOIN ps_product_attribute_combination pac ON (pac.id_product_attribute = pa.id_product_attribute)";
-	$sql.=" LEFT JOIN ps_attribute_lang al ON (al.id_attribute = pac.id_attribute)";
-	$sql.=" LEFT JOIN ps_attribute att ON (att.id_attribute = al.id_attribute)";
-	$sql.=" LEFT JOIN ps_attribute_group atg ON (atg.id_attribute_group = att.id_attribute_group)";
-	$sql.=" LEFT JOIN ps_attribute_group_lang atgl ON (atgl.id_attribute_group = atg.id_attribute_group)";
-	$sql.=" WHERE pl.id_lang = 1";
-	$sql.=" AND cl.id_lang = 1";
-	$sql.=" AND p.id_shop_default = 1";
-	$sql.=" AND c.id_shop_default = 1";
-	//$sql.=" AND c.id_category = 244";
-	$sql.=" AND c.id_category = 3";
-	$sql.=" AND al.id_lang = 1";
-	$sql.=" AND atgl.id_lang = 1";
-	$sql.=" GROUP BY pac.id_product_attribute";
-
-	$my_wpdb = new wpdb('root','','sillamaniaes_dos','localhost');
-	$query = $my_wpdb->get_results( $sql, OBJECT );
-	$cadena= '<div class="productos">';
-	$cadena.= '<div class="row">';
-	$contFila 	 = 0;
-	$contColumna = 0;
-	$inicio 	 = true;
-	foreach($query as $row){
-		//print_r($row);
-		//guardar_atributo_en_vector($row->identificador_atributo);
-		guardar_atributo_en_vector($row->attribute_id);
-		if ($contColumna == 4){
-			$cadena.='<div class="col-xs-12 col-sm-6 col-md-3 ">';
-			$cadena.='<a href="" class="item-destacado">';
-			$cadena.='<div class="imagen-destacada"></div>';
-			$cadena.='<div class="container-text">';
-			$cadena.='<div class="wrapper-position">';
-			$cadena.='<div class="info">';
-			$cadena.='<div class="descripcion">';
-			$cadena.='<p>Sillón tela confort</p>';
-			$cadena.='</div>';	
-			$cadena.='<div class="precio">';
-			$cadena.='<p class="desde">Desde</p>';
-			$cadena.='<p class="cantidad">€ 790<span>ud</span></p>';
-			$cadena.='</div>';					
-			$cadena.='</div>';	
-			$cadena.='</div>';	
-			$cadena.='</div>';				
-			$cadena.='</a>';
-			$cadena.='</div>';
-		}else{
-				$cadena.='<div class="col-xs-12 col-sm-6 col-md-3 producto" ngrupo="'.$row->grupo_nombre.'" idgrupo="'.$row->grupo_id.'" natributo="'.$row->atribute_nombre.'" idatributo="'.$row->attribute_id.'" >';
-				$cadena.='<a href="" class="item-prod">';
-				$cadena.='<div class="img-container">';
-				$cadena.='<img src="http://placehold.it/770x510/bcbcbc" class="img-responsive principal" alt="Alt de la imagen" title="Titulo de la imagen" />';
-				$cadena.='<img src="http://placehold.it/770x510/777777" class="img-responsive secundaria" alt="Alt de la imagen" title="Titulo de la imagen" />';
-				$cadena.='</div>';
-				$cadena.='<div class="container-text">';
-				$cadena.='<div class="wrapper-position">';
-				$cadena.='<div class="extra-info"></div>';
-				$cadena.='<div class="info">';
-				$cadena.='<div class="descripcion">';
-				$cadena.='<p>'.$row->name." ".$row->combinations.'</p>';
-				$cadena.='</div>';
-				$cadena.='<div class="price-box">';
-				$cadena.='<span class="price-container normal-price">';
-				$cadena.='<span class="price-wrapper ">'.$row->real_price.'</span> <span class="unidad">ud</span>';
-				$cadena.='</span>';
-				$cadena.='</div>';	
-				$cadena.='<div class="prod-description">';
-				$cadena.='<p>'.$row->description.'</p>';									
-				$cadena.='</div>';					
-				$cadena.='</div>';		
-				$cadena.='</div>';						
-				$cadena.='</div>';					
-				$cadena.='</a>';
-				$cadena.='</div>';
-		}
-		$contColumna++;
-	}
-	$cadena.='</div></div>';
-	$print_filtros_productos = $cadena;
-	//echo $cadena;
-	//print_r($vector_filtros_productos);
-}
-
-function devolver_print_filtros_productos(){
-	global $print_filtros_productos;
-	echo $print_filtros_productos;
-}
-
-add_shortcode( 'devolver_print_filtros_productos', 'devolver_print_filtros_productos' );
-
-function guardar_atributo_en_vector($atributo){
-	$encontrado = FALSE;
-	global $vector_filtros_productos;
-	foreach($vector_filtros_productos as $attr){
-		if ($atributo == $attr){
-			$encontrado = TRUE;
-		}
-	}
-	if (!$encontrado){
-		array_push($vector_filtros_productos,$atributo);		
-	}
-}
-
-add_shortcode( 'get_products_by_default_combination', 'get_products_by_default_combination' );
-
-/*
- * Funcion para devolver los 
- * feeatures o filtros para
- * los productos y luego las 
- * caracteristicas de estos filtros 
- * solamente se rellenan si las tienen 
- * los productos
- */ 
-
-$filtros = array(); 
-function get_attributes($atts = [], $content = null, $tag = ''){
-	global $filtros;
-	$filtros_selects = explode(",",$atts['filtros']);
-	global $vector_filtros_productos;
-	$sql=" SELECT SQL_CALC_FOUND_ROWS b.*, a.* ";
-	$sql.=" FROM `ps_attribute_group` a "; 
-	$sql.=" LEFT JOIN `ps_attribute_group_lang` b ON (b.`id_attribute_group` = a.`id_attribute_group` AND b.`id_lang` = 1) ";
-	$sql.=" WHERE 1 ORDER BY a.`position` ASC ";
-	$my_wpdb = new wpdb('root','','sillamaniaes_dos','localhost');
-	$features = $my_wpdb->get_results( $sql, OBJECT );
-	$cadena='';
-	foreach($features as $row){
-		$busqueda = array_search($row->id_attribute_group, $filtros_selects);
-		if ($busqueda !== FALSE){
-			if (!is_array($filtros[$row->id_attribute_group])){
-				$filtros[$row->id_attribute_group] = array();
-			}
-			$filtros[$row->id_attribute_group]["id_attribute_group"] = $row->id_attribute_group;
-			$filtros[$row->id_attribute_group]["name"] 	 = $row->name;
-			$filtros[$row->id_attribute_group]["children"] = array();
-			$hijos = get_attributes_parent($row->id_attribute_group);
-			$cadena.='<div class="atributo">';
-			$cadena.='<div class="contenedorPluguinSelect">';
-			$cadena.='<select name="" id="" class="selectpicker">';	
-			$cadena.='<option value="'.$row->id_attribute_group.'">'.$row->name.'</option>';
-			foreach($hijos as $hijo){
-				//print_r($hijo);
-				$encontrado = FALSE;
-				foreach($vector_filtros_productos as $filtros_productos){
-					//echo "El filtro producto es: ".$filtros_productos."<br>";
-					//echo "El id attribute es: ".$hijo->id_attribute."<br>";
-					if ($hijo->id_attribute == $filtros_productos){
-						$encontrado = TRUE;
-					}
-				}
-				if ($encontrado === TRUE){
-					//$filtros[$row->id_attribute_group]["children"][$hijo->id_attribute] =  $hijo->name; 
-					$temp = array(
-						$hijo->id_attribute => $hijo->name
-					);
-					array_push($filtros[$row->id_attribute_group]["children"],$temp);
-					$cadena.='<option value="'.$hijo->id_attribute.'">'.$hijo->name.'</option>';
-				}
-			}
-			$cadena.="</select>";
-			$cadena.="</div>";
-			$cadena.="</div>";
-		}
-	}
-	/*
-	echo "<br><br><br><br>";
-	echo "El valor de los filtros es: ";
-	print_r($filtros);
-	echo "<br><br><br><br>";
-	*/
-	echo $cadena;
-}
-
-function get_attributes_parent($id_parent){
-	$sql=" SELECT SQL_CALC_FOUND_ROWS b.*, a.*";
-	$sql.=" FROM `ps_attribute` a"; 
-	$sql.=" LEFT JOIN `ps_attribute_lang` b ON (b.`id_attribute` = a.`id_attribute` AND b.`id_lang` = 1)";
-	$sql.=" WHERE 1  AND a.`id_attribute_group` = ".$id_parent;
-	$sql.=" ORDER BY a.`position` ASC";
-	$my_wpdb = new wpdb('root','','sillamaniaes_dos','localhost');
-	$features = $my_wpdb->get_results( $sql, OBJECT );
-	return $features;
-}
-
-add_shortcode( 'get_attributes', 'get_attributes' );
-
-
-/*
- * Obenemos 
- * filtros por caracteristicas
+ * de los productos mas vendidos 
  */
 
- $caracteristicas = array();
-
- function get_features($atts = [], $content = null, $tag = ''){
-	global $caracteristicas;
-	$filtros_selects = explode(",",$atts['id_feature']);
-	$sql=" SELECT SQL_CALC_FOUND_ROWS";
-	$sql.=" b.*, a.*";
-	$sql.=" FROM `ps_feature` a"; 
-	$sql.=" LEFT JOIN `ps_feature_lang` b ON (b.`id_feature` = a.`id_feature` AND b.`id_lang` = 1)";
-	$sql.=" WHERE 1";
-	//$sql.=" AND a.id_feature = ".$atts['id_feature'];
-	$sql.=" ORDER BY a.`position` ASC";
-	$my_wpdb = new wpdb('root','','sillamaniaes_dos','localhost');
-	$caracteristicas = $my_wpdb->get_results( $sql, OBJECT );
-	$caracteristicas_buenas = array();
-	$cadena='<div class="atributo">';
-	$cadena.='<div class="contenedorPluguinSelect">';
-	$cadena.='<select name="" id="" class="selectpicker">';
-	foreach ($caracteristicas as $carac){
-		$busqueda = FALSE;
-		$busqueda = array_search($carac->id_feature, $filtros_selects);
-		if ($busqueda !== FALSE){
-			$cadena.='<option value="'.$carac->id_feature.'">'.$carac->name.'</option>';
-			array_push($caracteristicas_buenas,$carac);
-			$subcarac = get_features_parent($carac->id_feature);
-			$caracteristicas_buenas['hijos'] = $subcarac;
-			foreach($subcarac as $sub){
-				foreach($sub as $clave => $name){
-					//print_r($sub);
-					//echo "registro: ".$clave."<br>";
-					//echo "clave: ".$name."<br>";
-					$cadena.='<option value="'.$clave.'">'.$name.'</option>';
-				}
-			}	
-		}	
-	}
-	$cadena.='</select>';
-	$cadena.='</div>';
-	$cadena.='</div>';
-	echo $cadena;
-	//print_r($caracteristicas_buenas);
-	//return $caracteristicas_buenas;
- }
-
- function get_features_parent($id_parent){
-	$sql=" SELECT SQL_CALC_FOUND_ROWS";
-	$sql.=" b.*, a.*";
-	$sql.=" FROM `ps_feature_value` a"; 
-	$sql.=" LEFT JOIN `ps_feature_value_lang` b ON (b.`id_feature_value` = a.`id_feature_value` AND b.`id_lang` = 1)";
-	$sql.=" WHERE 1  AND `id_feature` = ".$id_parent." AND (a.custom = 0 OR a.custom IS NULL) ";
-	$sql.=" ORDER BY `id_feature` ASC";
-	$my_wpdb = new wpdb('root','','sillamaniaes_dos','localhost');
-	$subcarac = $my_wpdb->get_results( $sql, OBJECT );
-	$subcaracteristicas = array();
-	foreach($subcarac as $sub){
-		$temp = array(
-			$sub->id_feature_value => $sub->value
-		);
-		array_push($subcaracteristicas,$temp);
-	}
-	return $subcaracteristicas;
-}
-
- add_shortcode( 'get_features', 'get_features' );
 
 
  /*

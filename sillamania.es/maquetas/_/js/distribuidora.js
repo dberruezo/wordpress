@@ -1,6 +1,7 @@
+var filtros_seleccionados = new array();
 
 jQuery(document).ready(function() {
-
+	
 	//-- ABRIR / CERRAR FILTROS
 	jQuery(".icon-filters").on('click', function(){
 		jQuery(".distribuidora .container-filtros").slideToggle();
@@ -25,10 +26,11 @@ jQuery(document).ready(function() {
 
 	//-- Recoger el valor del Select y añadirlo
 	jQuery('select').on('change',function(){
-	    var valor = jQuery(this).val();
-	    jQuery(".filtros-seleccionados .container").append('<div class="item"><span>' + valor + '</span><i class="fa icon-close"></i></div>')
+		var valor = jQuery(this).val();
+		jQuery(".filtros-seleccionados .container").append('<div class="item"><span>' + valor + '</span><i class="fa icon-close"></i></div>')
 		comprobarTitularFiltros();
 		eliminarFiltros();
+		filtrarProductos(valor);
 	});
 	
 	//-- Eliminar Filtros Seleccionados
@@ -41,6 +43,31 @@ jQuery(document).ready(function() {
 	
 	comprobarTitularFiltros();
 	eliminarFiltros();
-		
+
+	// Eliminar productos por id de atributo
+	function filtrarProductos(id){
+		var encontrado = false;
+		for (i = 0; i < filtros_seleccionados.length; i++) {
+			if (filtros_seleccionados[i] == id){
+				encontrado = true;		
+			}	
+		}
+		if(encontrado = false){
+			filtros_seleccionados.push(id);
+			$("div .producto").each(function(){
+				$(this).show();
+			});	
+			
+			$("div .producto").each(function(){
+				console.log("El id atributuo es: "+$(this).attr("idatributo"));
+				if ($(this).attr("idatributo") != id){
+					$(this).hide();
+				}
+			});		
+		}
+	}
+
+	
+
 });
 

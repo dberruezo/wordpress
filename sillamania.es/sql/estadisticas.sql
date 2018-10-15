@@ -1,8 +1,8 @@
-use prestashopprueba;
+# use prestashopprueba;
 
 #sql_mode=only_full_group_by;
 
-SET sql_mode = '';
+#SET sql_mode = '';
 
 
 
@@ -485,5 +485,120 @@ AND orderhistory.id_order_state = 2
 AND categorylang.id_lang = 2;
 */
 
+use sillamaniaes_dos;
 
+/*
+ * Filtros de combinaciones
+ * de productos en general
+ * todos activos y luego
+ * filtros pasando el parent
+ * para mostrar los hijos
+ */
+
+
+/*
+SELECT SQL_CALC_FOUND_ROWS b.*, a.*
+FROM `ps_attribute_group` a 
+LEFT JOIN `ps_attribute_group_lang` b ON (b.`id_attribute_group` = a.`id_attribute_group` AND b.`id_lang` = 1)
+WHERE 1 ORDER BY a.`position` ASC
+*/
+
+/*
+SELECT SQL_CALC_FOUND_ROWS b.*, a.*
+FROM `ps_attribute` a 
+LEFT JOIN `ps_attribute_lang` b ON (b.`id_attribute` = a.`id_attribute` AND b.`id_lang` = 1)
+WHERE 1  AND a.`id_attribute_group` = 3 
+ORDER BY a.`position` ASC
+*/
+
+
+/*
+ * Combinaciones de productos
+ */
+
+# Tercera query combinaciones 
+
+# Segunda query combinaciones 
+/*
+SELECT m.name AS manufacturer, p.id_product, pl.name, atgl.id_attribute_group as grupo_id,atgl.name as grupo_nombre,al.name as atribute_nombre,al.id_attribute as attribute_id,GROUP_CONCAT(DISTINCT(al.name) SEPARATOR ", ") AS combinations, 
+GROUP_CONCAT(DISTINCT(cl.name) SEPARATOR ",") AS categories, p.price, pa.price, p.id_tax_rules_group, p.wholesale_price, 
+p.reference, p.supplier_reference, p.id_supplier, p.id_manufacturer, p.upc, p.ecotax, p.weight, s.quantity, 
+pl.description_short, pl.description, pl.meta_title, pl.meta_keywords, pl.meta_description, pl.link_rewrite, 
+pl.available_now, pl.available_later, p.available_for_order, p.date_add, p.show_price, p.online_only, p.condition, 
+p.id_shop_default
+FROM ps_product p
+LEFT JOIN ps_product_lang pl ON (p.id_product = pl.id_product)
+LEFT JOIN ps_manufacturer m ON (p.id_manufacturer = m.id_manufacturer)
+LEFT JOIN ps_category_product cp ON (p.id_product = cp.id_product)
+LEFT JOIN ps_category_lang cl ON (cp.id_category = cl.id_category)
+LEFT JOIN ps_category c ON (cp.id_category = c.id_category)
+LEFT JOIN ps_stock_available s ON (p.id_product = s.id_product)
+LEFT JOIN ps_product_tag pt ON (p.id_product = pt.id_product)
+LEFT JOIN ps_product_attribute pa ON (p.id_product = pa.id_product)
+LEFT JOIN ps_product_attribute_combination pac ON (pac.id_product_attribute = pa.id_product_attribute)
+LEFT JOIN ps_attribute_lang al ON (al.id_attribute = pac.id_attribute)
+LEFT JOIN ps_attribute att ON (att.id_attribute = al.id_attribute)
+LEFT JOIN ps_attribute_group atg ON (atg.id_attribute_group = att.id_attribute_group)
+LEFT JOIN ps_attribute_group_lang atgl ON (atgl.id_attribute_group = atg.id_attribute_group)
+WHERE pl.id_lang = 1
+AND cl.id_lang = 1
+AND p.id_shop_default = 1
+AND c.id_shop_default = 1
+AND c.id_category = 244
+AND al.id_lang = 1
+AND atgl.id_lang = 1
+GROUP BY pac.id_product_attribute
+
+
+# Primera query combinaciones
+SELECT m.name AS manufacturer, p.id_product, pl.name, GROUP_CONCAT(DISTINCT(al.name) SEPARATOR ", ") AS combinations, 
+GROUP_CONCAT(DISTINCT(cl.name) SEPARATOR ",") AS categories, p.price, pa.price, p.id_tax_rules_group, p.wholesale_price, 
+p.reference, p.supplier_reference, p.id_supplier, p.id_manufacturer, p.upc, p.ecotax, p.weight, s.quantity, 
+pl.description_short, pl.description, pl.meta_title, pl.meta_keywords, pl.meta_description, pl.link_rewrite, 
+pl.available_now, pl.available_later, p.available_for_order, p.date_add, p.show_price, p.online_only, p.condition, 
+p.id_shop_default
+FROM ps_product p
+LEFT JOIN ps_product_lang pl ON (p.id_product = pl.id_product)
+LEFT JOIN ps_manufacturer m ON (p.id_manufacturer = m.id_manufacturer)
+LEFT JOIN ps_category_product cp ON (p.id_product = cp.id_product)
+LEFT JOIN ps_category_lang cl ON (cp.id_category = cl.id_category)
+LEFT JOIN ps_category c ON (cp.id_category = c.id_category)
+LEFT JOIN ps_stock_available s ON (p.id_product = s.id_product)
+LEFT JOIN ps_product_tag pt ON (p.id_product = pt.id_product)
+LEFT JOIN ps_product_attribute pa ON (p.id_product = pa.id_product)
+LEFT JOIN ps_product_attribute_combination pac ON (pac.id_product_attribute = pa.id_product_attribute)
+LEFT JOIN ps_attribute_lang al ON (al.id_attribute = pac.id_attribute)
+WHERE pl.id_lang = 1
+AND cl.id_lang = 1
+AND p.id_shop_default = 1
+AND c.id_shop_default = 1
+GROUP BY pac.id_product_attribute
+*/
+
+/*
+ * Caracteristicas en
+ * general y luego enviando
+ * parametro para las subcaracteristicas
+ */
+
+/* 
+SELECT SQL_CALC_FOUND_ROWS
+b.*, a.*
+FROM `ps_feature` a 
+LEFT JOIN `ps_feature_lang` b ON (b.`id_feature` = a.`id_feature` AND b.`id_lang` = 1)
+WHERE 1  
+ORDER BY a.`position` ASC;
+
+
+ 
+SELECT SQL_CALC_FOUND_ROWS
+b.*, a.*
+FROM `ps_feature_value` a 
+LEFT JOIN `ps_feature_value_lang` b ON (b.`id_feature_value` = a.`id_feature_value` AND b.`id_lang` = 1)
+WHERE 1  AND `id_feature` = 14 AND (a.custom = 0 OR a.custom IS NULL) 
+ORDER BY `id_feature` ASC;
+*/
+ 
+ 
+ 
 

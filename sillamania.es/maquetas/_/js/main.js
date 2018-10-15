@@ -97,9 +97,10 @@ jQuery(document).ready(function() {
 			}		
 		}
 		
-	});
+	}); // Fin de resize
 	
 	
+
 	jQuery('.carrusel-hero').slick({
 	   autoplay: false,      
 	   speed: 300,           
@@ -461,6 +462,8 @@ jQuery(document).ready(function() {
 		jQuery('.disponibilidad').insertBefore(".page-title-wrapper");
 	}
 			
+	//eventos_filtros();
+
 });
 
 
@@ -675,4 +678,14 @@ jQuery( "#campo_email" ).keypress(function() {
 	var $result = $("#result");
 	jQuery("#result").val(" ");
 });
-  
+
+/*
+ * Eventos para filtros
+ */
+  function eventos_filtros(){
+	$(".selectpicker").change(function(){
+		$(this+" option:selected").text();
+		$(this+" option:selected").val();
+		//$( "#myselect option:selected" ).text();
+	});
+  }

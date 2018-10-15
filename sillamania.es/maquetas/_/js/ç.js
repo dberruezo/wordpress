@@ -25,7 +25,8 @@ jQuery(document).ready(function() {
 
 	//-- Recoger el valor del Select y añadirlo
 	jQuery('select').on('change',function(){
-	    var valor = jQuery(this).val();
+		var valor = jQuery(this).val();
+		
 	    jQuery(".filtros-seleccionados .container").append('<div class="item"><span>' + valor + '</span><i class="fa icon-close"></i></div>')
 		comprobarTitularFiltros();
 		eliminarFiltros();

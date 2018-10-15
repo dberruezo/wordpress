@@ -374,9 +374,31 @@ if (get_the_title() == "home"){ ?>
 	</div>
 		
 	<div class="container-filtros">
+		
 		<div class="container">
 			<form action="" method="" id="">
 				<div class="selectores">
+					<?php echo do_shortcode("[get_products_by_default_combination id_categoria='3']"); ?>
+					<?php echo do_shortcode("[get_features id_feature='9']"); ?>
+					<?php echo do_shortcode("[get_attributes filtros='1,2,3']"); ?>
+
+					<?php //echo do_shortcode("[get_products_by_default_combination id_categoria='244']"); ?>
+					<?php //echo do_shortcode("[get_features id_feature='14']"); ?>
+					<?php //echo do_shortcode("[get_attributes filtros='3,8,9']"); ?>
+
+					<!--
+					<div class="atributo">
+						<div class="contenedorPluguinSelect">
+							<select name="" id="" class="selectpicker">
+								<option value="">Titular filtro</option>
+								<option value="opcion 1">Opción 1</option>
+								<option value="opcion 2">Opción 2</option>
+								<option value="opcion 2">Opción 3</option>
+								<option value="opcion 4">Opción 4</option>
+							</select>
+						</div>
+					</div>
+					
 					<div class="atributo">
 						<div class="contenedorPluguinSelect">
 							<select name="" id="" class="selectpicker">
@@ -410,17 +432,7 @@ if (get_the_title() == "home"){ ?>
 							</select>
 						</div>
 					</div>
-					<div class="atributo">
-						<div class="contenedorPluguinSelect">
-							<select name="" id="" class="selectpicker">
-								<option value="">Titular filtro</option>
-								<option value="opcion 1">Opción 1</option>
-								<option value="opcion 2">Opción 2</option>
-								<option value="opcion 2">Opción 3</option>
-								<option value="opcion 4">Opción 4</option>
-							</select>
-						</div>
-					</div>				
+					-->				
 				</div>
 			</form>
 		</div>
@@ -449,6 +461,11 @@ if (get_the_title() == "home"){ ?>
 	</div>
 				
 	<div class="container">
+		<?php //echo do_shortcode("[get_products_by_default_combination id_categoria='244']"); ?>
+		<?php echo do_shortcode("[devolver_print_filtros_productos]"); ?>
+		
+		
+		<!--
 		<div class="productos">
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-md-3">
@@ -565,6 +582,7 @@ if (get_the_title() == "home"){ ?>
 						</div>						
 					</a>
 				</div>
+
 				<div class="col-xs-12 col-sm-6 col-md-3 ">
 					<a href="" class="item-destacado">
 						<div class="imagen-destacada"></div>
@@ -784,6 +802,10 @@ if (get_the_title() == "home"){ ?>
 				</div>
 			</div>
 		</div>
+		-->
+
+		<!-- fin de produtos -->
+
 		<!--
 		<div class="container-otros-2">
 			<div class="row">
