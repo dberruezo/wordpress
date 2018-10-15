@@ -1885,7 +1885,7 @@ function menupilar_mio($elgrupo) {
 			$pos->grupo = get_field('grupo', $pos->ID );
 			$pos->prestashop_id = get_field('prestashop_id', $pos->ID );
 			$que="SELECT * FROM `ps_category` where id_category='".$pos->prestashop_id."'";
-			$my_wpdb = new wpdb('root','','sillamaniaes_dos','localhost');
+			$my_wpdb = new wpdb('root','Berruezin23','sillamaniaes_dos','localhost');
 			$query = $my_wpdb->get_results( $que, OBJECT );
 			//$query = $GLOBALS['wpdb']->get_results( $que, OBJECT );
 			foreach ($query as $row) {
@@ -1919,6 +1919,7 @@ function menupilar_mio($elgrupo) {
 	
 } 
 
+
 function menupilar_menu($elgrupo) {
     $args = array(
         'sort_order'   => 'ASC',
@@ -1935,14 +1936,14 @@ function menupilar_menu($elgrupo) {
 			$pos->grupo = get_field('grupo', $pos->ID );
 			$pos->prestashop_id = get_field('prestashop_id', $pos->ID );
 			$que="SELECT * FROM `ps_category` where id_category='".$pos->prestashop_id."'";
-			$my_wpdb = new wpdb('root','','sillamaniaes_dos','localhost');
+			$my_wpdb = new wpdb('root','Berruezin23','sillamaniaes_dos','localhost');
 			$query = $my_wpdb->get_results( $que, OBJECT );
 			//$query = $GLOBALS['wpdb']->get_results( $que, OBJECT );
 			foreach ($query as $row) {
 				$parent=$row->id_parent;
 			}
 			if($pos->categoria!="" && $pos->grupo==$elgrupo) {
-			$categorias[$parent][$pos->ID]=$pos;
+				$categorias[$parent][$pos->ID]=$pos;
 			};
 		};
 		$i= '<ul class="principal">';
@@ -1971,6 +1972,7 @@ function menupilar_menu($elgrupo) {
 	}
 	return $i;
 }
+
 
 function menu_products_by_categoria($id_categoria){
 	//echo "Consulta productos por categorias";	
@@ -2019,7 +2021,7 @@ function categorias_raiz(){
 	$sql.="ON categorylang.id_category = category.id_category ";
 	$sql.="where categorylang.id_lang = 1 ";
 	$sql.="AND category.id_parent = 2 ";
-	$my_wpdb = new wpdb('root','','sillamaniaes_dos','localhost');
+	$my_wpdb = new wpdb('root','Berruezin23','sillamaniaes_dos','localhost');
 	$query = $my_wpdb->get_results( $sql, OBJECT );
 	//$query = $GLOBALS['wpdb']->get_results( $sql, OBJECT );
 				foreach ($query as $row) {
@@ -2065,8 +2067,9 @@ function subcategorias_raiz($atts = [], $content = null, $tag = ''){
 		$sql.="ON categorylang.id_category = category.id_category ";
 		$sql.="where categorylang.id_lang = 1 ";
 		$sql.="AND category.id_parent = ".$indice;
-		$my_wpdb = new wpdb('root','','sillamaniaes_dos','localhost');
+		$my_wpdb = new wpdb('root','Berruezin23','sillamaniaes_dos','localhost');
 		$query = $my_wpdb->get_results( $sql, OBJECT );
+		//print_r($query);
 		//$query = $GLOBALS['wpdb']->get_results( $sql, OBJECT );
 					foreach ($query as $row) {
 						if (!is_array($subcategorias[$indice])){
@@ -2077,14 +2080,18 @@ function subcategorias_raiz($atts = [], $content = null, $tag = ''){
 						);
 						array_push($subcategorias[$indice],$temp);
 					}
+					//print_r($subcategorias);
 	}
 	$str='<div class="catalogo">';
 	$str.='<div class="container-catalogo">';
 	$str.='	<div class="container">';
 	$str.='		<div class="container-img">';
 	$str.='			<div class="row">';
-	 
+
+	//echo "la subcategoria es: ".get_userdata($atts['subcategoria'])."<br>";
+		
 	foreach($subcategorias[$atts['subcategoria']] as $sub){
+		//print_r($subcategorias[$atts['subcategoria']]);
 		foreach($sub as $clave =>$cat_name){  
 			$str.= '<div class="col-xs-12 col-sm-6 col-md-3">';
 				$str.= '<a href="" class="item">';
@@ -2105,6 +2112,7 @@ function subcategorias_raiz($atts = [], $content = null, $tag = ''){
 add_shortcode( 'subcategorias_raiz', 'subcategorias_raiz' );
 
 function titulo_categoria($atts = [], $content = null, $tag = ''){
+	//echo "el titulo la subcategoria es: ".$atts['subcategoria']."<br>";
 	$categorias    = categorias_raiz();
 	// $categorias[233]
 	$str= '<h2 style="font-weight: 700; font-size: 60px; margin-bottom: 50px; text-align: center;">'.$categorias[$atts['subcategoria']].'</h2>';

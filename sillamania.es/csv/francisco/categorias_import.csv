@@ -4,6 +4,7 @@ Category ID;Active (0/1);Name *;Parent category;Root category (0/1);Description;
 229;1;Estilos;2;0;Estilos;estilos;estilos;estilos;estilos;http://www.phpandfriends.com/imagenes_csv/categoria.png
 233;1;Silla de colores;2;0;Silla de colores;silla-de-colores;silla-de-colores;silla-de-colores;silla-de-colores;http://www.phpandfriends.com/imagenes_csv/categoria.png
 240;1;Tipo;2;0;Tipo;tipo;tipo;tipo;tipo;http://www.phpandfriends.com/imagenes_csv/categoria.png
+260;1;Accesorios;2;0;Accesorios;accesorios;accesorios;accesorios;accesorios;http://www.phpandfriends.com/imagenes_csv/categoria.png
 209;1;Sillas de plastico;208;0;Sillas plastico;sillas-plastico;sillas-plastico;sillas-plastico;sillas-plastico;http://www.phpandfriends.com/imagenes_csv/categoria.png
 210;1;Sillas metracrilato;208;0;Sillas metracrilato;sillas-metracrilato;sillas-metracrilato;sillas-metracrilato;sillas-metracrilato;http://www.phpandfriends.com/imagenes_csv/categoria.png
 211;1;Sillas tapizadas;208;0;Sillas tapizadas;sillas-tapizadas;sillas-tapizadas;sillas-tapizadas;sillas-tapizadas;http://www.phpandfriends.com/imagenes_csv/categoria.png
@@ -51,4 +52,3 @@ Category ID;Active (0/1);Name *;Parent category;Root category (0/1);Description;
 257;1;Sillas ordenador;240;0;Sillas ordenador;sillas-ordenador;sillas-ordenador;sillas-ordenador;sillas-ordenador;http://www.phpandfriends.com/imagenes_csv/categoria.png
 258;1;Sillas visita;240;0;Sillas visita;sillas-visita;sillas-visita;sillas-visita;sillas-visita;http://www.phpandfriends.com/imagenes_csv/categoria.png
 259;1;Sillas para escuelas;240;0;Sillas para escuelas;sillas-para-escuelas;sillas-para-escuelas;sillas-para-escuelas;sillas-para-escuelas;http://www.phpandfriends.com/imagenes_csv/categoria.png
-260;1;Accesorios;2;0;Accesorios;accesorios;accesorios;accesorios;accesorios;http://www.phpandfriends.com/imagenes_csv/categoria.png
