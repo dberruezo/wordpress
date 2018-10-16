@@ -378,10 +378,14 @@ if (get_the_title() == "home"){ ?>
 		<div class="container">
 			<form action="" method="" id="">
 				<div class="selectores">
-					<?php echo do_shortcode("[get_products_by_default_combination id_categoria='3']"); ?>
-					<?php echo do_shortcode("[get_features id_feature='9']"); ?>
-					<?php echo do_shortcode("[get_attributes filtros='1,2,3']"); ?>
-
+				<?php echo do_shortcode("[get_features_and_attributes feature='5,6,7' attribute='1,3' id_category='3']"); ?>
+				
+					<!-- Primera prueba filtros -->
+					<?php //echo do_shortcode("[get_products_by_default_combination id_categoria='3']"); ?>
+					<?php //echo do_shortcode("[get_features id_feature='9']"); ?>
+					<?php //echo do_shortcode("[get_attributes filtros='1,2,3']"); ?>
+					<!-- Segunda prueba filtros -->
+					<!-- [SHORTCODE features='3,4,6' attributes_grupo = '5,7,8' id_category=3] -->
 					<?php //echo do_shortcode("[get_products_by_default_combination id_categoria='244']"); ?>
 					<?php //echo do_shortcode("[get_features id_feature='14']"); ?>
 					<?php //echo do_shortcode("[get_attributes filtros='3,8,9']"); ?>

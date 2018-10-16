@@ -2984,9 +2984,11 @@ add_shortcode( 'get_products_by_default_combination', 'get_products_by_default_c
  */ 
 
 $filtros = array(); 
-function get_attributes($atts = [], $content = null, $tag = ''){
+// $atts = [], $content = null, $tag = ''
+function get_attributes($filtritos,$nombres){
 	global $filtros;
-	$filtros_selects = explode(",",$atts['filtros']);
+	//$filtros_selects = explode(",",$atts['filtros']);
+	$filtros_selects = explode(",",$filtritos);
 	global $vector_filtros_productos;
 	$sql=" SELECT SQL_CALC_FOUND_ROWS b.*, a.* ";
 	$sql.=" FROM `ps_attribute_group` a "; 
@@ -2995,6 +2997,7 @@ function get_attributes($atts = [], $content = null, $tag = ''){
 	$my_wpdb = new wpdb('root','','sillamaniaes_dos','localhost');
 	$features = $my_wpdb->get_results( $sql, OBJECT );
 	$cadena='';
+	$contador = 0;
 	foreach($features as $row){
 		$busqueda = array_search($row->id_attribute_group, $filtros_selects);
 		if ($busqueda !== FALSE){
@@ -3007,31 +3010,33 @@ function get_attributes($atts = [], $content = null, $tag = ''){
 			$hijos = get_attributes_parent($row->id_attribute_group);
 			$cadena.='<div class="atributo">';
 			$cadena.='<div class="contenedorPluguinSelect">';
-			$cadena.='<select name="" id="" class="selectpicker">';	
+			$cadena.='<select name="combinaciones_'.$nombres[$contador].'" id="combinaciones_'.$nombres[$contador].'" class="selectpicker">';	
 			$cadena.='<option value="'.$row->id_attribute_group.'">'.$row->name.'</option>';
 			foreach($hijos as $hijo){
 				//print_r($hijo);
-				$encontrado = FALSE;
-				foreach($vector_filtros_productos as $filtros_productos){
+				//$encontrado = FALSE;
+				//foreach($vector_filtros_productos as $filtros_productos){
 					//echo "El filtro producto es: ".$filtros_productos."<br>";
 					//echo "El id attribute es: ".$hijo->id_attribute."<br>";
-					if ($hijo->id_attribute == $filtros_productos){
+					//if ($hijo->id_attribute == $filtros_productos){
 						$encontrado = TRUE;
-					}
-				}
-				if ($encontrado === TRUE){
+					//}
+				//}
+				//if ($encontrado === TRUE){
 					//$filtros[$row->id_attribute_group]["children"][$hijo->id_attribute] =  $hijo->name; 
 					$temp = array(
 						$hijo->id_attribute => $hijo->name
 					);
 					array_push($filtros[$row->id_attribute_group]["children"],$temp);
 					$cadena.='<option value="'.$hijo->id_attribute.'">'.$hijo->name.'</option>';
-				}
+				//}
 			}
 			$cadena.="</select>";
 			$cadena.="</div>";
 			$cadena.="</div>";
+			$contador++;
 		}
+		
 	}
 	/*
 	echo "<br><br><br><br>";
@@ -3063,9 +3068,11 @@ add_shortcode( 'get_attributes', 'get_attributes' );
 
  $caracteristicas = array();
 
- function get_features($atts = [], $content = null, $tag = ''){
+ // $atts = [], $content = null, $tag = ''
+ function get_features($filtros,$nombre){
 	global $caracteristicas;
-	$filtros_selects = explode(",",$atts['id_feature']);
+	//$filtros_selects = explode(",",$atts['id_feature']);
+	$filtros_selects = explode(",",$filtros);
 	$sql=" SELECT SQL_CALC_FOUND_ROWS";
 	$sql.=" b.*, a.*";
 	$sql.=" FROM `ps_feature` a"; 
@@ -3078,7 +3085,7 @@ add_shortcode( 'get_attributes', 'get_attributes' );
 	$caracteristicas_buenas = array();
 	$cadena='<div class="atributo">';
 	$cadena.='<div class="contenedorPluguinSelect">';
-	$cadena.='<select name="" id="" class="selectpicker">';
+	$cadena.='<select name="caracteristicas_'.$nombre.'" id="caracteristicas_'.$nombre.'" class="selectpicker">';
 	foreach ($caracteristicas as $carac){
 		$busqueda = FALSE;
 		$busqueda = array_search($carac->id_feature, $filtros_selects);
@@ -3124,8 +3131,217 @@ add_shortcode( 'get_attributes', 'get_attributes' );
 	return $subcaracteristicas;
 }
 
- add_shortcode( 'get_features', 'get_features' );
+//add_shortcode( 'get_features', 'get_features' );
 
+$productos_features_attributes = array();
+$productos_combination = array();
+$total_features    = "";
+$total_attributes  = "";
+//$ncol_bootstrap = ;
+
+function get_features_and_attributes($atts = [], $content = null, $tag = ''){
+	global $productos_features_attributes,$productos_combination,$total_attributes,$total_features;
+	// get_features_and_attributes feature='5,6,7' attribute='1,3' id_category='3'
+	// Cuento que como minimo habra 1 feature
+	$id_categoria     = $atts['id_category'];
+	$features         = explode(",",$atts['feature']);
+	$attributes       = explode(",",$atts['attribute']);
+	$total_features   = count($features);
+	$total_attributes = count($attributes);
+	$nombre_select_box_caracteristicas = array();
+	// Keep features
+	$sql=' SELECT fp.id_product,fp.id_feature,fp.id_feature_value,fl.name as caracteristica,fvl.value as caracteristica_valor FROM ps_feature_product as fp';
+	$sql.=' left join ps_feature_lang as fl';
+	$sql.=' on fl.id_feature = fp.id_feature';
+	$sql.=' left join ps_feature_value_lang as fvl';
+	$sql.=' on fvl.id_feature_value = fp.id_feature_value';
+	$sql.=' left join ps_category_product as cp';
+	$sql.=' on fp.id_product = cp.id_product';
+	$sql.=' where ';
+	$contador = 0;
+	foreach($features as $feature){
+		if ($contador == 0){
+			$sql.=' id_category = '.$id_categoria.' and fl.id_lang= 1 and fvl.id_lang= 1 AND fp.id_feature = '.$feature;
+		}else{
+			$sql.=' or id_category = '.$id_categoria.' and fl.id_lang= 1 and fvl.id_lang= 1 AND fp.id_feature = '.$feature;		
+		}
+		$contador++;
+	}	
+	$sql.=' order by id_product';
+	//echo $sql;
+	$my_wpdb = new wpdb('root','','sillamaniaes_dos','localhost');
+	$features = $my_wpdb->get_results( $sql, OBJECT );
+	//print_r($features);
+	foreach($features as $feature){
+		$encontrado = false;
+		foreach($productos_features_attributes as $key => $producto){
+			if ($producto["id_product"] == $feature->id_product){
+				$productos_features_attributes[$key]["id_feature"] = $productos_features_attributes[$key]["id_feature"].",".$feature->id_feature;
+				$productos_features_attributes[$key]["id_feature_value"] = $productos_features_attributes[$key]["id_feature_value"].",".$feature->id_feature_value; 
+				$productos_features_attributes[$key]["caracteristica"] = $productos_features_attributes[$key]["caracteristica"].",".$feature->caracteristica;
+				$productos_features_attributes[$key]["caracteristica_valor"] = $productos_features_attributes[$key]["caracteristica_valor"].",".$feature->caracteristica_valor;	
+				$encontrado = true;
+			}
+		}
+		if (!$encontrado){
+			$temp = array(
+				"id_product" 	   	   => $feature->id_product,
+				"id_feature" 	   	   => $feature->id_feature,
+				"id_feature_value" 	   => $feature->id_feature_value,
+				"caracteristica" 	   => $feature->caracteristica,
+				"caracteristica_valor" => $feature->caracteristica_valor
+				# id_product, id_feature, id_feature_value, caracteristica, caracteristica_valor
+			);
+			array_push($productos_features_attributes,$temp);
+		}
+		array_push($nombre_select_box_caracteristicas,$feature->caracteristica);
+		$nombre_select_box_caracteristicas = array_unique($nombre_select_box_caracteristicas);
+	}
+	//print_r($productos_features_attributes);
+	// keep attrihutes
+	$sql=' SELECT m.name AS manufacturer, p.id_product, pl.name,GROUP_CONCAT(DISTINCT(atgl.name) SEPARATOR ",") AS grupo_nombre, GROUP_CONCAT(DISTINCT(atgl.id_attribute_group) SEPARATOR ",") AS grupo_id,GROUP_CONCAT(DISTINCT(al.name) SEPARATOR ",") AS combinations,GROUP_CONCAT(DISTINCT(al.id_attribute) SEPARATOR ",") AS combinations_id,';
+	$sql.=' GROUP_CONCAT(DISTINCT(cl.name) SEPARATOR ",") AS categories, p.price, pa.price, p.id_tax_rules_group, p.wholesale_price, ';
+	$sql.=' p.reference, p.supplier_reference, p.id_supplier, p.id_manufacturer, p.upc, p.ecotax, p.weight, s.quantity, ';
+	$sql.=' pl.description_short, pl.description, pl.meta_title, pl.meta_keywords, pl.meta_description, pl.link_rewrite, ';
+	$sql.=' pl.available_now, pl.available_later, p.available_for_order, p.date_add, p.show_price, p.online_only, p.condition,'; 
+	$sql.=' p.id_shop_default ';
+	$sql.=' FROM ps_product p ';
+	$sql.=' LEFT JOIN ps_product_lang pl ON (p.id_product = pl.id_product) ';
+	$sql.=' LEFT JOIN ps_manufacturer m ON (p.id_manufacturer = m.id_manufacturer) ';
+	$sql.=' LEFT JOIN ps_category_product cp ON (p.id_product = cp.id_product) ';
+	$sql.=' LEFT JOIN ps_category_lang cl ON (cp.id_category = cl.id_category) ';
+	$sql.=' LEFT JOIN ps_category c ON (cp.id_category = c.id_category) ';
+	$sql.=' LEFT JOIN ps_stock_available s ON (p.id_product = s.id_product) ';
+	$sql.=' LEFT JOIN ps_product_tag pt ON (p.id_product = pt.id_product) ';
+	$sql.=' LEFT JOIN ps_product_attribute pa ON (p.id_product = pa.id_product) ';
+	$sql.=' LEFT JOIN ps_product_attribute_combination pac ON (pac.id_product_attribute = pa.id_product_attribute) ';
+	$sql.=' LEFT JOIN ps_attribute_lang al ON (al.id_attribute = pac.id_attribute)';
+	$sql.=' LEFT JOIN ps_attribute att ON (att.id_attribute = al.id_attribute) ';
+	$sql.=' LEFT JOIN ps_attribute_group atg ON (atg.id_attribute_group = att.id_attribute_group) ';
+	$sql.=' LEFT JOIN ps_attribute_group_lang atgl ON (atgl.id_attribute_group = atg.id_attribute_group) ';
+	$sql.=' WHERE pl.id_lang = 1 ';
+	$sql.=' AND cl.id_lang = 1 ';
+	$sql.=' AND p.id_shop_default = 1 ';
+	$sql.=' AND c.id_shop_default = 1 ';
+	$sql.=' AND c.id_category = '.$id_categoria;
+	$sql.=' AND al.id_lang = 1 ';
+	$sql.=' AND atgl.id_lang = 1 ';
+	$sql.=' GROUP BY pac.id_product_attribute ';
+	$my_wpdb = new wpdb('root','','sillamaniaes_dos','localhost');
+	$attributes_recordset = $my_wpdb->get_results( $sql, OBJECT );
+	$nombre_attributes = array();
+	# manufacturer, id_product, name, grupo_nombre, grupo_id, combinations, combinations_id, categories, price, price, id_tax_rules_group, wholesale_price, reference, supplier_reference, id_supplier, id_manufacturer, upc, ecotax, weight, quantity, description_short, description, meta_title, meta_keywords, meta_description, link_rewrite, available_now, available_later, available_for_order, date_add, show_price, online_only, condition, id_shop_default
+	//'Fashion Manufacturer', '1', 'Camiseta efecto desteñido de manga corta', 'Size,Color', '1,3', 'S,Naranja', '1,13', 'Mujer', '16.510000', '0.000000', '1', '4.950000', 'demo_1', '', '1', '1', '', '0.000000', '0.000000', '1799', '<p>Camiseta de manga corta con efecto desteñido  y escote cerrado. Material suave y elástico para un ajuste cómodo. ¡Combínala con un sombrero de paja y estarás lista para el verano!</p>', '<p>Fashion lleva diseñando colecciones increíbles desde 2010. La marca ofrece diseños femeninos, con elegantes prendas para combinar y las últimas tendencias en vestidos. Las colecciones han evolucionado hacia una línea prêt-à-porter en la que cada elemento resulta indispensable en el fondo de armario de una mujer. ¿El resultado? Looks frescos, sencillos y muy chic, con una elegancia juvenil y un estilo único e inconfundible. Todas las prendas se confeccionan en Italia, prestando atención hasta al más mínimo detalle. Ahora Fashion ha ampliado su catálogo para incluir todo tipo de complementos: ¡zapatos, sombreros, cinturones y mucho más! </ p>', '', '', '', 'camiseta-destenida-manga-corta', 'En stock', '', '1', '2018-10-11 08:19:32', '1', '0', 'new', '1'
+	foreach($attributes_recordset as $attribute){
+		//if ($attribute->id_product == 1){
+			$grupo_nombre 	 = explode(",",$attribute->grupo_nombre);
+			$combinations 	 = explode(",",$attribute->combinations);
+			$nombre_attributes = $grupo_nombre;
+			//echo "El grupo_nombre son: ".$grupo_nombre."<br>";
+			//print_r($grupo_nombre);
+			$temp = array(
+				"id_producto"		 => $attribute->id_product,
+				"name"		 		 => $attribute->name,
+				"price"		 		 => $attribute->price,
+				"combinations_grupo" => $attribute->combinations,
+				"combinations_valor" => $attribute->grupo_nombre,
+				"grupo_id"   		 => $attribute->grupo_id,
+				"combinations_id"    => $attribute->combinations_id,
+				"description"		 => $attribute->description_short
+			);
+			
+			foreach($productos_features_attributes as $key => $producto){
+				if ($producto["id_product"] == $attribute->id_product){
+						$temp["id_feature"] 	   	    = $producto['id_feature'];
+						$temp["id_feature_value"] 	    = $producto['id_feature_value'];
+						$temp["caracteristica"] 	    = $producto['caracteristica'];
+						$temp["caracteristica_valor"]   = $producto['caracteristica_valor'];
+				}
+			}
+			array_push($productos_combination,$temp);			
+		
+	}
+	// Construimos caracteristicas graficos
+	$temp_features = explode(",",$atts['feature']);
+	$contador = 0;
+	$nombre_select_box_caracteristicas = array_reverse($nombre_select_box_caracteristicas);
+	foreach($temp_features as $feature){
+		get_features($feature,$nombre_select_box_caracteristicas[$contador]);	
+		$contador++;
+	}	
+	// Construimos combinaciones graficos
+	$temp_attributes = explode(",",$atts['attribute']);
+	$nombre_attributes = array_unique($nombre_attributes);
+	get_attributes($atts['attribute'],$nombre_attributes);	
+	// Construimos productos
+	$cadena="<br style='clear:both;'>";
+	$cadena.= '<div class="productos">';
+	$cadena.= '<div class="row">';
+	$contColumna = 0;
+	foreach($productos_combination as $p){
+		//print_r($p);
+		//echo "<br><br>";
+		if ($contColumna == 4){
+			$cadena.='<div class="col-xs-12 col-sm-6 col-md-3 ">';
+			$cadena.='<a href="" class="item-destacado">';
+			$cadena.='<div class="imagen-destacada"></div>';
+			$cadena.='<div class="container-text">';
+			$cadena.='<div class="wrapper-position">';
+			$cadena.='<div class="info">';
+			$cadena.='<div class="descripcion">';
+			$cadena.='<p>Sillón tela confort</p>';
+			$cadena.='</div>';	
+			$cadena.='<div class="precio">';
+			$cadena.='<p class="desde">Desde</p>';
+			$cadena.='<p class="cantidad">€ 790<span>ud</span></p>';
+			$cadena.='</div>';					
+			$cadena.='</div>';	
+			$cadena.='</div>';	
+			$cadena.='</div>';				
+			$cadena.='</a>';
+			$cadena.='</div>';
+		}else{
+			$cadena.='<div class="col-xs-12 col-sm-6 col-md-3 producto" caracteristica_valor="'.$p["caracteristica_valor"].'" caracteristica="'.$p["caracteristica"].'" id_feature_value="'.$p["id_feature_value"].'" id_feature="'.$p["id_feature"].'" grupo_combinations_id="'.$p["combinations_id"].'" grupo_id="'.$p["grupo_id"].'" grupo_combinations_valor="'.$p["combinations_valor"].'"  grupo_combinations="'.$p["combinations_grupo"].'">';
+			$cadena.='<a href="" class="item-prod">';
+			$cadena.='<div class="img-container">';
+			$cadena.='<img src="http://placehold.it/770x510/bcbcbc" class="img-responsive principal" alt="Alt de la imagen" title="Titulo de la imagen" />';
+			$cadena.='<img src="http://placehold.it/770x510/777777" class="img-responsive secundaria" alt="Alt de la imagen" title="Titulo de la imagen" />';
+			$cadena.='</div>';
+			$cadena.='<div class="container-text">';
+			$cadena.='<div class="wrapper-position">';
+			$cadena.='<div class="extra-info"></div>';
+			$cadena.='<div class="info">';
+			$cadena.='<div class="descripcion">';
+			$cadena.='<p>'.$p["name"]." ".$p["combinations_grupo"].'</p>';
+			$cadena.='</div>';
+			$cadena.='<div class="price-box">';
+			$cadena.='<span class="price-container normal-price">';
+			$cadena.='<span class="price-wrapper ">'.$p["price"].'</span> <span class="unidad">ud</span>';
+			$cadena.='</span>';
+			$cadena.='</div>';	
+			$cadena.='<div class="prod-description">';
+			$cadena.='<p>'.$p["description_short"].'</p>';									
+			$cadena.='</div>';					
+			$cadena.='</div>';		
+			$cadena.='</div>';						
+			$cadena.='</div>';					
+			$cadena.='</a>';
+			$cadena.='</div>';
+		}
+		$contColumna++;
+	}
+	$cadena.="</div></div>";
+	echo $cadena;
+	/*
+	Array ( [id_producto] => 1 [name] => Camiseta efecto desteñido de manga corta [price] => 0.000000 
+	[combinations_grupo] => S,Azul [combinations_valor] => Size,Color [grupo_id] => 1,3 
+	[combinations_id] => 1,14 [id_feature] => 7,6,5 [id_feature_value] => 17,11,5 
+	[caracteristica] => Propiedades,Estilos,Composición [caracteristica_valor] => Manga corta,Informal,Algodón ) 
+	*/
+
+}
+
+add_shortcode( 'get_features_and_attributes', 'get_features_and_attributes');
 
  /*
   * Recibir formulario para insertar

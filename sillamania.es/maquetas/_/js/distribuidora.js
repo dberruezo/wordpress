@@ -1,4 +1,6 @@
-var filtros_seleccionados = new array();
+// var
+var caracteristicas_seleccionadas = new Array();
+var combinaciones_seleccionadas   = new Array();
 
 jQuery(document).ready(function() {
 	
@@ -30,7 +32,7 @@ jQuery(document).ready(function() {
 		jQuery(".filtros-seleccionados .container").append('<div class="item"><span>' + valor + '</span><i class="fa icon-close"></i></div>')
 		comprobarTitularFiltros();
 		eliminarFiltros();
-		filtrarProductos(valor);
+		filtrarProductos($(this),valor);
 	});
 	
 	//-- Eliminar Filtros Seleccionados
@@ -45,7 +47,20 @@ jQuery(document).ready(function() {
 	eliminarFiltros();
 
 	// Eliminar productos por id de atributo
-	function filtrarProductos(id){
+	function filtrarProductos(objeto,id){
+		var str = objeto.attr("name");
+		var n   = str.search("caracteristicas");
+		if (n != -1){
+			// son caracteristicas
+			console.log("son caracteristicas");
+		}else{
+			n   = str.search("combinaciones");
+			if (n != -1){
+				// son combinaciones
+				console.log("son combinaciones");
+			}	
+		}
+		/*
 		var encontrado = false;
 		for (i = 0; i < filtros_seleccionados.length; i++) {
 			if (filtros_seleccionados[i] == id){
@@ -65,6 +80,7 @@ jQuery(document).ready(function() {
 				}
 			});		
 		}
+		*/
 	}
 
 	
