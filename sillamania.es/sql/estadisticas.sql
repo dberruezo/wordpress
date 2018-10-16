@@ -519,8 +519,8 @@ ORDER BY a.`position` ASC
 # Tercera query combinaciones 
 
 # Segunda query combinaciones 
-/*
-SELECT m.name AS manufacturer, p.id_product, pl.name, atgl.id_attribute_group as grupo_id,atgl.name as grupo_nombre,al.name as atribute_nombre,al.id_attribute as attribute_id,GROUP_CONCAT(DISTINCT(al.name) SEPARATOR ", ") AS combinations, 
+# atgl.id_attribute_group as grupo_id,
+SELECT m.name AS manufacturer, p.id_product, pl.name,GROUP_CONCAT(DISTINCT(atgl.name) SEPARATOR ", ") AS grupo_nombre, GROUP_CONCAT(DISTINCT(atgl.id_attribute_group) SEPARATOR ", ") AS grupo_id,GROUP_CONCAT(DISTINCT(al.name) SEPARATOR ", ") AS combinations,GROUP_CONCAT(DISTINCT(al.id_attribute) SEPARATOR ", ") AS combinations_id, 
 GROUP_CONCAT(DISTINCT(cl.name) SEPARATOR ",") AS categories, p.price, pa.price, p.id_tax_rules_group, p.wholesale_price, 
 p.reference, p.supplier_reference, p.id_supplier, p.id_manufacturer, p.upc, p.ecotax, p.weight, s.quantity, 
 pl.description_short, pl.description, pl.meta_title, pl.meta_keywords, pl.meta_description, pl.link_rewrite, 
@@ -540,16 +540,21 @@ LEFT JOIN ps_attribute_lang al ON (al.id_attribute = pac.id_attribute)
 LEFT JOIN ps_attribute att ON (att.id_attribute = al.id_attribute)
 LEFT JOIN ps_attribute_group atg ON (atg.id_attribute_group = att.id_attribute_group)
 LEFT JOIN ps_attribute_group_lang atgl ON (atgl.id_attribute_group = atg.id_attribute_group)
+
 WHERE pl.id_lang = 1
 AND cl.id_lang = 1
 AND p.id_shop_default = 1
 AND c.id_shop_default = 1
-AND c.id_category = 244
+/*AND c.id_category = 244*/
+AND c.id_category = 3
 AND al.id_lang = 1
 AND atgl.id_lang = 1
+/*and atgl.id_attribute_group <> 1*/
 GROUP BY pac.id_product_attribute
 
+# Luego para features
 
+/*
 # Primera query combinaciones
 SELECT m.name AS manufacturer, p.id_product, pl.name, GROUP_CONCAT(DISTINCT(al.name) SEPARATOR ", ") AS combinations, 
 GROUP_CONCAT(DISTINCT(cl.name) SEPARATOR ",") AS categories, p.price, pa.price, p.id_tax_rules_group, p.wholesale_price, 
