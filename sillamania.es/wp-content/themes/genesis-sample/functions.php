@@ -3069,7 +3069,8 @@ add_shortcode( 'get_attributes', 'get_attributes' );
  $caracteristicas = array();
 
  // $atts = [], $content = null, $tag = ''
- function get_features($filtros,$nombre){
+ // ,$nombre
+ function get_features($filtros){
 	global $caracteristicas;
 	//$filtros_selects = explode(",",$atts['id_feature']);
 	$filtros_selects = explode(",",$filtros);
@@ -3082,6 +3083,12 @@ add_shortcode( 'get_attributes', 'get_attributes' );
 	$sql.=" ORDER BY a.`position` ASC";
 	$my_wpdb = new wpdb('root','','sillamaniaes_dos','localhost');
 	$caracteristicas = $my_wpdb->get_results( $sql, OBJECT );
+	foreach($caracteristicas as $car){
+		if ($car->id_feature == $filtros){
+			$nombre = $car->name;	
+		}
+		
+	}
 	$caracteristicas_buenas = array();
 	$cadena='<div class="atributo">';
 	$cadena.='<div class="contenedorPluguinSelect">';
@@ -3137,10 +3144,11 @@ $productos_features_attributes = array();
 $productos_combination = array();
 $total_features    = "";
 $total_attributes  = "";
+$cont_referencias = 0;
 //$ncol_bootstrap = ;
 
 function get_features_and_attributes($atts = [], $content = null, $tag = ''){
-	global $productos_features_attributes,$productos_combination,$total_attributes,$total_features;
+	global $productos_features_attributes,$productos_combination,$total_attributes,$total_features,$cont_referencias;
 	// get_features_and_attributes feature='5,6,7' attribute='1,3' id_category='3'
 	// Cuento que como minimo habra 1 feature
 	$id_categoria     = $atts['id_category'];
@@ -3189,10 +3197,12 @@ function get_features_and_attributes($atts = [], $content = null, $tag = ''){
 				"id_feature" 	   	   => $feature->id_feature,
 				"id_feature_value" 	   => $feature->id_feature_value,
 				"caracteristica" 	   => $feature->caracteristica,
-				"caracteristica_valor" => $feature->caracteristica_valor
+				"caracteristica_valor" => $feature->caracteristica_valor,
+				'referencia'		   => $cont_referencias
 				# id_product, id_feature, id_feature_value, caracteristica, caracteristica_valor
 			);
 			array_push($productos_features_attributes,$temp);
+			$cont_referencias++;
 		}
 		array_push($nombre_select_box_caracteristicas,$feature->caracteristica);
 		$nombre_select_box_caracteristicas = array_unique($nombre_select_box_caracteristicas);
@@ -3247,7 +3257,8 @@ function get_features_and_attributes($atts = [], $content = null, $tag = ''){
 				"combinations_valor" => $attribute->grupo_nombre,
 				"grupo_id"   		 => $attribute->grupo_id,
 				"combinations_id"    => $attribute->combinations_id,
-				"description"		 => $attribute->description_short
+				"description"		 => $attribute->description_short,
+				"referencia"		 => $cont_referencias
 			);
 			
 			foreach($productos_features_attributes as $key => $producto){
@@ -3258,20 +3269,32 @@ function get_features_and_attributes($atts = [], $content = null, $tag = ''){
 						$temp["caracteristica_valor"]   = $producto['caracteristica_valor'];
 				}
 			}
+			$cont_referencias++;
 			array_push($productos_combination,$temp);			
 		
 	}
 	// Construimos caracteristicas graficos
 	$temp_features = explode(",",$atts['feature']);
 	$contador = 0;
-	$nombre_select_box_caracteristicas = array_reverse($nombre_select_box_caracteristicas);
+	//print_r($temp_features);
+	//print_r($nombre_select_box_caracteristicas);
+	//$nombre_select_box_caracteristicas = array_reverse($nombre_select_box_caracteristicas);
 	foreach($temp_features as $feature){
-		get_features($feature,$nombre_select_box_caracteristicas[$contador]);	
+		get_features($feature);	
+		//,$nombre_select_box_caracteristicas[$contador]
 		$contador++;
 	}	
 	// Construimos combinaciones graficos
 	$temp_attributes = explode(",",$atts['attribute']);
 	$nombre_attributes = array_unique($nombre_attributes);
+	/*
+	echo "Estamos aqui<br>";
+	print_r($nombre_attributes);
+	echo "Estamos allii<br>";
+	print_r($temp_attributes);
+	*/
+	//$temp_attributes   = array_reverse($temp_attributes);
+	//$nombre_attributes = array_reverse($nombre_attributes);
 	get_attributes($atts['attribute'],$nombre_attributes);	
 	// Construimos productos
 	$cadena="<br style='clear:both;'>";
@@ -3301,7 +3324,7 @@ function get_features_and_attributes($atts = [], $content = null, $tag = ''){
 			$cadena.='</a>';
 			$cadena.='</div>';
 		}else{
-			$cadena.='<div class="col-xs-12 col-sm-6 col-md-3 producto" caracteristica_valor="'.$p["caracteristica_valor"].'" caracteristica="'.$p["caracteristica"].'" id_feature_value="'.$p["id_feature_value"].'" id_feature="'.$p["id_feature"].'" grupo_combinations_id="'.$p["combinations_id"].'" grupo_id="'.$p["grupo_id"].'" grupo_combinations_valor="'.$p["combinations_valor"].'"  grupo_combinations="'.$p["combinations_grupo"].'">';
+			$cadena.='<div class="col-xs-12 col-sm-6 col-md-3 producto" referencia="'.$p["referencia"].'" id_producto="'.$p["id_producto"].'" caracteristica_valor="'.$p["caracteristica_valor"].'" caracteristica="'.$p["caracteristica"].'" id_feature_value="'.$p["id_feature_value"].'" id_feature="'.$p["id_feature"].'" grupo_combinations_id="'.$p["combinations_id"].'" grupo_id="'.$p["grupo_id"].'" grupo_combinations_valor="'.$p["combinations_valor"].'"  grupo_combinations="'.$p["combinations_grupo"].'">';
 			$cadena.='<a href="" class="item-prod">';
 			$cadena.='<div class="img-container">';
 			$cadena.='<img src="http://placehold.it/770x510/bcbcbc" class="img-responsive principal" alt="Alt de la imagen" title="Titulo de la imagen" />';
@@ -3342,6 +3365,32 @@ function get_features_and_attributes($atts = [], $content = null, $tag = ''){
 }
 
 add_shortcode( 'get_features_and_attributes', 'get_features_and_attributes');
+
+function pre_filtros(){
+	$html = '<div class="container-filtros">';
+	$html.=	'<div class="container">';
+	$html.=	'<form action="" method="" id="">';
+	$html.=	'<div class="selectores">';
+	echo $html;
+}
+
+add_shortcode( 'pre_filtros', 'pre_filtros');
+
+function post_filtros(){
+	$html = '</div>';
+	$html.= '</form>';
+	$html.= '</div>';
+	$html.= '</div>';
+	$html.= '<div class="filtros-seleccionados">';
+	$html.= '<div class="container">';
+	$html.= '	<p>Filtrado por</p>';
+	$html.= '</div>';
+	$html.= '</div>';
+	$html.= '<div class="container"></div>';
+	echo $html;
+}
+
+add_shortcode( 'post_filtros', 'post_filtros');
 
  /*
   * Recibir formulario para insertar

@@ -1,4 +1,54 @@
 <body class="distribuidora">
+	<?php $productos = menu_products_by_categoria(get_field("prestashop_id", $pos->ID ));  ?>
+	<div class="container-fondo-carrito"></div>
+
+<div class="block block-minicart empty ui-dialog-content ui-widget-content" id="ui-id-2">
+    <div id="minicart-content-wrapper">
+		<div class="block-content">
+		    <button type="button" id="btn-minicart-close" class="action close">
+		        <i class="fa icon-close"></i>
+		    </button>
+	
+	        <div class="items-total">
+	            <span class="count"><i class="fa icon-buy_on"><span>0</span></i></span>
+	            <span>TU CESTA</span>
+	        </div>
+	        
+			<div class="subtitle empty">
+	            <h2>Tu cesta está vacía</h2>
+	            <a class="enlace-line" href="">Ver catálogo de productos</a>
+	        </div>
+			<div class="bottom">
+				<div class="subtotal">
+				    <span class="label">
+				        <span>Total</span>
+				    </span>
+					<div class="amount price-container">
+				    	<span class="price-wrapper"><span class="price">€ 0</span></span>
+					</div>
+				</div>
+		
+		        <div class="actions">
+		            <div class="primary">
+		                <button class="action primary checkout btn btn-rojo">
+		                    <span>Finalizar pedido</span>
+		                </button>
+		            </div>
+		        </div>
+		        <div class="pago-seguro-carrito">
+		        	<div class="iconos">
+			        	<i class="fa icon-paypal"></i>
+		        		<i class="fa icon-visa"></i>
+		        	</div>
+		        	<span>Sistema de pago seguro</span>
+		        </div>				
+			</div>	    
+		</div>
+	</div>
+</div>
+
+<body class="distribuidora">
+
 	<header>
 		<div class="top-bar">
 			<div class="inicio-sesion">
