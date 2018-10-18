@@ -155,11 +155,11 @@ jQuery(document).ready(function() {
 					if (contador == 0){
 						productos[valor_activo_seleccionado] = [];
 						productos[valor_activo_seleccionado].push($(this).attr("referencia"));
+					}else{
+						productos[valor_activo_seleccionado].push($(this).attr("referencia"));
 					}	
-					productos[valor_activo_seleccionado].push($(this).attr("referencia"));
-					contador++;
+					contador++;	
 				}
-				
 			});
 			console.log(productos)
 		}else if (tipo_activo == "combinaciones"){
@@ -192,8 +192,10 @@ jQuery(document).ready(function() {
 					if (contador == 0){
 						productos[valor_activo_seleccionado] = [];
 						productos[valor_activo_seleccionado].push($(this).attr("referencia"));
-					}	
-					productos[valor_activo_seleccionado].push($(this).attr("referencia"));
+					}else{
+						productos[valor_activo_seleccionado].push($(this).attr("referencia"));
+					}
+					contador++;	
 				}
 					
 			});	
@@ -244,8 +246,10 @@ jQuery(document).ready(function() {
 						if (contador == 0){
 							productos[valor_activo_seleccionado] = [];
 							productos[valor_activo_seleccionado].push($(this).attr("referencia"));
+						}else{
+							productos[valor_activo_seleccionado].push($(this).attr("referencia"));
 						}	
-						productos[valor_activo_seleccionado].push($(this).attr("referencia"));
+						contador++;	
 					}
 					
 				});
@@ -279,10 +283,12 @@ jQuery(document).ready(function() {
 						if (contador == 0){
 							productos[valor_activo_seleccionado] = [];
 							productos[valor_activo_seleccionado].push($(this).attr("referencia"));
+						}else{
+							productos[valor_activo_seleccionado].push($(this).attr("referencia"));	
 						}	
-						productos[valor_activo_seleccionado].push($(this).attr("referencia"));
+						contador++;		
 					}
-						
+					
 				});	
 			}
 			guardar_estado_filtros("anadir",true);
@@ -303,11 +309,16 @@ jQuery(document).ready(function() {
 		console.log(productos[valor_activo_seleccionado]);
 		
 		$("div .desactivados").each(function(){
+			//console.log("La referencia es: ".$(this).attr("referencia"));
 			for (var i=0;i<productos[valor_activo_seleccionado].length;i++){
 				if (productos[valor_activo_seleccionado][i] == $(this).attr("referencia")){
+					//console.log("La referencia es: ".$(this).attr("referencia"));
 					$(this).removeClass("desactivados").addClass("activados");
 				}
-			}	
+				
+			}
+			
+			console.log("La referencia es: "+$(this).attr("referencia"));	
 		});
 
 		
