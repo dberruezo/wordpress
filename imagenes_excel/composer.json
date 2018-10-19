@@ -1,0 +1,12 @@
+{
+    "name": "david/imagenes",
+    "description": "Son unas imagenes",
+    "require": {
+        "phpoffice/phpexcel": "^1.8"
+    },
+    "autoload":{
+        "psr-4": {
+            "clases\\":"clases/"
+        }
+    }
+}

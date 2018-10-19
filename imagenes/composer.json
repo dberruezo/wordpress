@@ -1,0 +1,10 @@
+{
+    "name": "imagenes/prestashop",
+    "description": "Coger imagenes prestashop",
+    "require": {},
+    "autoload":{
+        "psr-4":{
+            "classes\\": "classes//"       
+        }
+    }
+}

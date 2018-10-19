@@ -4,10 +4,10 @@ PLUGIN
 
 CODIGOS
 -------------------------------
-	Tracking Name	Snippet Short Code	Status	Action
-	CarouselSofa	[xyz-ihs snippet="CarouselSofa"]	Active	Deactivate	Edit Snippet	Delete Snippet
-	mejorSofa	[xyz-ihs snippet="mejorSofa"]	Active	Deactivate	Edit Snippet	Delete Snippet
-	banner	[xyz-ihs snippet="banner"]	Active	Deactivate	Edit Snippet	Delete Snippet
+	Tracking Name	Snippet 							Short Code		Status			Action
+	CarouselSofa	[xyz-ihs snippet="CarouselSofa"]	Active			Deactivate		Edit Snippet	Delete Snippet
+	mejorSofa		[xyz-ihs snippet="mejorSofa"]		Active			Deactivate		Edit Snippet	Delete Snippet
+	banner			[xyz-ihs snippet="banner"]			Active			Deactivate		Edit Snippet	Delete Snippet
 
 
 CODIGO UNO A UNO CAROUSEL SOFA
@@ -240,5 +240,11 @@ CATEGORIA HOME
 [carousel_destacados]
 [espacios_acogedores]
 [newsletter]
+
+
+CARACTERISTICAS DE LOS PRODUCTOS DE DICORO
+---------------------------------------------
+1.- 14 DIGITS ES LA REFERENCIA VARCHAR 
+2.- 4 DIGITS O MÉS NUMERIC DESPUÉS TIENE UN ID
 
 

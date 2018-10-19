@@ -1,0 +1,18 @@
+{
+    "name": "combinaciones/automatizadas",
+    "description": "Son combinaciones automatizadas como les gusta a google",
+    "authors": [
+        {
+            "name": "davidberruezo",
+            "email": "davidberruezo@davidberruezo.com"
+        }
+    ],
+    "require": {
+        "phpoffice/phpexcel": "^1.8"
+    },
+    "autoload":{
+        "psr-4": {
+            "clases\\":"clases/"
+        }
+    }
+}

@@ -1,0 +1,6 @@
+<?php
+$iamgenes = array();
+
+// $imagenes[0] => stdClass Object ( [id_image] => 4304 [id_product] => 194593 [position] => 10 [cover] => [id_lang] => 1 [legend] => Silla Parma azul [reference] => 00026000000507 [url] => http://promosillas.com/tiendaonline/img/p/4/3/0/4/4304.jpg ) [1] => stdClass Object ( [id_image] => 4305 [id_product] => 194593 [position] => 11 [cover] => [id_lang] => 1 [legend] => Silla Parma azul 1 [reference] => 00026000000507 [url] => http://promosillas.com/tiendaonline/img/p/4/3/0/5/4305.jpg ) [2] => stdClass Object ( [id_image] => 4306 [id_product] => 194593 [position] => 12 [cover] => [id_lang] => 1 [legend] => Silla Parma azul 2 [reference] => 00026000000507 [url] => http://promosillas.com/tiendaonline/img/p/4/3/0/6/4306.jpg ) [3] => stdClass Object ( [id_image] => 4307 [id_product] => 194593 [position] => 13 [cover] => [id_lang] => 1 [legend] => Silla Parma azul 3 [reference] => 00026000000507 [url] => http://promosillas.com/tiendaonline/img/p/4/3/0/7/4307.jpg ) [4] => stdClass Object ( [id_image] => 4308 [id_product] => 194593 [position] => 14 [cover] => [id_lang] => 1 [legend] => Silla Parma azul 4 [reference] => 00026000000507 [url] => http://promosillas.com/tiendaonline/img/p/4/3/0/8/4308.jpg ))  
+// El id_product es: 194593
+?>
