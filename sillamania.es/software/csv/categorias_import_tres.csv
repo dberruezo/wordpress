@@ -23,6 +23,6 @@ Category ID;Active (0/1);Name *;Parent category;Root category (0/1);Description;
 25;1;sillas madera;6;0;sillas madera;sillas-madera;sillas-madera;sillas-madera;sillas-madera;
 26;1;sillas metalicas;6;0;sillas metalicas;sillas-metalicas;sillas-metalicas;sillas-metalicas;sillas-metalicas;
 27;1;sillas tapizadas;6;0;sillas tapizadas;sillas-tapizadas;sillas-tapizadas;sillas-tapizadas;sillas-tapizadas;
-28;1;accesorios;6;0;accesorios;accesorios;accesorios;accesorios;accesorios;
-29;1;taburetes;6;0;taburetes;taburetes;taburetes;taburetes;taburetes;
+28;1;accesorios;2;0;accesorios;accesorios;accesorios;accesorios;accesorios;
+29;1;taburetes;2;0;taburetes;taburetes;taburetes;taburetes;taburetes;
 ;;  ;;;;;;;;

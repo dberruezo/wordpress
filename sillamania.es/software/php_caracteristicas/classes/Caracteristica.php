@@ -38,7 +38,7 @@ class Caracteristica{
         $contador        = 0;
         $contador_vector = 0;
         $this->features[$contador_vector] = array();
-        //
+        // Leemos caracteristicas
         for ($fila=2;$fila<180;$fila++){
             foreach ($chars as $letter){
                 if ($objPHPExcel->getActiveSheet()->getCell($letter.$fila)->getValue() !=""){
