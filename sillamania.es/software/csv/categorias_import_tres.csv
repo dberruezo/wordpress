@@ -1,0 +1,28 @@
+Category ID;Active (0/1);Name *;Parent category;Root category (0/1);Description;Meta title;Meta keywords;Meta description;URL rewritten;Image URL
+4;1;silla de oficina;2;0;Silla de oficina;silla-de-oficina;silla-de-oficina;silla-de-oficina;silla-de-oficina;
+5;1;sillas hogar;2;0;Sillas hogar;sillas-hogar;sillas-hogar;sillas-hogar;sillas-hogar;
+6;1;sillas hosteleria;2;0;Sillas hosteleria;sillas-hosteleria;sillas-hosteleria;sillas-hosteleria;sillas-hosteleria;
+7;1;sillas operativas;4;0;sillas operativas;sillas-operativas;sillas-operativas;sillas-operativas;sillas-operativas;
+8;1;sillones de direccion;4;0;sillones de direccion;sillones-de-direccion;sillones-de-direccion;sillones-de-direccion;sillones-de-direccion;
+9;1;sillas de ordenador;4;0;sillas de ordenador;sillas-de-ordenador;sillas-de-ordenador;sillas-de-ordenador;sillas-de-ordenador;
+10;1;sillas ergonomicas;4;0;sillas ergonomicas;sillas-ergonomicas;sillas-ergonomicas;sillas-ergonomicas;sillas-ergonomicas;
+11;1;sillones en piel natural;4;0;sillones en piel natural;sillones-en-piel-natural;sillones-en-piel-natural;sillones-en-piel-natural;sillones-en-piel-natural;
+12;1;sillas confidente;4;0;sillas confidente;sillas-confidente;sillas-confidente;sillas-confidente;sillas-confidente;
+13;1;sillas de visita;4;0;sillas de visita;sillas-de-visita;sillas-de-visita;sillas-de-visita;sillas-de-visita;
+14;1;sillas gaming;4;0;sillas gaming;sillas-gaming;sillas-gaming;sillas-gaming;sillas-gaming;
+15;1;sillas mesas reunion;4;0;sillas mesas reunion;sillas-mesas-reunion;sillas-mesas-reunion;sillas-mesas-reunion;sillas-mesas-reunion;
+16;1;sofas recepcion;4;0;sofas recepcion;sofas-recepcion;sofas-recepcion;sofas-recepcion;sofas-recepcion;
+17;1;sillas cocina;5;0;sillas cocina;sillas-cocina;sillas-cocina;sillas-cocina;sillas-cocina;
+18;1;sillas comedor;5;0;sillas comedor;sillas-comedor;sillas-comedor;sillas-comedor;sillas-comedor;
+19;1;sillas gaming;5;0;sillas gaming;sillas-gaming;sillas-gaming;sillas-gaming;sillas-gaming;
+20;1;sillas diseno;5;0;sillas diseno;sillas-diseno;sillas-diseno;sillas-diseno;sillas-diseno;
+21;1;sillones relax;5;0;sillones relax;sillones-relax;sillones-relax;sillones-relax;sillones-relax;
+22;1;sillas de diseno    ;6;0;sillas de diseno    ;sillas-de-diseno    ;sillas-de-diseno    ;sillas-de-diseno    ;sillas-de-diseno    ;
+23;1;sillas para escuelas;6;0;sillas para escuelas;sillas-para-escuelas;sillas-para-escuelas;sillas-para-escuelas;sillas-para-escuelas;
+24;1;sillas poliuretano;6;0;sillas poliuretano;sillas-poliuretano;sillas-poliuretano;sillas-poliuretano;sillas-poliuretano;
+25;1;sillas madera;6;0;sillas madera;sillas-madera;sillas-madera;sillas-madera;sillas-madera;
+26;1;sillas metalicas;6;0;sillas metalicas;sillas-metalicas;sillas-metalicas;sillas-metalicas;sillas-metalicas;
+27;1;sillas tapizadas;6;0;sillas tapizadas;sillas-tapizadas;sillas-tapizadas;sillas-tapizadas;sillas-tapizadas;
+28;1;accesorios;6;0;accesorios;accesorios;accesorios;accesorios;accesorios;
+29;1;taburetes;6;0;taburetes;taburetes;taburetes;taburetes;taburetes;
+;;  ;;;;;;;;

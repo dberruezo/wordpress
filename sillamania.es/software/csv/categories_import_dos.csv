@@ -1,0 +1,53 @@
+Category ID;Active (0/1);Name *;Parent category;Root category (0/1);Description;Meta title;Meta keywords;Meta description;URL rewritten;Image URL
+208;1;Materiales;2;0;Materiales;materiales;materiales;materiales;materiales;http://www.phpandfriends.com/imagenes_csv/categoria.png
+217;1;Caracteristicas;2;0;Caracteristicas;caracteristicas;caracteristicas;caracteristicas;caracteristicas;http://www.phpandfriends.com/imagenes_csv/categoria.png
+229;1;Estilos;2;0;Estilos;estilos;estilos;estilos;estilos;http://www.phpandfriends.com/imagenes_csv/categoria.png
+233;1;Silla de colores;2;0;Silla de colores;silla-de-colores;silla-de-colores;silla-de-colores;silla-de-colores;http://www.phpandfriends.com/imagenes_csv/categoria.png
+240;1;Tipo;2;0;Tipo;tipo;tipo;tipo;tipo;http://www.phpandfriends.com/imagenes_csv/categoria.png
+209;1;Sillas de plastico;208;0;Sillas plastico;sillas-plastico;sillas-plastico;sillas-plastico;sillas-plastico;http://www.phpandfriends.com/imagenes_csv/categoria.png
+210;1;Sillas metracrilato;208;0;Sillas metracrilato;sillas-metracrilato;sillas-metracrilato;sillas-metracrilato;sillas-metracrilato;http://www.phpandfriends.com/imagenes_csv/categoria.png
+211;1;Sillas tapizadas;208;0;Sillas tapizadas;sillas-tapizadas;sillas-tapizadas;sillas-tapizadas;sillas-tapizadas;http://www.phpandfriends.com/imagenes_csv/categoria.png
+212;1;Sillas de tela;208;0;Sillas tela;sillas-tela;sillas-tela;sillas-tela;sillas-tela;http://www.phpandfriends.com/imagenes_csv/categoria.png
+213;1;Sillas de cuero;208;0;Sillas cuero;sillas -cuero;sillas -cuero;sillas -cuero;sillas -cuero;http://www.phpandfriends.com/imagenes_csv/categoria.png
+214;1;Sillas de madera;208;0;Sillas madera;sillas-madera;sillas-madera;sillas-madera;sillas-madera;http://www.phpandfriends.com/imagenes_csv/categoria.png
+215;1;Sillas metal;208;0;Sillas metal;sillas-metal;sillas-metal;sillas-metal;sillas-metal;http://www.phpandfriends.com/imagenes_csv/categoria.png
+216;1;Sillas poliuretano;208;0;Sillas poliuretano;sillas-poliuretano;sillas-poliuretano;sillas-poliuretano;sillas-poliuretano;http://www.phpandfriends.com/imagenes_csv/categoria.png
+218;1;Sillas altas;217;0;Sillas altas;sillas-altas;sillas-altas;sillas-altas;sillas-altas;http://www.phpandfriends.com/imagenes_csv/categoria.png
+219;1;Sillas ligeras;217;0;Sillas ligeras;sillas-ligeras;sillas-ligeras;sillas-ligeras;sillas-ligeras;http://www.phpandfriends.com/imagenes_csv/categoria.png
+220;1;Sillas con ruedas;217;0;Sillas con ruedas;sillas-con-ruedas;sillas-con-ruedas;sillas-con-ruedas;sillas-con-ruedas;http://www.phpandfriends.com/imagenes_csv/categoria.png
+221;1;Sillas reclinables;217;0;Sillas reclinables;sillas-reclinables;sillas-reclinables;sillas-reclinables;sillas-reclinables;http://www.phpandfriends.com/imagenes_csv/categoria.png
+222;1;Sillas apilables;217;0;Sillas apilables;sillas-apilables;sillas-apilables;sillas-apilables;sillas-apilables;http://www.phpandfriends.com/imagenes_csv/categoria.png
+223;1;Sillas plegables;217;0;Sillas plegables;sillas-plegables;sillas-plegables;sillas-plegables;sillas-plegables;http://www.phpandfriends.com/imagenes_csv/categoria.png
+224;1;Sillas reposabrazos;217;0;Sillas reposabrazos;sillas-reposabrazos;sillas-reposabrazos;sillas-reposabrazos;sillas-reposabrazos;http://www.phpandfriends.com/imagenes_csv/categoria.png
+225;1;Sillas con brazos regulables;217;0;Sillas con brazos regulables;sillas-con-brazos-regulables;sillas-con-brazos-regulables;sillas-con-brazos-regulables;sillas-con-brazos-regulables;http://www.phpandfriends.com/imagenes_csv/categoria.png
+226;1;Sillas acolchadas;217;0;Sillas acolchadas;sillas-acolchadas;sillas-acolchadas;sillas-acolchadas;sillas-acolchadas;http://www.phpandfriends.com/imagenes_csv/categoria.png
+227;1;Sillas xxl;217;0;Sillas xxl;sillas-xxl;sillas-xxl;sillas-xxl;sillas-xxl;http://www.phpandfriends.com/imagenes_csv/categoria.png
+228;1;Sillas para uso intensivo;217;0;Sillas para uso intensivo;sillas-para-uso-intensivo;sillas-para-uso-intensivo;sillas-para-uso-intensivo;sillas-para-uso-intensivo;http://www.phpandfriends.com/imagenes_csv/categoria.png
+230;1;Sillas estilo nordico;229;0;Sillas estilo nordico;sillas-estilo-nordico;sillas-estilo-nordico;sillas-estilo-nordico;sillas-estilo-nodico;http://www.phpandfriends.com/imagenes_csv/categoria.png
+231;1;Sillas modernas;229;0;Sillas modernas;sillas-modernas;sillas-modernas;sillas-modernas;sillas-modernas;http://www.phpandfriends.com/imagenes_csv/categoria.png
+232;1;Sillas diseno;229;0;Sillas diseno;sillas-diseno;sillas-diseno;sillas-diseno;sillas-diseno;http://www.phpandfriends.com/imagenes_csv/categoria.png
+234;1;Sillas blancas;233;0;Sillas blancas;sillas-blancas;sillas-blancas;sillas-blancas;sillas-blancas;http://www.phpandfriends.com/imagenes_csv/categoria.png
+235;1;Sillas verdes;233;0;Sillas verdes;sillas-verdes;sillas-verdes;sillas-verdes;sillas-verdes;http://www.phpandfriends.com/imagenes_csv/categoria.png
+236;1;Sillas transparentes;233;0;Sillas transparentes;sillas-transparentes;sillas-transparentes;sillas-transparentes;sillas-transparentes;http://www.phpandfriends.com/imagenes_csv/categoria.png
+237;1;Sillas wengue;233;0;Sillas wengue;sillas-wengue;sillas-wengue;sillas-wengue;sillas-wengue;http://www.phpandfriends.com/imagenes_csv/categoria.png
+238;1;Sillas amarillas;233;0;Sillas amarillas;sillas-amarillas;sillas-amarillas;sillas-amarillas;sillas-amarillas;http://www.phpandfriends.com/imagenes_csv/categoria.png
+239;1;Sillas negras;233;0;Sillas negras;sillas-negras;sillas-negras;sillas-negras;sillas-negras;http://www.phpandfriends.com/imagenes_csv/categoria.png
+241;1;Sillas juveniles;240;0;Sillas juveniles;sillas-juveniles;sillas-juveniles;sillas-juveniles;sillas-juveniles;http://www.phpandfriends.com/imagenes_csv/categoria.png
+242;1;Sillas de cocina;240;0;Sillas de cocina;sillas-de-cocina;sillas-de-cocina;sillas-de-cocina;sillas-de-cocina;http://www.phpandfriends.com/imagenes_csv/categoria.png
+243;1;Sillas comedor;240;0;Sillas comedor;sillas-comedor;sillas-comedor;sillas-comedor;sillas-comedor;http://www.phpandfriends.com/imagenes_csv/categoria.png
+244;1;Sillas oficina;240;0;Sillas oficina;sillas-oficina;sillas-oficina;sillas-oficina;sillas-oficina;http://www.phpandfriends.com/imagenes_csv/categoria.png
+245;1;Sillas gaming;240;0;Sillas gaming;sillas-gaming;sillas-gaming;sillas-gaming;sillas-gaming;http://www.phpandfriends.com/imagenes_csv/categoria.png
+246;1;Sillas de escritorio;240;0;Sillas de escritorio;sillas-de-escritorio;sillas-de-escritorio;sillas-de-escritorio;sillas-de-escritorio;http://www.phpandfriends.com/imagenes_csv/categoria.png
+247;1;Sillas bar;240;0;Sillas bar;sillas-bar;sillas-bar;sillas-bar;sillas-bar;http://www.phpandfriends.com/imagenes_csv/categoria.png
+248;1;Sillas ergonomicas;240;0;Sillas ergonomicas;sillas-ergonomicas;sillas-ergonomicas;sillas-ergonomicas;sillas-ergonomicas;http://www.phpandfriends.com/imagenes_csv/categoria.png
+249;1;Sillas giratorias;240;0;Sillas giratorias;sillas-giratorias;sillas-giratorias;sillas-giratorias;sillas-giratorias;http://www.phpandfriends.com/imagenes_csv/categoria.png
+250;1;Sillas operativas;240;0;Sillas operativas;sillas-operativas;sillas-operativas;sillas-operativas;sillas-operativas;http://www.phpandfriends.com/imagenes_csv/categoria.png
+251;1;Sillones de oficina;240;0;Sillones de oficina;sillones-de-oficina;sillones-de-oficina;sillones-de-oficina;sillones-de-oficina;http://www.phpandfriends.com/imagenes_csv/categoria.png
+252;1;Taburetes;240;0;Taburetes;taburetes;taburetes;taburetes;taburetes;http://www.phpandfriends.com/imagenes_csv/categoria.png
+253;1;Sillas confidente;240;0;Sillas confidente;sillas-confidente;sillas-confidente;sillas-confidente;sillas-confidente;http://www.phpandfriends.com/imagenes_csv/categoria.png
+254;1;Sofas recepcion;240;0;Sofas recepcion;sofas-recepcion;sofas-recepcion;sofas-recepcion;sofas-recepcion;http://www.phpandfriends.com/imagenes_csv/categoria.png
+255;1;Sillones relax;240;0;Sillones relax;sillones-relax;sillones-relax;sillones-relax;sillones-relax;http://www.phpandfriends.com/imagenes_csv/categoria.png
+256;1;Sillas para mesa reunion;240;0;Sillas para mesa reunion;sillas-para-mesa-reunion;sillas-para-mesa-reunion;sillas-para-mesa-reunion;sillas-para-mesa-reunion;http://www.phpandfriends.com/imagenes_csv/categoria.png
+257;1;Sillas ordenador;240;0;Sillas ordenador;sillas-ordenador;sillas-ordenador;sillas-ordenador;sillas-ordenador;http://www.phpandfriends.com/imagenes_csv/categoria.png
+258;1;Sillas visita;240;0;Sillas visita;sillas-visita;sillas-visita;sillas-visita;sillas-visita;http://www.phpandfriends.com/imagenes_csv/categoria.png
+259;1;Sillas para escuelas;240;0;Sillas para escuelas;sillas-para-escuelas;sillas-para-escuelas;sillas-para-escuelas;sillas-para-escuelas;http://www.phpandfriends.com/imagenes_csv/categoria.png

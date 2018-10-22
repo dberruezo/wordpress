@@ -1,0 +1,58 @@
+PROYECTO 2 CMS Y VARIAS APLICACIONES / MODULOS / PLUGINS
+------------------------------------------------------------
+1.- WORDPRESS
+	1.1.- PROGRAMACION DIFERENTES SHORTCODES EN FUNCTIONS.PHP
+	1.2.- PROGRAMACION DIFERENTES PLUGINS
+		1.2.1.- WEBSERVICES OFIPRIX (LLAMADAS A WEBSERVICES)
+		1.2.2.- CAROUSEL 
+		1.2.3.- XYZ
+2.- PRESTASHOP
+
+
+
+
+EN LOS PERMALINKS AL PRINCIPIO ESTABA PUESTO ESSTRUCTURA PERSONALZIADA
+------------------------------------------------------------------------
+1.- Estructura personalizada	http://localhost/sillamania.es  
+/%category%/%postname%/
+
+2.- Etiquetas disponibles:
+%year% %monthnum% %day% %hour% %minute% %second% %post_id% %postname% %category% %author%
+
+
+
+MOBILE
+------------------------------------------------------------------------
+1.- MEDIA QUERY TAMANO MOVIL CUANDO POPUP ABIERTO NO SE HA DE MOSTRAR LA IMAGEN DE LA DERECHA .... ASÍ EL POPUP QUEDARA RECTANGULAR VERTICAL COMO EN EL TAMANO
+DE UN MOVIL, LUEGO CUANDO SE CARGUE HARÁ UNA PEQUEÑA ANIMACION HACIA ARRIBA Y OCUPARA EL 75% DE LA PANTALLA VERTICALMENTE
+
+
+PLUGIN SLIDER
+------------------------------------------------------------------------
+Campo Expert: Link: http://www.google.com; Precio: 32.000€
+
+
+COMBINACIONES
+-----------------------------------------------------------------------
+1.- query features sobre productos y la categoria ==== vector productos
+2.- query attributes combinaciones sobre productos y categoria ===== each y comparar con vector productos superior ==== coger los que coincidan
+3.- guardar en el div descripcion del producto todos los filtros
+
+
+ALGORITOMO FILTROS
+------------------------------------------------------------------------
+var vector_caracteristicas_nombres
+var vector_caracteristicas_valores
+
+si filtros activados
+	1.- tienen activados
+	2.- tienen desactivados
+	3.- HAY QUE FILTRAR SOLO POR ACTIVADOS
+si filtros desactivados
+ 	1.- no tienen nada
+
+
+
+44 TOTAL 
+
+14 COMPOSICION ALGODON 
